@@ -21,13 +21,13 @@ public class GamePlay extends JFrame  implements ActionListener {
 
     // 2. CONTROL CONSTANT
     private final int CPANEL_HEIGHT = 800;
-    private final int CPANEL_WIDTH = 500;
+    private final int CPANEL_WIDTH = 480;
     private final int STATUS_HEIGHT = 200;
-    private final int STATUS_WIDTH = 500;
+    private final int STATUS_WIDTH = 480;
     private final int COMMAND_HEIGHT = 400;
-    private final int COMMAND_WIDTH = 500;
+    private final int COMMAND_WIDTH = 480;
     private final int LOG_HEIGHT = 200;
-    private final int LOG_WIDTH = 500;
+    private final int LOG_WIDTH = 480;
     private final int MAX_HP = 100;
     //delay per tick
     private int DELAY=1000;
@@ -46,6 +46,7 @@ public class GamePlay extends JFrame  implements ActionListener {
     private JPanel mapPanel;
     private JPanel controlPanel;
     private StatusPanel statusPanel;
+    private JScrollPane logPanel;
 
     //Timer
     private Timer timer;
@@ -86,7 +87,8 @@ public class GamePlay extends JFrame  implements ActionListener {
         createStatusPanel();
         controlPanel.add(statusPanel, BorderLayout.NORTH);
         controlPanel.add(createCommandPanel(), BorderLayout.CENTER);
-        controlPanel.add(createLogPanel(), BorderLayout.SOUTH);
+        createLogPanel();
+        controlPanel.add(logPanel, BorderLayout.SOUTH);
         controlPanel.setBackground(new Color(220, 200, 50));
     }
 
@@ -106,12 +108,12 @@ public class GamePlay extends JFrame  implements ActionListener {
         return commandPanel;
     }
 
-    private JPanel createLogPanel() {
-        JPanel logPanel = new JPanel();
+    private void createLogPanel() {
+        logPanel = new JScrollPane(new JTextArea());
         Dimension d = new Dimension(LOG_WIDTH, LOG_HEIGHT);
         logPanel.setPreferredSize(d);
         logPanel.setBackground(new Color(100, 250, 100));
-        return logPanel;
+
     }
 
     private void setupPanels() {
