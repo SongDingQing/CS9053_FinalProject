@@ -24,9 +24,9 @@ public class StatusPanel extends JPanel {
     private void drawHpBar(Graphics g){
         //hp bar drawing
         g.setColor(new Color(0, 0 , 0));
-        g.fillRect(39, 10, 441, 20);//the outer bar and background
+        g.fillRect(39, 10, 402, 20);//the outer bar and background
         // the blood bar
-        int length =39+(int)((status.getHp()/(double)status.getMaxHp())*400);
+        int length =(int)((status.getHp()/(double)status.getMaxHp())*400);
         g.setColor(new Color(200, 50 , 50));
         g.fillRect(40, 11, length, 18);
 
