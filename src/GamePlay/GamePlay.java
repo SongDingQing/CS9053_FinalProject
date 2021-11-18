@@ -26,6 +26,14 @@ public class GamePlay extends JFrame {
     private final int COMMAND_WIDTH = 500;
     private final int LOG_HEIGHT= 200;
     private final int LOG_WIDTH = 500;
+    private final int MAX_HP=100;
+    private int HP=75;
+    private int WOOD=50;
+    private int FOOD=0;
+    private int COAL=0;
+    private int IRON=0;
+    private int UNIT=0;
+    private int TIME=0;
 
     //Panels Components
     private JPanel mapPanel;
@@ -33,8 +41,6 @@ public class GamePlay extends JFrame {
 
     public GamePlay() {
         super("budge");
-        //In Game Constant
-        int hp=1000;
         //Map Panel
         setMapPanel();
         //Control Panel
@@ -67,10 +73,11 @@ public class GamePlay extends JFrame {
         controlPanel.setBackground(new Color(220,200,50));
     };
     private JPanel createStatusPanel(){
-        JPanel statusPanel = new JPanel();
+        StatusData sd=new StatusData(MAX_HP,HP,FOOD,WOOD,COAL,IRON,UNIT,TIME);
+        JPanel statusPanel = new StatusPanel(sd);
         Dimension d = new Dimension(STATUS_WIDTH,STATUS_HEIGHT);
         statusPanel.setPreferredSize(d);
-        statusPanel.setBackground(new Color(100,100,250));
+        statusPanel.setBackground(new Color(200,200,250));
         return statusPanel;
     };
     private JPanel createCommandPanel(){
