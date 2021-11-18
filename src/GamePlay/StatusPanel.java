@@ -11,7 +11,17 @@ public class StatusPanel extends JPanel {
         super();
         status =statusData;
     }
-    public void drawHpBar(Graphics g){
+    public void upDateTime(){
+        status.setTime(status.getTime()+1);
+    };
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        drawHpBar(g);
+        drawOtherStatus(g);
+
+
+    }
+    private void drawHpBar(Graphics g){
         //hp bar drawing
         g.setColor(new Color(0, 0 , 0));
         g.fillRect(39, 10, 441, 20);//the outer bar and background
@@ -37,7 +47,7 @@ public class StatusPanel extends JPanel {
         g.setFont(new Font("time new roman", Font.BOLD, 15));
         g.drawString("HP: " + status.getHp()+" / "+status.getMaxHp(), 200, 24);
     }
-    public void drawOtherStatus(Graphics g){
+    private void drawOtherStatus(Graphics g){
         //food
         g.setColor(Color.BLACK);
         g.setFont(new Font("time new roman", Font.BOLD, 15));
@@ -62,12 +72,5 @@ public class StatusPanel extends JPanel {
         g.setColor(Color.BLACK);
         g.setFont(new Font("time new roman", Font.BOLD, 15));
         g.drawString("Time  : " + status.getTime(), 240, 70);
-    }
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        drawHpBar(g);
-        drawOtherStatus(g);
-
-
     }
 }
