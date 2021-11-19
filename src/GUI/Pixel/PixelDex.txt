@@ -1,0 +1,11 @@
+/--------------------------Acknowledgement-------------------------------------------
+@author : Chengzuo Song
+@purpose : This file is used to check the pixels using the numbers that is defined.
+@version : 0.0
+/---------------------------Index----------------------------------------------------
+
+ Pixel(abstract)-----------------------------------------------------    0
+This is the start of all possible pixels, since it is abstract it will only be used for container creation
+
+ Pixel_Grass(abstract)-----------------------------------------------    1
+Grass Area

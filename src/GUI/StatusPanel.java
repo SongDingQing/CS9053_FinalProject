@@ -4,7 +4,10 @@ import Data.StatusData;
 
 import javax.swing.*;
 import java.awt.*;
-
+/*** This Class is the the Status Drawing (the Status Panel)
+ * @author Chengzuo Song
+ * @version 0.0
+ */
 public class StatusPanel extends JPanel {
     StatusData status;
     public StatusPanel(StatusData statusData){

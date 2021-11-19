@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*** This Class is the the Game Drawing
+/*** This Class is the the Game Drawing (the whole Panel)
  * @author Chengzuo Song
  * @version 0.0
  */
