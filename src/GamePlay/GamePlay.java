@@ -74,7 +74,7 @@ public class GamePlay extends JFrame  implements ActionListener {
     }
 
     private void setMapPanel() {
-        mapPanel = new JPanel();
+        mapPanel = new MapPanel();
         Dimension d = new Dimension(MAP_WIDTH, MAP_HEIGHT);
         mapPanel.setPreferredSize(d);
         mapPanel.setBackground(new Color(250, 200, 200));
