@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GamePlay/MapPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GamePlay/GamePlay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GamePlay/GamePlay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GamePlay/StatusPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GamePlay/StatusPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePlay/GamePlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePlay/GamePlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePlay/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +46,11 @@
     <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="GamePlay.Run" />
+      <option name="MAIN_CLASS_NAME" value="Run" />
       <module name="CS9053_FinalProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GamePlay.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

@@ -1,4 +1,6 @@
-package GamePlay;
+package GUI;
+
+import Data.StatusData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 
 
-public class GamePlay extends JFrame  implements ActionListener {
+public class MainPanel extends JFrame  implements ActionListener {
     //-----------CONSTANTS--------------
     private final int HEIGHT = 800;
     private final int WIDTH = 1200;
@@ -52,7 +54,7 @@ public class GamePlay extends JFrame  implements ActionListener {
     private Timer timer;
 
 
-    public GamePlay(){
+    public MainPanel(){
         super("budge");
         //Map Panel
         setMapPanel();

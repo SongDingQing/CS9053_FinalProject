@@ -1,4 +1,6 @@
-package GamePlay;
+package GUI;
+
+import Data.StatusData;
 
 import javax.swing.*;
 import java.awt.*;
