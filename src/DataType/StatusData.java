@@ -1,4 +1,4 @@
-package Data;
+package DataType;
 
 public class StatusData {
     private int maxHp,hp,food,wood,coal,iron,unit,time;

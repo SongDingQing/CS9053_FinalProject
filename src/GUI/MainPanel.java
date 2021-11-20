@@ -1,6 +1,6 @@
 package GUI;
 
-import Data.StatusData;
+import DataType.StatusData;
 
 import javax.swing.*;
 import java.awt.*;
