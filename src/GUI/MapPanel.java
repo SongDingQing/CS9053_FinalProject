@@ -30,10 +30,12 @@ public class MapPanel extends JPanel {
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        //Map drawing
         for(int x=0;x<Constants.width_pixels;x++){
             for(int y=0;y<Constants.Height_pixels;y++){
                 mapData[x][y].drawPixel(g,x,y);
             }
         }
+        //Base drawing
     }
 }
