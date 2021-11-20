@@ -41,8 +41,8 @@ public class MapPanel extends JPanel {
         }
         //Base drawing
         g.setColor(new Color(0,0,200));
-        g.fillRect(0,0,800,80);
+        g.fillRect(0,0,801,80);
         g.setColor(new Color(200,0,0));
-        g.fillRect(0,681,800,80);
+        g.fillRect(0,681,801,80);
     }
 }
