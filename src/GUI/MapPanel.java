@@ -31,12 +31,15 @@ public class MapPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         //Map drawing
-        for(int x=0;x<Constants.width_pixels;x++){
+        for(int x=0;x<Constants.width_pixels-1;x++){
             for(int y=0;y<Constants.Height_pixels;y++){
                 mapData[x][y].drawPixel(g,x,y);
             }
         }
         //Base drawing
+        g.setColor(Color.BLUE);
+        g.fillRect(0,0,800,80);
         g.setColor(Color.RED);
+        g.fillRect(0,681,800,80);
     }
 }
