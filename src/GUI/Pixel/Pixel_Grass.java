@@ -9,5 +9,6 @@ public class Pixel_Grass extends Pixel{
         g.fillRect(x*10, y*10+80, 10, 10);
         g.setColor(new Color(0, 150 , 0));
         g.drawRect(x*10, y*10+80, 10, 10);
+        g.setColor(new Color(50,50,50));
     }
 }

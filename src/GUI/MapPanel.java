@@ -31,9 +31,12 @@ public class MapPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         //Map drawing
-        for(int x=0;x<Constants.width_pixels-1;x++){
+        for(int x=0;x<Constants.width_pixels;x++){
             for(int y=0;y<Constants.Height_pixels;y++){
                 mapData[x][y].drawPixel(g,x,y);
+                //The Following two line is used to test whether the pixel at some location is write
+                //mapData[x][y].drawX(g,x,y);
+                //mapData[x][y].drawY(g,x,y);
             }
         }
         //Base drawing

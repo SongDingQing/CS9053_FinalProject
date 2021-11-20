@@ -17,10 +17,10 @@ import java.awt.event.ActionListener;
 public class MainPanel extends JFrame  implements ActionListener {
     //-----------CONSTANTS--------------
     private final int HEIGHT = 800;
-    private final int WIDTH = 1288;
+    private final int WIDTH = 1298;
     // 1. MAP CONSTANT
     private final int MAP_HEIGHT = 800;
-    private final int MAP_WIDTH = 791;
+    private final int MAP_WIDTH = 801;
 
     // 2. CONTROL CONSTANT
     private final int CPANEL_HEIGHT = 800;
