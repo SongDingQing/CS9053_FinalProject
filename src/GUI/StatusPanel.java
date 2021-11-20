@@ -10,12 +10,19 @@ import java.awt.*;
  */
 public class StatusPanel extends JPanel {
     StatusData status;
+    private int counter=0;
     public StatusPanel(StatusData statusData){
         super();
         status =statusData;
     }
     public void upDateTime(){
-        status.setTime(status.getTime()+1);
+        if(counter==30){
+            status.setTime(status.getTime()+1);
+            counter=0;
+        }else{
+            counter++;
+        }
+
     };
     public void paintComponent(Graphics g){
         super.paintComponent(g);

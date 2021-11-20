@@ -1,5 +1,6 @@
 package GUI;
 
+import Data.Constants;
 import DataType.StatusData;
 
 import javax.swing.*;
@@ -32,7 +33,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     private final int LOG_WIDTH = 480;
     private final int MAX_HP = 100;
     //delay per tick
-    private int DELAY=1000;
+    private int DELAY=20;
 
     //---------------Variables------------------
     private int hp = 75;
@@ -48,6 +49,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     private JPanel controlPanel;
     private StatusPanel statusPanel;
     private JScrollPane logPanel;
+    private JTextArea logTextField;
 
     //Timer
     private Timer timer;
@@ -110,7 +112,9 @@ public class MainPanel extends JFrame  implements ActionListener {
     }
 
     private void createLogPanel() {
-        logPanel = new JScrollPane(new JTextArea());
+        logTextField = new JTextArea(Constants.VersionText);
+        logTextField.setEditable(false);
+        logPanel = new JScrollPane(logTextField);
         Dimension d = new Dimension(LOG_WIDTH, LOG_HEIGHT);
         logPanel.setPreferredSize(d);
         logPanel.setBackground(new Color(100, 250, 100));
