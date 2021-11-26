@@ -36,7 +36,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     private int DELAY=20;
 
     //---------------Variables------------------
-    private int hp = 100;
+    private int hp = 90;
     private int wood = 50;
     private int food = 0;
     private int coal = 0;
