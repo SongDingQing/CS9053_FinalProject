@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Woods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Woods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MainPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MainPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/PixelDex.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/PixelDex.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Woods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Woods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MapPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

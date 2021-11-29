@@ -27,7 +27,7 @@ public class MapPanel extends JPanel {
             for(int y=0;y<Constants.Height_pixels;y++){
 
                 //TODO change config of the map
-                if(y>30&&y<50){
+                if(y>30&&y<50&&x>30){
                     mapData[x][y]= new Pixel_Woods();
                 }else{
                     mapData[x][y]= new Pixel_Grass();

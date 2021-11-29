@@ -7,5 +7,7 @@
  Pixel(abstract)-----------------------------------------------------    0
 This is the start of all possible pixels, since it is abstract it will only be used for container creation
 
- Pixel_Grass(abstract)-----------------------------------------------    1
+ Pixel_Grass          -----------------------------------------------    1
 Grass Area
+ Pixel_Woods         -----------------------------------------------     2
+Woods Area, this area is collectable by lumberjack

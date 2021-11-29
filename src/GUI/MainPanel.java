@@ -16,15 +16,15 @@ import java.awt.event.ActionListener;
 
 public class MainPanel extends JFrame  implements ActionListener {
     //-----------CONSTANTS--------------
-    private final int HEIGHT = 800;
-    private final int WIDTH = 1298;
+    private final int HEIGHT = Constants.Height;
+    private final int WIDTH = Constants.Width;
     // 1. MAP CONSTANT
-    private final int MAP_HEIGHT = 800;
-    private final int MAP_WIDTH = 801;
+    private final int MAP_HEIGHT = Constants.Map_Height;
+    private final int MAP_WIDTH = Constants.Map_Width;
 
     // 2. CONTROL CONSTANT
-    private final int CPANEL_HEIGHT = 800;
-    private final int CPANEL_WIDTH = 480;
+    private final int CPANEL_HEIGHT = Constants.Cpanel_Height;
+    private final int CPANEL_WIDTH = Constants.Cpanel_Width;
     private final int STATUS_HEIGHT = 200;
     private final int STATUS_WIDTH = 480;
     private final int COMMAND_HEIGHT = 400;
