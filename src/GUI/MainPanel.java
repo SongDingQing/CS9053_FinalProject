@@ -15,27 +15,9 @@ import java.awt.event.ActionListener;
 
 
 public class MainPanel extends JFrame  implements ActionListener {
-    //-----------CONSTANTS--------------
-    private final int HEIGHT = Constants.Height;
-    private final int WIDTH = Constants.Width;
-    // 1. MAP CONSTANT
-    private final int MAP_HEIGHT = Constants.Map_Height;
-    private final int MAP_WIDTH = Constants.Map_Width;
-
-    // 2. CONTROL CONSTANT
-    private final int CPANEL_HEIGHT = Constants.Cpanel_Height;
-    private final int CPANEL_WIDTH = Constants.Cpanel_Width;
-    private final int STATUS_HEIGHT = 200;
-    private final int STATUS_WIDTH = 480;
-    private final int COMMAND_HEIGHT = 400;
-    private final int COMMAND_WIDTH = 480;
-    private final int LOG_HEIGHT = 200;
-    private final int LOG_WIDTH = 480;
-    private final int MAX_HP = 100;
-    //delay per tick
-    private int DELAY=20;
 
     //---------------Variables------------------
+    private final int max_hp = 100;
     private int hp = 80;
     private int wood = 50;
     private int food = 0;
@@ -69,23 +51,23 @@ public class MainPanel extends JFrame  implements ActionListener {
         // Other Configuration
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(WIDTH, HEIGHT);
+        setSize(Constants.Width, Constants.Height);
         setVisible(true);
         //main game thread
-        timer= new Timer(DELAY,this);
+        timer= new Timer(Constants.Delay,this);
         timer.start();
     }
 
     private void setMapPanel() {
         mapPanel = new MapPanel();
-        Dimension d = new Dimension(MAP_WIDTH, MAP_HEIGHT);
+        Dimension d = new Dimension(Constants.Map_Width,Constants.Map_Height);
         mapPanel.setPreferredSize(d);
         mapPanel.setBackground(new Color(250, 200, 200));
     }
 
     private void setControlPanel() {
         controlPanel = new JPanel();
-        Dimension d = new Dimension(CPANEL_WIDTH, CPANEL_HEIGHT);
+        Dimension d = new Dimension(Constants.Cpanel_Width,Constants.Cpanel_Height);
         controlPanel.setPreferredSize(d);
         createStatusPanel();
         controlPanel.add(statusPanel, BorderLayout.NORTH);
@@ -96,16 +78,16 @@ public class MainPanel extends JFrame  implements ActionListener {
     }
 
     private void createStatusPanel() {
-        StatusData sd = new StatusData(MAX_HP, hp, food, wood, coal, iron, unit, time);
+        StatusData sd = new StatusData(max_hp, hp, food, wood, coal, iron, unit, time);
         statusPanel = new StatusPanel(sd);
-        Dimension d = new Dimension(STATUS_WIDTH, STATUS_HEIGHT);
+        Dimension d = new Dimension(Constants.Status_Width,Constants.Status_Height);
         statusPanel.setPreferredSize(d);
         statusPanel.setBackground(new Color(200, 200, 250));
     }
 
     private JPanel createCommandPanel() {
         JPanel commandPanel = new JPanel();
-        Dimension d = new Dimension(COMMAND_WIDTH, COMMAND_HEIGHT);
+        Dimension d = new Dimension(Constants.Command_Width, Constants.Command_Height);
         commandPanel.setPreferredSize(d);
         commandPanel.setBackground(new Color(250, 100, 100));
         return commandPanel;
@@ -115,7 +97,7 @@ public class MainPanel extends JFrame  implements ActionListener {
         logTextField = new JTextArea(Constants.VersionText);
         logTextField.setEditable(false);
         logPanel = new JScrollPane(logTextField);
-        Dimension d = new Dimension(LOG_WIDTH, LOG_HEIGHT);
+        Dimension d = new Dimension(Constants.Log_Width,Constants.Log_Height);
         logPanel.setPreferredSize(d);
         logPanel.setBackground(new Color(100, 250, 100));
 
