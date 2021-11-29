@@ -7,6 +7,7 @@ import Data.Constants;
 import GUI.Pixel.Pixel;
 import Data.Constants.*;
 import GUI.Pixel.Pixel_Grass;
+import GUI.Pixel.Pixel_Woods;
 
 /*** This Class is the the Map Drawing (the Map Panel)
  * @author Chengzuo Song
@@ -24,7 +25,14 @@ public class MapPanel extends JPanel {
     private void setMapData(){
         for(int x=0;x<Constants.width_pixels;x++){
             for(int y=0;y<Constants.Height_pixels;y++){
-                mapData[x][y]= new Pixel_Grass();
+
+                //TODO change config of the map
+                if(y>30&&y<50){
+                    mapData[x][y]= new Pixel_Woods();
+                }else{
+                    mapData[x][y]= new Pixel_Grass();
+                }
+
             }
         }
     }
