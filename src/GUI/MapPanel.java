@@ -33,6 +33,10 @@ public class MapPanel extends JPanel {
         unitsData = new ArrayList<UnitData>();
         units.add(new Unit_001Logger());
         unitsData.add(new UnitData(200, 400));
+        units.add(new Unit_001Logger());
+        unitsData.add(new UnitData(300, 500));
+        units.add(new Unit_001Logger());
+        unitsData.add(new UnitData(100, 300));
     }
 
     private void setMapData() {
