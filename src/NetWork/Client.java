@@ -1,5 +1,7 @@
 package NetWork;
 
+import GUI.MainPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,6 +53,7 @@ public class Client extends JFrame  {
 		try {
 			socket = new Socket("localhost", 8000);
 			textArea.append("connected\n");
+			MainPanel Game = new MainPanel();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
