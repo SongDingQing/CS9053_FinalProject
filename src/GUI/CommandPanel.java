@@ -2,28 +2,47 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.Socket;
 
 public class CommandPanel extends JPanel {
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
-    private JButton button6;
+    // c+worker type means Create a Worker of that type
+    private JButton cLogger;
+    private JButton cFisher;
+    private JButton cMiner;
+    private JButton cWarrior;
+    private JButton cArcher;
+    private JButton cOther;
     public CommandPanel(){
-        button1=new JButton("Logger");
-        button2=new JButton("Fisher");
-        button3=new JButton("Miner");
-        button4=new JButton("Warrior");
-        button5=new JButton("Archer");
-        button6=new JButton("Other");
+        super();
+        createButtons();
+        addListeners();
+    }
+    public void createButtons(){
+        cLogger =new JButton("Logger");
+        cFisher=new JButton("Fisher");
+        cMiner =new JButton("Miner");
+        cWarrior =new JButton("Warrior");
+        cArcher =new JButton("Archer");
+        cOther =new JButton("Other");
         setLayout(new GridLayout(3,2));
-        add(button1);
-        add(button2);
-        add(button3);
-        add(button4);
-        add(button5);
-        add(button6);
+        add(cLogger);
+        add(cFisher);
+        add(cMiner);
+        add(cWarrior);
+        add(cArcher);
+        add(cOther);
+    }
+    public void addListeners(){
+        class cLoggerListener implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //ToDo
+            }
+        }
+        cLogger.addActionListener(new cLoggerListener());
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);

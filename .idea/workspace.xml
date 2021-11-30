@@ -2,22 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Data/PixelData.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Data/Variable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Pixel/PixelData.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Coal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Fish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Iron.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Lake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Mountain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Unit/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Unit/Unit_001Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/CommandPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/CommandPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Coal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Fish.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Grass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Iron.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Lake.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Mountain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_Woods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client$CloseConnectionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client$CloseConnectionListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client$TextFieldListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client$TextFieldListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CommandPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MapPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Grass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Woods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Woods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +35,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="214sAYaU5ThV8glgbjWfvmSRKxB" />
   <component name="ProjectViewState">

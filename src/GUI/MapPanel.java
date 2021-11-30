@@ -3,10 +3,13 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Data.Constants;
 import GUI.Pixel.*;
+import GUI.Unit.Unit;
+import GUI.Unit.Unit_001Logger;
 
 /*** This Class is the the Map Drawing (the Map Panel)
  * @author Chengzuo Song
@@ -17,11 +20,15 @@ import GUI.Pixel.*;
 public class MapPanel extends JPanel {
     public Pixel[][] mapData;
     public int[][] pixelData;
+    public ArrayList<Unit> units;
 
     public MapPanel() {
         super();
         mapData = new Pixel[Constants.width_pixels][Constants.height_pixels];
         setMapData();
+        //Test
+        units= new ArrayList<Unit>();
+        units.add(new Unit_001Logger());
     }
 
     private void setMapData() {
@@ -85,8 +92,14 @@ public class MapPanel extends JPanel {
         }
         //Base drawing
         g.setColor(new Color(0, 0, 200));
-        g.fillRect(0, 0, 801, 80);
+        g.fillRect(0, 0, 800, 80);
         g.setColor(new Color(200, 0, 0));
-        g.fillRect(0, 681, 801, 80);
+        g.fillRect(0, 680, 800, 80);
+
+        //unit drawing
+        Graphics2D g2d= (Graphics2D) g;
+        for (Unit unit: units){
+            unit.drawUnit(g2d,100,100);
+        }
     }
 }
