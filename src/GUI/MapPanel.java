@@ -26,7 +26,7 @@ public class MapPanel extends JPanel {
 
     public MapPanel() {
         super();
-        mapData = new Pixel[Constants.width_pixels][Constants.height_pixels];
+        mapData = new Pixel[Constants.Pixels_Width][Constants.Pixels_Height];
         setMapData();
         //Test
         units = new ArrayList<Unit>();
@@ -42,8 +42,8 @@ public class MapPanel extends JPanel {
             Scanner input = new Scanner(file);
             pixelData = new int[80][60];
             while (input.hasNext()) {
-                for (int y = 0; y < Constants.height_pixels; y++) {
-                    for (int x = 0; x < Constants.width_pixels; x++) {
+                for (int y = 0; y < Constants.Pixels_Height; y++) {
+                    for (int x = 0; x < Constants.Pixels_Width; x++) {
                         pixelData[x][y] = input.nextInt();
                     }
                 }
@@ -55,8 +55,8 @@ public class MapPanel extends JPanel {
         }
 
 
-        for (int y = 0; y < Constants.height_pixels; y++) {
-            for (int x = 0; x < Constants.width_pixels; x++) {
+        for (int y = 0; y < Constants.Pixels_Height; y++) {
+            for (int x = 0; x < Constants.Pixels_Width; x++) {
                 mapData[x][y] = CreatePixel(pixelData[x][y]);
             }
         }
@@ -92,8 +92,8 @@ public class MapPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //Map drawing
-        for (int x = 0; x < Constants.width_pixels; x++) {
-            for (int y = 0; y < Constants.height_pixels; y++) {
+        for (int x = 0; x < Constants.Pixels_Width; x++) {
+            for (int y = 0; y < Constants.Pixels_Height; y++) {
                 mapData[x][y].drawPixel(g, x, y);
                 //The Following two line is used to test whether the pixel at some location is write
                 //mapData[x][y].drawX(g,x,y);

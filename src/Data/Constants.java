@@ -5,11 +5,11 @@ package Data;
  */
 public class Constants {
     //The text in log window
-    public static String VersionText="This our budge game version 0.0.4";
+    public static String VersionText="This our budge game version 0.0.8";
 
     //configuration on the <<<<SIZE>>>>> of the game
-    public static int width_pixels =80;
-    public static int height_pixels =60;
+    public static int Pixels_Width =80;
+    public static int Pixels_Height =60;
     public static final int Height =800;
     public static final int Width =1298;
     // 1. MAP CONSTANT
