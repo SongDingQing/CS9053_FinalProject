@@ -85,7 +85,13 @@ public class MapPanel extends JPanel {
 
     public void upDateTime(){
         for (int i = 0; i < units.size(); i++) {
-           unitsData.get(i).setY(unitsData.get(i).getY()-unitsData.get(i).getState());
+            if(unitsData.get(i).getY()<80){
+                unitsData.get(i).setState(1);
+            }else if(unitsData.get(i).getY()>670){
+                unitsData.get(i).setState(-1);
+            }
+            unitsData.get(i).setY(unitsData.get(i).getY()+unitsData.get(i).getState());
+
         }
     }
 

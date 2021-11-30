@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class UnitData {
     private int x;
     private int y;
-    //state: 1 is going forward 0 is standing still 1 coming home
+    //state: -1 is going upward 0 is standing still 1 going downward
     private int state;
     public UnitData(int x,int y){
-        state=1;
+        state=-1;
         this.x=x;
         this.y=y;
     }
@@ -26,5 +26,9 @@ public class UnitData {
 
     public int getState() {
         return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

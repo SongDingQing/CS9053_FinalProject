@@ -101,17 +101,17 @@ public class Client extends JFrame {
             }
 
             try {
-                // Send the radius to the server
+                // Send the id to the server
                 toServer.writeDouble(id);
                 toServer.flush();
 
                 // Get area from the server
-                double area = fromServer.readDouble();
+                double playerNum = fromServer.readDouble();
 
                 // Display to the text area
                 textArea.append("id sent as "+ id);
-                textArea.append("Area received from the server is "
-                        + area + '\n');
+                textArea.append("PlayerNumber received from the server is "
+                        + playerNum + '\n');
                 //socket.close();
             } catch (IOException ex) {
                 System.err.println(ex);
@@ -125,6 +125,7 @@ public class Client extends JFrame {
     public static void main(String[] args) {
         Client c = new Client();
         c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        c.setResizable(false);
         c.setVisible(true);
     }
 }

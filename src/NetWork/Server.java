@@ -9,18 +9,18 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class MultiThreadServer extends JFrame implements Runnable {
+public class Server extends JFrame implements Runnable {
   // Text area for displaying contents
   private JTextArea ta;
   
   // Number a client
   private int clientNo = 0;
   
-  public MultiThreadServer() {
+  public Server() {
 	  ta = new JTextArea(10,10);
 	  JScrollPane sp = new JScrollPane(ta);
 	  this.add(sp);
-	  this.setTitle("NetWork.MultiThreadServer");
+	  this.setTitle("NetWork.Server");
 	  this.setSize(400,200);
 	  Thread t = new Thread(this);
 	  t.start();
@@ -45,8 +45,6 @@ public class MultiThreadServer extends JFrame implements Runnable {
 
             // Find the client's host name, and IP address
             InetAddress inetAddress = socket.getInetAddress();
-            ta.append("NetWork.Client " + clientNo + "'s host name is "
-              + inetAddress.getHostName() + "\n");
             ta.append("NetWork.Client " + clientNo + "'s IP Address is "
               + inetAddress.getHostAddress() + "\n");
           
@@ -87,17 +85,17 @@ public class MultiThreadServer extends JFrame implements Runnable {
         // Continuously serve the client
         while (true) {
           // Receive radius from the client
-          double radius = inputFromClient.readDouble();
+          int id = inputFromClient.readInt();
 
-          // Compute area
-          double area = radius * radius * Math.PI;
+          // return clientNo
+          int playNum = clientNum;
 
           // Send area back to the client
-          outputToClient.writeDouble(area);
+          outputToClient.writeInt(playNum);
           
-          ta.append("radius received from client: " + this.clientNum + " " +
-              radius + '\n');
-          ta.append("Area found: " + area + '\n');
+          ta.append("radius received from client: " + id + " " +
+              this.clientNum + '\n');
+          ta.append("Area found: " + playNum + '\n');
           
         }
       }
@@ -113,8 +111,9 @@ public class MultiThreadServer extends JFrame implements Runnable {
    * JavaFX support. Not needed for running from the command line.
    */
   public static void main(String[] args) {
-    MultiThreadServer mts = new MultiThreadServer();
-    mts.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    mts.setVisible(true);
+    Server s = new Server();
+    s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    s.setResizable(false);
+    s.setVisible(true);
   }
 }
