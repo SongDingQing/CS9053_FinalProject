@@ -9,7 +9,7 @@ public class Constants {
 
     //configuration on the <<<<SIZE>>>>> of the game
     public static int width_pixels =80;
-    public static int Height_pixels=60;
+    public static int height_pixels =60;
     public static final int Height =800;
     public static final int Width =1298;
     // 1. MAP CONSTANT

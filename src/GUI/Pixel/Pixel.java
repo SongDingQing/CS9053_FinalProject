@@ -9,6 +9,7 @@ public abstract class Pixel {
         g.setFont(new Font("time new roman", Font.PLAIN, 9));
         g.drawString(y+"",x*10,y*10+90);
     }
+    public abstract int getPixelType();
     public void drawY(Graphics g,int x,int y){
         g.setFont(new Font("time new roman", Font.PLAIN, 9));
         g.drawString(y+"",x*10,y*10+90);
