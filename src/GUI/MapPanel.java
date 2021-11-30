@@ -3,7 +3,6 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Data.Constants;
@@ -55,19 +54,19 @@ public class MapPanel extends JPanel {
     public Pixel CreatePixel(int data) {
         switch (data) {
             case 0:
-                return new Pixel_Grass();
+                return new Pixel_000Grass();
             case 1:
-                return new Pixel_Woods();
+                return new Pixel_001Woods();
             case 2:
-                return new Pixel_Lake();
+                return new Pixel_002Lake();
             case 3:
-                return new Pixel_Mountain();
+                return new Pixel_003Mountain();
             case 4:
-                return new Pixel_Coal();
+                return new Pixel_004Coal();
             case 5:
-                return new Pixel_Iron();
+                return new Pixel_005Iron();
             case 6:
-                return new Pixel_Fish();
+                return new Pixel_006Fish();
             default:// default exception handler
                 return null;
         }

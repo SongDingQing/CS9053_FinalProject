@@ -2,10 +2,10 @@ package GUI.Pixel;
 
 import java.awt.*;
 
-public class Pixel_Woods extends Pixel implements Collectable{
+public class Pixel_001Woods extends Pixel implements Collectable{
     private int WoodStorage;
 
-    public Pixel_Woods(){
+    public Pixel_001Woods(){
         super();
         WoodStorage=1000;
     }

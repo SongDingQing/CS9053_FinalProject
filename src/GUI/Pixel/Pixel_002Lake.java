@@ -2,7 +2,7 @@ package GUI.Pixel;
 
 import java.awt.*;
 
-public class Pixel_Lake extends Pixel{
+public class Pixel_002Lake extends Pixel{
 
 	@Override
 	public void drawPixel(Graphics g, int x, int y) {
