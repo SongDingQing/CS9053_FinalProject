@@ -86,7 +86,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     }
 
     private JPanel createCommandPanel() {
-        JPanel commandPanel = new JPanel();
+        JPanel commandPanel = new CommandPanel();
         Dimension d = new Dimension(Constants.Command_Width, Constants.Command_Height);
         commandPanel.setPreferredSize(d);
         commandPanel.setBackground(new Color(250, 100, 100));
