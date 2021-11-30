@@ -1,5 +1,7 @@
 package GUI;
 
+import Data.Variable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,6 +42,8 @@ public class CommandPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //ToDo
+                Variable.unitType=1;
+                System.out.println(Variable.unitType);
             }
         }
         cLogger.addActionListener(new cLoggerListener());
