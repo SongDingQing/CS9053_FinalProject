@@ -27,11 +27,12 @@ public class MainPanel extends JFrame  implements ActionListener {
     private int time = 0;
 
     //Panels Components
-    private JPanel mapPanel;
+    private MapPanel mapPanel;
     private JPanel controlPanel;
     private StatusPanel statusPanel;
     private JScrollPane logPanel;
     private JTextArea logTextField;
+    private CommandPanel commandPanel;
 
     //Timer
     private Timer timer;
@@ -86,7 +87,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     }
 
     private JPanel createCommandPanel() {
-        JPanel commandPanel = new CommandPanel();
+        commandPanel = new CommandPanel();
         Dimension d = new Dimension(Constants.Command_Width, Constants.Command_Height);
         commandPanel.setPreferredSize(d);
         commandPanel.setBackground(new Color(250, 100, 100));
@@ -111,6 +112,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         statusPanel.upDateTime();
+        mapPanel.upDateTime();
         //System.out.println("the game is running");
         repaint();
     }

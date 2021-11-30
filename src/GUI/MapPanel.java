@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Data.Constants;
+import DataType.UnitData;
 import GUI.Pixel.*;
 import GUI.Unit.Unit;
 import GUI.Unit.Unit_001Logger;
@@ -21,14 +22,17 @@ public class MapPanel extends JPanel {
     public Pixel[][] mapData;
     public int[][] pixelData;
     public ArrayList<Unit> units;
+    public ArrayList<UnitData> unitsData;
 
     public MapPanel() {
         super();
         mapData = new Pixel[Constants.width_pixels][Constants.height_pixels];
         setMapData();
         //Test
-        units= new ArrayList<Unit>();
+        units = new ArrayList<Unit>();
+        unitsData = new ArrayList<UnitData>();
         units.add(new Unit_001Logger());
+        unitsData.add(new UnitData(200, 400));
     }
 
     private void setMapData() {
@@ -79,6 +83,12 @@ public class MapPanel extends JPanel {
         }
     }
 
+    public void upDateTime(){
+        for (int i = 0; i < units.size(); i++) {
+           unitsData.get(i).setY(unitsData.get(i).getY()-unitsData.get(i).getState());
+        }
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //Map drawing
@@ -97,9 +107,9 @@ public class MapPanel extends JPanel {
         g.fillRect(0, 680, 800, 80);
 
         //unit drawing
-        Graphics2D g2d= (Graphics2D) g;
-        for (Unit unit: units){
-            unit.drawUnit(g2d,100,100);
+        Graphics2D g2d = (Graphics2D) g;
+        for (int i = 0; i < units.size(); i++) {
+            units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
         }
     }
 }
