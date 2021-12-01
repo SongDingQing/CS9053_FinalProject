@@ -1,16 +1,16 @@
 package GUI;
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import Data.Constants;
 import DataType.UnitData;
 import GUI.Pixel.*;
 import GUI.Unit.Unit;
 import GUI.Unit.Unit_001Logger;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /*** This Class is the the Map Drawing (the Map Panel)
  * @author Chengzuo Song
@@ -18,6 +18,7 @@ import GUI.Unit.Unit_001Logger;
  *
  * the data of the map will be store in client (width*height)
  */
+
 public class MapPanel extends JPanel {
     public Pixel[][] mapData;
     public int[][] pixelData;

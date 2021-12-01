@@ -13,10 +13,9 @@ import java.awt.event.ActionListener;
  * @version 0.0
  */
 
-
 public class MainPanel extends JFrame  implements ActionListener {
 
-    //---------------Variables------------------
+    // StatusData Initialization
     private final int max_hp = 100;
     private int hp = 80;
     private int wood = 50;
@@ -26,36 +25,32 @@ public class MainPanel extends JFrame  implements ActionListener {
     private int unit = 0;
     private int time = 0;
 
-    //Panels Components
+    // Panels Components
     private MapPanel mapPanel;
     private JPanel controlPanel;
     private StatusPanel statusPanel;
+    private CommandPanel commandPanel;
     private JScrollPane logPanel;
     private JTextArea logTextField;
-    private CommandPanel commandPanel;
-
-    //Timer
+    
+    // Timer
     private Timer timer;
-
 
     public MainPanel(){
         super("budge");
-        //Map Panel
-        setMapPanel();
-        //Control Panel
-        setControlPanel();
-        //Add up Component
-        setupPanels();
+        setMapPanel();  // Map Panel
+        setControlPanel();  // Control Panel
+        setupPanels();  // Add up Components
         // Project Icon
         String iconName = "src/Images/icon.png";
         setIconImage(new ImageIcon(iconName).getImage());
         // Other Configuration
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
         setSize(Constants.Width, Constants.Height);
+        setResizable(false);
         setVisible(true);
-        //main game thread
-        timer= new Timer(Constants.Delay,this);
+        // Main Game Thread
+        timer= new Timer(Constants.Delay, this);
         timer.start();
     }
 
@@ -70,15 +65,17 @@ public class MainPanel extends JFrame  implements ActionListener {
         controlPanel = new JPanel();
         Dimension d = new Dimension(Constants.Cpanel_Width,Constants.Cpanel_Height);
         controlPanel.setPreferredSize(d);
-        createStatusPanel();
+        createStatusPanel();  // Status Panel
         controlPanel.add(statusPanel, BorderLayout.NORTH);
-        controlPanel.add(createCommandPanel(), BorderLayout.CENTER);
-        createLogPanel();
+        createCommandPanel();  // Command Panel
+        controlPanel.add(commandPanel, BorderLayout.CENTER);
+        createLogPanel();  // Log Panel
         controlPanel.add(logPanel, BorderLayout.SOUTH);
         controlPanel.setBackground(new Color(220, 200, 50));
     }
 
     private void createStatusPanel() {
+    	// Initialize Status Panel using StatusData
         StatusData sd = new StatusData(max_hp, hp, food, wood, coal, iron, unit, time);
         statusPanel = new StatusPanel(sd);
         Dimension d = new Dimension(Constants.Status_Width,Constants.Status_Height);
@@ -86,12 +83,11 @@ public class MainPanel extends JFrame  implements ActionListener {
         statusPanel.setBackground(new Color(200, 200, 250));
     }
 
-    private JPanel createCommandPanel() {
+    private void createCommandPanel() {
         commandPanel = new CommandPanel();
         Dimension d = new Dimension(Constants.Command_Width, Constants.Command_Height);
         commandPanel.setPreferredSize(d);
         commandPanel.setBackground(new Color(250, 100, 100));
-        return commandPanel;
     }
 
     private void createLogPanel() {
@@ -101,7 +97,6 @@ public class MainPanel extends JFrame  implements ActionListener {
         Dimension d = new Dimension(Constants.Log_Width,Constants.Log_Height);
         logPanel.setPreferredSize(d);
         logPanel.setBackground(new Color(100, 250, 100));
-
     }
 
     private void setupPanels() {
@@ -111,8 +106,9 @@ public class MainPanel extends JFrame  implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        statusPanel.upDateTime();
-        mapPanel.upDateTime();
+        mapPanel.upDateTime();  // Update UnitData Here!
+    	statusPanel.upDateTime();  // Update StatusData Here! 
+    	
         //System.out.println("the game is running");
         repaint();
     }

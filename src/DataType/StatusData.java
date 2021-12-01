@@ -1,6 +1,7 @@
 package DataType;
 
 public class StatusData {
+	// Data shown on the StatusPanel
     private int maxHp,hp,food,wood,coal,iron,unit,time;
     public StatusData(int maxHp,int hp,int food,int wood,int coal,int iron,int unit,int time){
         this.maxHp=maxHp;
