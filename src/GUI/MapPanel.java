@@ -20,6 +20,7 @@ import java.util.Scanner;
  */
 
 public class MapPanel extends JPanel {
+	
     public Pixel[][] mapData;
     public int[][] pixelData;
     public ArrayList<Unit> units;
@@ -52,22 +53,21 @@ public class MapPanel extends JPanel {
                         pixelData[x][y] = input.nextInt();
                     }
                 }
-
             }
             input.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Cannot find PixelData.txt");
         }
 
-
+        // Fill each pixel based on its own type
         for (int y = 0; y < Constants.Pixels_Height; y++) {
             for (int x = 0; x < Constants.Pixels_Width; x++) {
-                mapData[x][y] = CreatePixel(pixelData[x][y]);
+                mapData[x][y] = FillPixel(pixelData[x][y]);
             }
         }
     }
 
-    public Pixel CreatePixel(int data) {
+    public Pixel FillPixel(int data) {
         switch (data) {
             case 0:
                 return new Pixel_000Grass();
@@ -90,13 +90,15 @@ public class MapPanel extends JPanel {
 
     public void upDateTime(){
         for (int i = 0; i < units.size(); i++) {
-            if(unitsData.get(i).getY()<80){
+        	// Set boundary
+            if(unitsData.get(i).getY() < 80){
                 unitsData.get(i).setState(1);
-            }else if(unitsData.get(i).getY()>670){
+            } else if(unitsData.get(i).getY() > 670){
                 unitsData.get(i).setState(-1);
             }
-            unitsData.get(i).setY(unitsData.get(i).getY()+unitsData.get(i).getState());
-
+            
+            //TODO: Move and Stop
+            unitsData.get(i).setY(unitsData.get(i).getY() + unitsData.get(i).getState());
         }
     }
 
@@ -107,17 +109,17 @@ public class MapPanel extends JPanel {
             for (int y = 0; y < Constants.Pixels_Height; y++) {
                 mapData[x][y].drawPixel(g, x, y);
                 //The Following two line is used to test whether the pixel at some location is write
-                //mapData[x][y].drawX(g,x,y);
-                //mapData[x][y].drawY(g,x,y);
+                //mapData[x][y].drawX(g,x,y); mapData[x][y].drawY(g,x,y);
             }
         }
+        
         //Base drawing
         g.setColor(new Color(0, 0, 200));
         g.fillRect(0, 0, 800, 80);
         g.setColor(new Color(200, 0, 0));
         g.fillRect(0, 680, 800, 80);
 
-        //unit drawing
+        //Unit drawing
         Graphics2D g2d = (Graphics2D) g;
         for (int i = 0; i < units.size(); i++) {
             units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());

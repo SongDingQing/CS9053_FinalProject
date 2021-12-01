@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class CommandPanel extends JPanel {
+	
     // c+worker type means Create a Worker of that type
     private JButton cLogger;
     private JButton cFisher;
@@ -17,11 +18,13 @@ public class CommandPanel extends JPanel {
     private JButton cWarrior;
     private JButton cArcher;
     private JButton cOther;
+    
     public CommandPanel(){
         super();
         createButtons();
         addListeners();
     }
+    
     public void createButtons(){
         cLogger =new JButton("Logger");
         cFisher=new JButton("Fisher");
@@ -37,17 +40,19 @@ public class CommandPanel extends JPanel {
         add(cArcher);
         add(cOther);
     }
+    
     public void addListeners(){
         class cLoggerListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //ToDo
-                Variable.unitType=1;
+                //ToDo: Mouse Event
+                Variable.unitType = 1;
                 System.out.println(Variable.unitType);
             }
         }
         cLogger.addActionListener(new cLoggerListener());
     }
+    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
     }
