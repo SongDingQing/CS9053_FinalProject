@@ -95,7 +95,7 @@ public class Server extends JFrame implements Runnable {
           
           ta.append("radius received from client: " + id + " " +
               this.clientNum + '\n');
-          ta.append("Area found: " + playNum + '\n');
+          ta.append("PlayerNum given: " + playNum + '\n');
           
         }
       }

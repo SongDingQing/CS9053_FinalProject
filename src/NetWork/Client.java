@@ -102,14 +102,14 @@ public class Client extends JFrame {
 
             try {
                 // Send the id to the server
-                toServer.writeDouble(id);
+                toServer.writeInt(id);
                 toServer.flush();
 
                 // Get area from the server
-                double playerNum = fromServer.readDouble();
+                int playerNum = fromServer.readInt();
 
                 // Display to the text area
-                textArea.append("id sent as "+ id);
+                textArea.append("id sent as "+ id+"\n");
                 textArea.append("PlayerNumber received from the server is "
                         + playerNum + '\n');
                 //socket.close();

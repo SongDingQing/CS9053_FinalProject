@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="" />
+    <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetWork/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetWork/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetWork/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetWork/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +58,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Local">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NetWork.Client" />
       <module name="CS9053_FinalProject" />
@@ -98,16 +102,16 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.MultiThreadServer" />
       <item itemvalue="Application.Run" />
       <item itemvalue="Application.Local" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Local" />
-        <item itemvalue="Application.MultiThreadServer" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Local" />
         <item itemvalue="Application.Run" />
       </list>
     </recent_temporary>
