@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_000Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_000Grass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Collectable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_001Woods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_001Woods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_002Lake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_002Lake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_003Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_003Mountain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_004Coal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_004Coal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_005Iron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_005Iron.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_006Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_006Fish.java" afterDir="false" />
