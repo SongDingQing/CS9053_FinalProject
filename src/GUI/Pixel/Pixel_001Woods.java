@@ -21,7 +21,7 @@ public class Pixel_001Woods extends Pixel implements Collectable{
     }
 
     @Override
-    public int getPixelType() {
+    public int getPixelIndex() {
         return 1;
     }
 

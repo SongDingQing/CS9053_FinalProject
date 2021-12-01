@@ -14,7 +14,7 @@ public class Pixel_004Coal extends Pixel{
     }
 
     @Override
-    public int getPixelType() {
+    public int getPixelIndex() {
 		return 4;
 	}
 }

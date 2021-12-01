@@ -14,7 +14,7 @@ public class Pixel_000Grass extends Pixel{
     }
 
     @Override
-    public int getPixelType() {
+    public int getPixelIndex() {
         return 0;
     }
 }

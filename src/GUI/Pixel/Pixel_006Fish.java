@@ -14,7 +14,7 @@ public class Pixel_006Fish extends Pixel{
     }
 
     @Override
-	public int getPixelType() {
+	public int getPixelIndex() {
 		return 6;
 	}
 }

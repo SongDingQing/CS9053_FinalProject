@@ -7,7 +7,7 @@ public abstract class Pixel {
     public Pixel(){};
     
     public abstract void drawPixel(Graphics g,int x,int y);
-    public abstract int getPixelType();
+    public abstract int getPixelIndex();
     
     public void drawX(Graphics g,int x,int y){
         g.setFont(new Font("time new roman", Font.PLAIN, 9));
