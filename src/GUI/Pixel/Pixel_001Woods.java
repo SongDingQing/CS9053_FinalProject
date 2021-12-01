@@ -8,7 +8,7 @@ public class Pixel_001Woods extends Pixel implements Collectable{
 
     public Pixel_001Woods(){
         super();
-        WoodStorage = 1000;
+        WoodStorage = 100;
     }
 
     @Override

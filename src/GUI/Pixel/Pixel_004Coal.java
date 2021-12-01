@@ -2,8 +2,14 @@ package GUI.Pixel;
 
 import java.awt.*;
 
-public class Pixel_004Coal extends Pixel{
-	
+public class Pixel_004Coal extends Pixel implements Collectable{
+
+    private int CoalStorage;
+    
+    public Pixel_004Coal(){
+        super();
+        CoalStorage=100;
+    }
     @Override
     public void drawPixel(Graphics g, int x, int y) {
     	g.setColor(new Color(40, 40, 40));
@@ -17,4 +23,14 @@ public class Pixel_004Coal extends Pixel{
     public int getPixelIndex() {
 		return 4;
 	}
+
+    @Override
+    public int getAmount() {
+        return CoalStorage;
+    }
+
+    @Override
+    public void takeAmount(int n) {
+        CoalStorage-=n;
+    }
 }

@@ -2,8 +2,14 @@ package GUI.Pixel;
 
 import java.awt.*;
 
-public class Pixel_006Fish extends Pixel{
-	
+public class Pixel_006Fish extends Pixel implements Collectable{
+
+    private int FishStorage;
+
+    public Pixel_006Fish(){
+        super();
+        FishStorage=100;
+    }
     @Override
     public void drawPixel(Graphics g, int x, int y) {
     	g.setColor(new Color(140, 90, 220));
@@ -17,4 +23,14 @@ public class Pixel_006Fish extends Pixel{
 	public int getPixelIndex() {
 		return 6;
 	}
+
+    @Override
+    public int getAmount() {
+        return FishStorage;
+    }
+
+    @Override
+    public void takeAmount(int n) {
+        FishStorage-=n;
+    }
 }
