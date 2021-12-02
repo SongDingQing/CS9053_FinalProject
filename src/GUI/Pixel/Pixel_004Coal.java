@@ -5,7 +5,7 @@ import java.awt.*;
 public class Pixel_004Coal extends Pixel implements Collectable{
 
     private int CoalStorage;
-    
+
     public Pixel_004Coal(){
         super();
         CoalStorage=100;
