@@ -1,4 +1,4 @@
-package Data;
+package Data.ClientData;
 /*** This Class is Configuration of game
  * @author Chengzuo Song
  * @version 0.0

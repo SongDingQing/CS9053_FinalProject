@@ -1,6 +1,6 @@
 package GUI;
 
-import Data.Constants;
+import Data.ClientData.Constants;
 import DataType.UnitData;
 import GUI.Pixel.*;
 import GUI.Unit.Unit;
