@@ -59,16 +59,9 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Local">
-    <configuration name="Client_lec" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NetWork.Client_lec" />
-      <module name="CS9053_FinalProject" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Local" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NetWork.Local" />
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NetWork.Client" />
       <module name="CS9053_FinalProject" />
       <extension name="coverage">
         <pattern>
@@ -76,6 +69,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client_lec" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NetWork.Client_lec" />
+      <module name="CS9053_FinalProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,13 +104,13 @@
     </configuration>
     <list>
       <item itemvalue="Application.Run" />
-      <item itemvalue="Application.Local" />
       <item itemvalue="Application.Client_lec" />
       <item itemvalue="Application.Server_lec" />
+      <item itemvalue="Application.Client" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Local" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server_lec" />
         <item itemvalue="Application.Client_lec" />
         <item itemvalue="Application.Run" />
