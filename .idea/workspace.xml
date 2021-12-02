@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="" />
+    <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/PixelData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/Variable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/DataType/StatusData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/DataType/UnitData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/CommandPanel$1cLoggerListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/CommandPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MainPanel$OpenConnectionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MainPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Collectable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_000Grass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_001Woods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_002Lake.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_003Mountain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_004Coal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_005Iron.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Pixel/Pixel_006Fish.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/StatusPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Unit/Unit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/Unit/Unit_001Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client_lec$CloseConnectionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client_lec$OpenConnectionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client_lec$TextFieldListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Client_lec.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Local.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server_lec$HandleAClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server_lec.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Pixel/Pixel_Readme.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

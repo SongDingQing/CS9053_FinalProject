@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 
 /*** This Class is the the Game Drawing (the whole Panel)
  * @author Chengzuo Song
@@ -16,6 +19,11 @@ import java.awt.event.ActionListener;
 public class MainPanel extends JFrame  implements ActionListener {
     //Connection variable
     private boolean isConnected;
+    //Connection socket
+    Socket socket = null;
+    // IO streams
+    DataOutputStream toServer = null;
+    DataInputStream fromServer = null;
     // StatusData Initialization
     private final int max_hp = 100;
     private int hp = 80;
@@ -141,7 +149,7 @@ public class MainPanel extends JFrame  implements ActionListener {
             isConnected=true;
             //TODO connection start here
             setLogPanel();
-            System.out.println(isConnected);
+            //System.out.println(isConnected);
         }
 
     }
