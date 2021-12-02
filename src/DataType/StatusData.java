@@ -5,6 +5,18 @@ import java.io.Serializable;
 public class StatusData implements Serializable {
 	// Data shown on the StatusPanel
     private int maxHp,hp,food,wood,coal,iron,unit,time;
+    private int timeCounter;
+    public StatusData(){
+        this.maxHp=100;
+        this.hp=100;
+        this.food=0;
+        this.wood=0;
+        this.coal=0;
+        this.iron=0;
+        this.unit=0;
+        this.time=0;
+        timeCounter =0;
+    }
     public StatusData(int maxHp,int hp,int food,int wood,int coal,int iron,int unit,int time){
         this.maxHp=maxHp;
         this.hp=hp;
@@ -14,6 +26,8 @@ public class StatusData implements Serializable {
         this.iron=iron;
         this.unit=unit;
         this.time=time;
+        timeCounter =0;
+
     }
     public int getCoal() {
         return coal;

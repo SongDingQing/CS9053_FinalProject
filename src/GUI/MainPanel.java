@@ -24,15 +24,6 @@ public class MainPanel extends JFrame  implements ActionListener {
     // IO streams
     ObjectOutputStream toServer = null;
     ObjectInputStream fromServer = null;
-    // StatusData Initialization
-    private final int max_hp = 100;
-    private int hp = 80;
-    private int wood = 50;
-    private int food = 0;
-    private int coal = 0;
-    private int iron = 0;
-    private int unit = 0;
-    private int time = 0;
 
     // Panels Components
     private MapPanel mapPanel;
@@ -93,7 +84,7 @@ public class MainPanel extends JFrame  implements ActionListener {
 
     private void setStatusPanel() {
     	// Initialize Status Panel using StatusData
-        StatusData sd = new StatusData(max_hp, hp, food, wood, coal, iron, unit, time);
+        StatusData sd = new StatusData();
         statusPanel = new StatusPanel(sd);
         Dimension d = new Dimension(Constants.Status_Width,Constants.Status_Height);
         statusPanel.setPreferredSize(d);
@@ -174,18 +165,19 @@ public class MainPanel extends JFrame  implements ActionListener {
     @Override
     //Timer ticking
     public void actionPerformed(ActionEvent e) {
-        TransmitData localData;
+        TransmitData localData= new TransmitData(1);
         if(isConnected){
             try {
                 localData = (TransmitData) fromServer.readObject();
                 //int i = fromServer.readInt();
-                System.out.println(localData.getStatusData().getHp());
+                System.out.println(localData.getStatusData().getTime());
                 //System.out.println(i);
             } catch (Exception err) {
                 err.printStackTrace();
             }
         }
         mapPanel.upDateTime();  // Update UnitData Here!
+        statusPanel.update(localData);
         //System.out.println("the game is running");
         repaint();
     }

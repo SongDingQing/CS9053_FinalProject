@@ -94,7 +94,6 @@ public class Server extends JFrame implements Runnable {
         public void run() {
             try {
                 // Create data input and output streams
-
                 //TODO command Panel update
                 //inputFromClient = new ObjectInputStream(
                 //       socket.getInputStream());
@@ -104,14 +103,16 @@ public class Server extends JFrame implements Runnable {
 
                 // Continuously serve the client
                 while (true) {
-
+                    Thread.sleep(50);
                     // Send area back to the client
+                    outputToClient.reset();
                     outputToClient.writeObject(data1);
+                    data1.update();
+                    System.out.println(data1.getStatusData().getTime());
                     //outputToClient.writeInt(12);
 
-
                 }
-            } catch (IOException ex) {
+            } catch (IOException | InterruptedException ex) {
                 ta.append("client:" + this.getClientNum() + " have been closed\n");
                 ex.printStackTrace();
             }

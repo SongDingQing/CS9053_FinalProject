@@ -27,5 +27,5 @@ public class Constants {
     public static final int Log_Width = 480;
     
     //Game Play Configuration
-    public static final int Delay =20;
+    public static final int Delay =40;
 }

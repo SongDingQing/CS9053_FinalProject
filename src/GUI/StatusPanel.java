@@ -1,6 +1,7 @@
 package GUI;
 
 import DataType.StatusData;
+import DataType.TransmitData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,26 +14,19 @@ import java.awt.*;
 public class StatusPanel extends JPanel {
 	
     StatusData status;
-    private int counter = 0;
     
     public StatusPanel(StatusData statusData){
         super();
         status = statusData;
     }
     
-    public void upDateTime(){
-        if(counter == 30){
-            status.setTime(status.getTime() + 1);
-            counter = 0;
-        }else{
-            counter++;
-        }
-    }
-    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         drawHpBar(g);
         drawOtherStatus(g);
+    }
+    public void update(TransmitData td){
+        status=td.getStatusData();
     }
     
     private void drawHpBar(Graphics g){
