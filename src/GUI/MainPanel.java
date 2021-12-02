@@ -147,10 +147,10 @@ public class MainPanel extends JFrame  implements ActionListener {
     class OpenConnectionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            isConnected=true;
             //connection start here
             try {
                 socket = new Socket("localhost", 8000);
+                isConnected=true;
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
