@@ -9,14 +9,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class Server_lec extends JFrame implements Runnable {
+public class Server extends JFrame implements Runnable {
   // Text area for displaying contents
   private JTextArea ta;
   
   // Number a client
   private int clientNo = 0;
   
-  public Server_lec() {
+  public Server() {
 	  ta = new JTextArea(10,10);
 	  JScrollPane sp = new JScrollPane(ta);
 	  this.add(sp);
@@ -39,17 +39,17 @@ public class Server_lec extends JFrame implements Runnable {
     
           // Increment clientNo
           clientNo++;
-          
-          ta.append("Starting thread for client " + clientNo +
-              " at " + new Date() + '\n');
+          if(clientNo<3) {
+            ta.append("Starting thread for client " + clientNo +
+                  " at " + new Date() + '\n');
 
             // Find the client's host name, and IP address
             InetAddress inetAddress = socket.getInetAddress();
             ta.append("NetWork.Client " + clientNo + "'s IP Address is "
-              + inetAddress.getHostAddress() + "\n");
-          
-          // Create and start a new thread for the connection
-          new Thread(new HandleAClient(socket, clientNo)).start();
+                    + inetAddress.getHostAddress() + "\n");
+            // Create and start a new thread for the connection
+            new Thread(new HandleAClient(socket, clientNo)).start();
+          }
         }
       }
       catch(IOException ex) {
@@ -93,7 +93,7 @@ public class Server_lec extends JFrame implements Runnable {
           // Send area back to the client
           outputToClient.writeInt(playNum);
           
-          ta.append("radius received from client: " + id + " " +
+          ta.append("id received from client: " + id + " " +
               this.clientNum + '\n');
           ta.append("PlayerNum given: " + playNum + '\n');
           
@@ -111,7 +111,7 @@ public class Server_lec extends JFrame implements Runnable {
    * JavaFX support. Not needed for running from the command line.
    */
   public static void main(String[] args) {
-    Server_lec s = new Server_lec();
+    Server s = new Server();
     s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     s.setResizable(false);
     s.setVisible(true);

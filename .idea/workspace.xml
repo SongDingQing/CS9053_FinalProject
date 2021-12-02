@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server_lec$HandleAClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server_lec.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetWork/Server_lec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetWork/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +60,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NetWork.Client" />
       <module name="CS9053_FinalProject" />
       <extension name="coverage">
@@ -92,8 +95,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server_lec" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NetWork.Server_lec" />
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NetWork.Server" />
       <module name="CS9053_FinalProject" />
       <method v="2">
         <option name="Make" enabled="true" />
