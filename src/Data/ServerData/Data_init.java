@@ -1,12 +1,11 @@
 package Data.ServerData;
 
 public class Data_init {
-    public final int max_hp = 100;
-    public int hp = 80;
-    public int wood = 50;
-    public int food = 0;
-    public int coal = 0;
-    public int iron = 0;
-    public int unit = 0;
-    public int time = 0;
+    public static final int Max_HitPoint = 100;
+    public static int HitPoint = 80;
+    public static int Wood = 50;
+    public static int Food = 0;
+    public static int Coal = 0;
+    public static int Iron = 0;
+    public static int Unit = 0;
 }

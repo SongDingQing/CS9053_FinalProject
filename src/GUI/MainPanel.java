@@ -2,14 +2,13 @@ package GUI;
 
 import Data.ClientData.Constants;
 import DataType.StatusData;
+import DataType.TransmitData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 /*** This Class is the the Game Drawing (the whole Panel)
@@ -23,8 +22,8 @@ public class MainPanel extends JFrame  implements ActionListener {
     //Connection socket
     Socket socket = null;
     // IO streams
-    DataOutputStream toServer = null;
-    DataInputStream fromServer = null;
+    ObjectOutputStream toServer = null;
+    ObjectInputStream fromServer = null;
     // StatusData Initialization
     private final int max_hp = 100;
     private int hp = 80;
@@ -150,7 +149,18 @@ public class MainPanel extends JFrame  implements ActionListener {
             //connection start here
             try {
                 socket = new Socket("localhost", 8000);
+                try {
+                    // Create an input stream to receive data from the server
+                    fromServer = new ObjectInputStream(socket.getInputStream());
+                    // Create an output stream to send data to the server
+                    //toServer = new DataOutputStream(socket.getOutputStream());
+                } catch (IOException ex) {
+                    logTextField.append(ex.toString() + '\n');
+                }
                 isConnected=true;
+
+                //set output and input
+
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -164,8 +174,18 @@ public class MainPanel extends JFrame  implements ActionListener {
     @Override
     //Timer ticking
     public void actionPerformed(ActionEvent e) {
+        TransmitData localData;
+        if(isConnected){
+            try {
+                localData = (TransmitData) fromServer.readObject();
+                //int i = fromServer.readInt();
+                System.out.println(localData.getStatusData().getHp());
+                //System.out.println(i);
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        }
         mapPanel.upDateTime();  // Update UnitData Here!
-    	statusPanel.upDateTime();  // Update StatusData Here!
         //System.out.println("the game is running");
         repaint();
     }

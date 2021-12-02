@@ -1,6 +1,8 @@
 package DataType;
 
-public class UnitData {
+import java.io.Serializable;
+
+public class UnitData implements Serializable {
     private int x,y;
     //state: -1 is going upward 0 is standing still 1 going downward
     private int state;

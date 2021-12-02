@@ -1,6 +1,8 @@
 package DataType;
 
-public class StatusData {
+import java.io.Serializable;
+
+public class StatusData implements Serializable {
 	// Data shown on the StatusPanel
     private int maxHp,hp,food,wood,coal,iron,unit,time;
     public StatusData(int maxHp,int hp,int food,int wood,int coal,int iron,int unit,int time){

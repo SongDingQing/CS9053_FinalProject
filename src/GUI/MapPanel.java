@@ -44,7 +44,7 @@ public class MapPanel extends JPanel {
     private void setMapData() {
         //------------CONSTRUCT mapData based on PixelData.txt--------------
         try {
-            java.io.File file = new java.io.File("src/Data/PixelData.txt");
+            java.io.File file = new java.io.File("src/Data/ClientData/PixelData.txt");
             Scanner input = new Scanner(file);
             pixelData = new int[80][60];
             while (input.hasNext()) {
