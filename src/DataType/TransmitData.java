@@ -19,7 +19,8 @@ public class TransmitData implements Serializable {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, Data_init.Food
                 , Data_init.Wood, Data_init.Coal, Data_init.Iron, Data_init.Unit, 0);
         unitDataAL = new ArrayList<UnitData>(0);
-        unitDataAL.add(new UnitData(1,300,300));
+        unitDataAL.add(new UnitData(1,100,500));
+        unitDataAL.add(new UnitData(2,300,300));
     }
 
     public void update() {

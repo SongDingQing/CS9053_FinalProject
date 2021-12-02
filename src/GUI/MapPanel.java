@@ -6,6 +6,7 @@ import DataType.UnitData;
 import GUI.Pixel.*;
 import GUI.Unit.Unit;
 import GUI.Unit.Unit_001Logger;
+import GUI.Unit.Unit_002Fisher;
 
 import javax.swing.*;
 import java.awt.*;
@@ -94,8 +95,11 @@ public class MapPanel extends JPanel {
         //System.out.println(unitType);
         switch (unitType) {
             case 1:
-                System.out.println("logger created");
+                //System.out.println("logger created");
                 return new Unit_001Logger();
+            case 2:
+                //System.out.println("logger created");
+                return new Unit_002Fisher();
             default:// default exception handler
                 return null;
         }
