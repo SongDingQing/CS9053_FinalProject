@@ -21,6 +21,7 @@ public class TransmitData implements Serializable {
         unitDataAL = new ArrayList<UnitData>(0);
         unitDataAL.add(new UnitData(1,100,500));
         unitDataAL.add(new UnitData(2,300,300));
+        unitDataAL.add(new UnitData(3,100,600));
     }
 
     public void update() {
