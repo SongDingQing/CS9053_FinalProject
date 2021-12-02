@@ -9,14 +9,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class Server extends JFrame implements Runnable {
+public class Server_lec extends JFrame implements Runnable {
   // Text area for displaying contents
   private JTextArea ta;
   
   // Number a client
   private int clientNo = 0;
   
-  public Server() {
+  public Server_lec() {
 	  ta = new JTextArea(10,10);
 	  JScrollPane sp = new JScrollPane(ta);
 	  this.add(sp);
@@ -111,7 +111,7 @@ public class Server extends JFrame implements Runnable {
    * JavaFX support. Not needed for running from the command line.
    */
   public static void main(String[] args) {
-    Server s = new Server();
+    Server_lec s = new Server_lec();
     s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     s.setResizable(false);
     s.setVisible(true);

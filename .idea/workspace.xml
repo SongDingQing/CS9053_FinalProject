@@ -57,9 +57,9 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
-    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NetWork.Client" />
+  <component name="RunManager" selected="Application.Client_lec">
+    <configuration name="Client_lec" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NetWork.Client_lec" />
       <module name="CS9053_FinalProject" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -93,23 +93,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NetWork.Server" />
+    <configuration name="Server_lec" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NetWork.Server_lec" />
       <module name="CS9053_FinalProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.Client" />
       <item itemvalue="Application.Run" />
       <item itemvalue="Application.Local" />
+      <item itemvalue="Application.Client_lec" />
+      <item itemvalue="Application.Server_lec" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client_lec" />
+        <item itemvalue="Application.Server_lec" />
         <item itemvalue="Application.Local" />
         <item itemvalue="Application.Run" />
       </list>
