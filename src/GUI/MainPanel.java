@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 /*** This Class is the the Game Drawing (the whole Panel)
@@ -147,7 +148,12 @@ public class MainPanel extends JFrame  implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             isConnected=true;
-            //TODO connection start here
+            //connection start here
+            try {
+                socket = new Socket("localhost", 8000);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             setLogPanel();
             //System.out.println(isConnected);
         }
