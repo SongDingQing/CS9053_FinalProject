@@ -108,7 +108,7 @@ public class Server extends JFrame implements Runnable {
                     outputToClient.reset();
                     outputToClient.writeObject(data1);
                     data1.update();
-                    System.out.println(data1.getStatusData().getTime());
+                    //System.out.println(data1.getStatusData().getTime());
                     //outputToClient.writeInt(12);
 
                 }

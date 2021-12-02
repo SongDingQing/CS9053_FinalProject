@@ -30,6 +30,8 @@ public class MapPanel extends JPanel {
     public MapPanel() {
         super();
         mapData = new Pixel[Constants.Pixels_Width][Constants.Pixels_Height];
+        units = new ArrayList<Unit>(0);
+        unitsData = new ArrayList<UnitData>(0);
         setMapData();
     }
 
@@ -82,10 +84,11 @@ public class MapPanel extends JPanel {
 
     public void update(TransmitData td) {
         unitsData = td.getUnitDataAL();
-        for(UnitData unitData:unitsData){
+        for (UnitData unitData : unitsData) {
             units.add(readUnit(unitData.getUnitType()));
         }
     }
+
     public Unit readUnit(int unitType) {
         switch (unitType) {
             case 1:
