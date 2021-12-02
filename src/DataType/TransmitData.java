@@ -25,13 +25,22 @@ public class TransmitData implements Serializable {
     }
 
     public void update() {
+        updateStatus();
+        updateUnits();
+
+    }
+    public void updateStatus(){
         if (timeCounter < 20) {
             timeCounter++;
         } else {
             statusData.setTime(statusData.getTime() + 1);
             timeCounter = 0;
         }
-
+    }
+    public void updateUnits(){
+        for(UnitData unitData: unitDataAL) {
+            unitData.setY(unitData.getY()+ unitData.getState());
+        }
     }
 
     public void setStatusData(StatusData statusData) {
