@@ -11,6 +11,7 @@ public class UnitData implements Serializable {
         state=-1;
         this.x=x;
         this.y=y;
+        this.unitType=unitType;
     }
     public int getX() {
         return x;

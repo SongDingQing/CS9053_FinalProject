@@ -30,8 +30,8 @@ public class MapPanel extends JPanel {
     public MapPanel() {
         super();
         mapData = new Pixel[Constants.Pixels_Width][Constants.Pixels_Height];
-        units = new ArrayList<Unit>(0);
-        unitsData = new ArrayList<UnitData>(0);
+        units = new ArrayList<Unit>();
+        unitsData = new ArrayList<UnitData>();
         setMapData();
     }
 
@@ -84,14 +84,17 @@ public class MapPanel extends JPanel {
 
     public void update(TransmitData td) {
         unitsData = td.getUnitDataAL();
+        units = new ArrayList<Unit>();
         for (UnitData unitData : unitsData) {
             units.add(readUnit(unitData.getUnitType()));
         }
     }
 
     public Unit readUnit(int unitType) {
+        //System.out.println(unitType);
         switch (unitType) {
             case 1:
+                System.out.println("logger created");
                 return new Unit_001Logger();
             default:// default exception handler
                 return null;
@@ -117,8 +120,12 @@ public class MapPanel extends JPanel {
 
         //Unit drawing
         Graphics2D g2d = (Graphics2D) g;
+        //System.out.println(units.size());
+        //System.out.println(unitsData.size());
         for (int i = 0; i < units.size(); i++) {
             units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
         }
+
+
     }
 }

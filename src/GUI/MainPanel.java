@@ -171,7 +171,7 @@ public class MainPanel extends JFrame  implements ActionListener {
             try {
                 localData = (TransmitData) fromServer.readObject();
                 //int i = fromServer.readInt();
-                System.out.println(localData.getStatusData().getTime());
+                //System.out.println(localData.getStatusData().getTime());
                 //System.out.println(i);
             } catch (Exception err) {
                 err.printStackTrace();

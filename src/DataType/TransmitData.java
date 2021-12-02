@@ -13,12 +13,13 @@ public class TransmitData implements Serializable {
     public TransmitData(int i) {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
                 , 999, 999, 999, 999, 999);
-        unitDataAL = new ArrayList<UnitData>(0);
+        unitDataAL = new ArrayList<UnitData>();
     }
     public TransmitData() {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, Data_init.Food
                 , Data_init.Wood, Data_init.Coal, Data_init.Iron, Data_init.Unit, 0);
         unitDataAL = new ArrayList<UnitData>(0);
+        unitDataAL.add(new UnitData(1,300,300));
     }
 
     public void update() {
