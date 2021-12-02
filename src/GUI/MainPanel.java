@@ -22,8 +22,9 @@ public class MainPanel extends JFrame  implements ActionListener {
     //Connection socket
     Socket socket = null;
     // IO streams
-    ObjectOutputStream toServer = null;
-    ObjectInputStream fromServer = null;
+    private ObjectOutputStream toServer = null;
+    private ObjectInputStream fromServer = null;
+    private TransmitData localData;
 
     // Panels Components
     private MapPanel mapPanel;
@@ -58,6 +59,7 @@ public class MainPanel extends JFrame  implements ActionListener {
 
         // Main Game Thread
         timer= new Timer(Constants.Delay, this);
+        localData= new TransmitData(1);
         timer.start();
     }
 
@@ -165,7 +167,6 @@ public class MainPanel extends JFrame  implements ActionListener {
     @Override
     //Timer ticking
     public void actionPerformed(ActionEvent e) {
-        TransmitData localData= new TransmitData(1);
         if(isConnected){
             try {
                 localData = (TransmitData) fromServer.readObject();
@@ -176,7 +177,7 @@ public class MainPanel extends JFrame  implements ActionListener {
                 err.printStackTrace();
             }
         }
-        mapPanel.upDateTime();  // Update UnitData Here!
+        mapPanel.update(localData);  // Update UnitData Here!
         statusPanel.update(localData);
         //System.out.println("the game is running");
         repaint();

@@ -1,6 +1,7 @@
 package GUI;
 
 import Data.ClientData.Constants;
+import DataType.TransmitData;
 import DataType.UnitData;
 import GUI.Pixel.*;
 import GUI.Unit.Unit;
@@ -20,7 +21,7 @@ import java.util.Scanner;
  */
 
 public class MapPanel extends JPanel {
-	
+
     public Pixel[][] mapData;
     public int[][] pixelData;
     public ArrayList<Unit> units;
@@ -30,15 +31,6 @@ public class MapPanel extends JPanel {
         super();
         mapData = new Pixel[Constants.Pixels_Width][Constants.Pixels_Height];
         setMapData();
-        //Test
-        units = new ArrayList<Unit>();
-        unitsData = new ArrayList<UnitData>();
-        units.add(new Unit_001Logger());
-        unitsData.add(new UnitData(200, 400));
-        units.add(new Unit_001Logger());
-        unitsData.add(new UnitData(300, 500));
-        units.add(new Unit_001Logger());
-        unitsData.add(new UnitData(100, 300));
     }
 
     private void setMapData() {
@@ -88,17 +80,18 @@ public class MapPanel extends JPanel {
         }
     }
 
-    public void upDateTime(){
-        for (int i = 0; i < units.size(); i++) {
-        	// Set boundary
-            if(unitsData.get(i).getY() < 80){
-                unitsData.get(i).setState(1);
-            } else if(unitsData.get(i).getY() > 670){
-                unitsData.get(i).setState(-1);
-            }
-            
-            //TODO: Move and Stop
-            unitsData.get(i).setY(unitsData.get(i).getY() + unitsData.get(i).getState());
+    public void update(TransmitData td) {
+        unitsData = td.getUnitDataAL();
+        for(UnitData unitData:unitsData){
+            units.add(readUnit(unitData.getUnitType()));
+        }
+    }
+    public Unit readUnit(int unitType) {
+        switch (unitType) {
+            case 1:
+                return new Unit_001Logger();
+            default:// default exception handler
+                return null;
         }
     }
 
@@ -112,7 +105,7 @@ public class MapPanel extends JPanel {
                 //mapData[x][y].drawX(g,x,y); mapData[x][y].drawY(g,x,y);
             }
         }
-        
+
         //Base drawing
         g.setColor(new Color(0, 0, 200));
         g.fillRect(0, 0, 800, 80);

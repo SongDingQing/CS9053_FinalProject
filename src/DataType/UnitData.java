@@ -3,10 +3,11 @@ package DataType;
 import java.io.Serializable;
 
 public class UnitData implements Serializable {
+    private int unitType;
     private int x,y;
     //state: -1 is going upward 0 is standing still 1 going downward
     private int state;
-    public UnitData(int x,int y){
+    public UnitData(int unitType,int x,int y){
         state=-1;
         this.x=x;
         this.y=y;
@@ -28,5 +29,8 @@ public class UnitData implements Serializable {
     }
     public void setState(int state) {
         this.state = state;
+    }
+    public int getUnitType() {
+        return unitType;
     }
 }
