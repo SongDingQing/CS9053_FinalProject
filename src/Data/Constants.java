@@ -5,7 +5,7 @@ package Data;
  */
 public class Constants {
     //The text in log window
-    public static String VersionText="This our budge game version 0.0.8";
+    public static String VersionText="This our budge game version 0.0.9";
 
     //Configuration on the <<<<SIZE>>>>> of the game
     // 1. FRAME CONSTANT
