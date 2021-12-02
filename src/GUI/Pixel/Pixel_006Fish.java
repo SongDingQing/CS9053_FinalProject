@@ -10,6 +10,7 @@ public class Pixel_006Fish extends Pixel implements Collectable{
         super();
         FishStorage=100;
     }
+    
     @Override
     public void drawPixel(Graphics g, int x, int y) {
     	g.setColor(new Color(140, 90, 220));
