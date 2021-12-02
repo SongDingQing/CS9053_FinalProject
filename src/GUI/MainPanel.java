@@ -14,7 +14,8 @@ import java.awt.event.ActionListener;
  */
 
 public class MainPanel extends JFrame  implements ActionListener {
-
+    //Connection variable
+    private boolean isConnected;
     // StatusData Initialization
     private final int max_hp = 100;
     private int hp = 80;
@@ -30,17 +31,23 @@ public class MainPanel extends JFrame  implements ActionListener {
     private JPanel controlPanel;
     private StatusPanel statusPanel;
     private CommandPanel commandPanel;
-    private JScrollPane logPanel;
+    private JPanel logPanel;
+    private JScrollPane jScrollPane;
+    private JPanel connectPanel;
     private JTextArea logTextField;
+
+    //Connect Button in LogPanel
+    JButton connectButton;
     
     // Timer
     private Timer timer;
 
     public MainPanel(){
         super("budge");
+        isConnected=false;//isConnected config
+        logPanel= new JPanel();
         setMapPanel();  // Map Panel
         setControlPanel();  // Control Panel
-        setupPanels();  // Add up Components
         // Project Icon
         String iconName = "src/Images/icon.png";
         setIconImage(new ImageIcon(iconName).getImage());
@@ -49,6 +56,7 @@ public class MainPanel extends JFrame  implements ActionListener {
         setSize(Constants.Width, Constants.Height);
         setResizable(false);
         setVisible(true);
+
         // Main Game Thread
         timer= new Timer(Constants.Delay, this);
         timer.start();
@@ -59,56 +67,91 @@ public class MainPanel extends JFrame  implements ActionListener {
         Dimension d = new Dimension(Constants.Map_Width,Constants.Map_Height);
         mapPanel.setPreferredSize(d);
         mapPanel.setBackground(new Color(250, 200, 200));
+        add(mapPanel, BorderLayout.WEST);
     }
 
     private void setControlPanel() {
         controlPanel = new JPanel();
         Dimension d = new Dimension(Constants.Cpanel_Width,Constants.Cpanel_Height);
         controlPanel.setPreferredSize(d);
-        createStatusPanel();  // Status Panel
-        controlPanel.add(statusPanel, BorderLayout.NORTH);
-        createCommandPanel();  // Command Panel
-        controlPanel.add(commandPanel, BorderLayout.CENTER);
-        createLogPanel();  // Log Panel
-        controlPanel.add(logPanel, BorderLayout.SOUTH);
+
+        setStatusPanel();  // Status Panel
+        setCommandPanel();  // Command Panel
+
+        setLogPanel(); //Log panel
         controlPanel.setBackground(new Color(220, 200, 50));
+        add(controlPanel, BorderLayout.EAST);
     }
 
-    private void createStatusPanel() {
+    private void setStatusPanel() {
     	// Initialize Status Panel using StatusData
         StatusData sd = new StatusData(max_hp, hp, food, wood, coal, iron, unit, time);
         statusPanel = new StatusPanel(sd);
         Dimension d = new Dimension(Constants.Status_Width,Constants.Status_Height);
         statusPanel.setPreferredSize(d);
         statusPanel.setBackground(new Color(200, 200, 250));
+        controlPanel.add(statusPanel, BorderLayout.NORTH);
     }
 
-    private void createCommandPanel() {
+    private void setCommandPanel() {
         commandPanel = new CommandPanel();
         Dimension d = new Dimension(Constants.Command_Width, Constants.Command_Height);
         commandPanel.setPreferredSize(d);
         commandPanel.setBackground(new Color(250, 100, 100));
+        controlPanel.add(commandPanel, BorderLayout.CENTER);
     }
 
-    private void createLogPanel() {
-        logTextField = new JTextArea(Constants.VersionText);
-        logTextField.setEditable(false);
-        logPanel = new JScrollPane(logTextField);
+    private void setLogPanel(){
+        logPanel.removeAll();
+        logPanel.revalidate();
+        if(isConnected){
+            setJScrollPanel();  // Log Panel
+        }else{
+            setConnectPanel();// Connect Panel
+        }
+    }
+
+    private void setJScrollPanel() {
+            logTextField = new JTextArea(Constants.VersionText);
+            logTextField.setEditable(false);
+            jScrollPane = new JScrollPane(logTextField);
+            Dimension d = new Dimension(Constants.Log_Width,Constants.Log_Height);
+            jScrollPane.setPreferredSize(d);
+            jScrollPane.setBackground(new Color(100, 250, 100));
+            logPanel.add(jScrollPane);
+            controlPanel.add(logPanel, BorderLayout.SOUTH);
+    }
+    private void setConnectPanel(){
+        connectPanel=new JPanel();
+        connectButton=new JButton("Open Connection");
+        connectButton.setMargin(new Insets(10,2,10,2));
+        connectButton.setBackground(new Color(180,180,180));
+        connectButton.setFont(new Font("time new roman", Font.BOLD, 15));
+        connectButton.addActionListener(new OpenConnectionListener());
         Dimension d = new Dimension(Constants.Log_Width,Constants.Log_Height);
-        logPanel.setPreferredSize(d);
-        logPanel.setBackground(new Color(100, 250, 100));
+        connectPanel.setPreferredSize(d);
+        connectPanel.add(connectButton,BorderLayout.CENTER);
+        logPanel.add(connectPanel);
+        controlPanel.add(logPanel, BorderLayout.SOUTH);
+
+    }
+    class OpenConnectionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            isConnected=true;
+            //TODO connection start here
+            setLogPanel();
+            System.out.println(isConnected);
+        }
+
     }
 
-    private void setupPanels() {
-        add(mapPanel, BorderLayout.WEST);
-        add(controlPanel, BorderLayout.EAST);
-    }
 
     @Override
+    //Timer ticking
     public void actionPerformed(ActionEvent e) {
         mapPanel.upDateTime();  // Update UnitData Here!
-    	statusPanel.upDateTime();  // Update StatusData Here! 
-    	
+    	statusPanel.upDateTime();  // Update StatusData Here!
         //System.out.println("the game is running");
         repaint();
     }
