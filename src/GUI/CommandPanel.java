@@ -1,6 +1,7 @@
 package GUI;
 
-import Data.ClientData.Variable;
+import Data.ClientData.Variable1;
+import Data.ClientData.Variable2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,9 +17,12 @@ public class CommandPanel extends JPanel {
     private JButton cWarrior;
     private JButton cArcher;
     private JButton cOther;
+    //player Number
+    private int playerNum;
     
-    public CommandPanel(){
+    public CommandPanel(int playerNum){
         super();
+        this.playerNum=playerNum;
         createButtons();
         addListeners();
     }
@@ -44,8 +48,17 @@ public class CommandPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //ToDo: Mouse Event
-                Variable.unitType = 1;
-                System.out.println(Variable.unitType);
+                //System.out.println(playerNum);
+                if(playerNum==1){
+                    Variable1.unitType = 1;
+                    Variable1.confirmationLine=1;
+                    //System.out.println(Variable1.confirmationLine);
+                }else{
+                    Variable2.unitType = 1;
+                    Variable2.confirmationLine=1;
+                }
+
+                //System.out.println(Variable.unitType);
             }
         }
         cLogger.addActionListener(new cLoggerListener());

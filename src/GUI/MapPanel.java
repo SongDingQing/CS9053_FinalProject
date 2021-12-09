@@ -1,6 +1,8 @@
 package GUI;
 
 import Data.ClientData.Constants;
+import Data.ClientData.Variable1;
+import Data.ClientData.Variable2;
 import DataType.TransmitData;
 import DataType.UnitData;
 import GUI.Pixel.*;
@@ -28,9 +30,11 @@ public class MapPanel extends JPanel {
     public int[][] pixelData;
     public ArrayList<Unit> units;
     public ArrayList<UnitData> unitsData;
+    private int playerNum;
 
-    public MapPanel() {
+    public MapPanel(int playerNum) {
         super();
+        this.playerNum=playerNum;
         mapData = new Pixel[Constants.Pixels_Width][Constants.Pixels_Height];
         units = new ArrayList<Unit>();
         unitsData = new ArrayList<UnitData>();
@@ -129,6 +133,12 @@ public class MapPanel extends JPanel {
         //System.out.println(unitsData.size());
         for (int i = 0; i < units.size(); i++) {
             units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
+        }
+        //ConfirmationLine drawing
+        if(Variable1.confirmationLine==1&&playerNum==1){
+            g2d.fillRect(104,80,2,600);
+        }else if(Variable2.confirmationLine==1&&playerNum==2){
+            g2d.fillRect(104,80,2,600);
         }
 
 

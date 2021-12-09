@@ -62,7 +62,6 @@ public class Client_lec extends JFrame {
             try {
                 socket = new Socket("localhost", 8000);
                 textArea.append("connected\n");
-                Game = new MainPanel();
             } catch (Exception e1) {
                 System.err.println("error");
             }

@@ -7,8 +7,10 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Date;
 import Data.ServerData.Variable;
+import DataType.UnitData;
 
 public class Server extends JFrame implements Runnable {
     // Text area for displaying contents

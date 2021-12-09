@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.Socket;
+import Data.ClientData.*;
+
 
 /*** This Class is the the Game Drawing (the whole Panel)
  * @author Chengzuo Song
@@ -36,16 +38,23 @@ public class MainPanel extends JFrame  implements ActionListener {
     private JPanel connectPanel;
     private JTextArea logTextField;
 
+    //playerNum
+    private int playerNum;
+
     //Connect Button in LogPanel
     JButton connectButton;
     
     // Timer
     private Timer timer;
 
-    public MainPanel(){
-        super("budge");
+    public MainPanel(int playerNum){
+        super("budge Player"+playerNum);
+        //PlayerNum config
+        this.playerNum=playerNum;
+
         isConnected=false;//isConnected config
         logPanel= new JPanel();
+
         setMapPanel();  // Map Panel
         setControlPanel();  // Control Panel
         // Project Icon
@@ -57,6 +66,8 @@ public class MainPanel extends JFrame  implements ActionListener {
         setResizable(false);
         setVisible(true);
 
+        //System.out.println(playerNum);
+
         // Main Game Thread
         timer= new Timer(Constants.Delay, this);
         localData= new TransmitData(1);
@@ -64,7 +75,7 @@ public class MainPanel extends JFrame  implements ActionListener {
     }
 
     private void setMapPanel() {
-        mapPanel = new MapPanel();
+        mapPanel = new MapPanel(playerNum);
         Dimension d = new Dimension(Constants.Map_Width,Constants.Map_Height);
         mapPanel.setPreferredSize(d);
         mapPanel.setBackground(new Color(250, 200, 200));
@@ -95,7 +106,8 @@ public class MainPanel extends JFrame  implements ActionListener {
     }
 
     private void setCommandPanel() {
-        commandPanel = new CommandPanel();
+        commandPanel = new CommandPanel(playerNum);
+        System.out.println(playerNum);
         Dimension d = new Dimension(Constants.Command_Width, Constants.Command_Height);
         commandPanel.setPreferredSize(d);
         commandPanel.setBackground(new Color(250, 100, 100));
