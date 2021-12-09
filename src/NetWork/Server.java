@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Date;
+
 import Data.ServerData.Variable;
 import DataType.UnitData;
 
@@ -31,7 +32,7 @@ public class Server extends JFrame implements Runnable {
         data2 = new TransmitData();
         //server log
         ta = new JTextArea(10, 10);
-        timeCounter=1;
+        timeCounter = 1;
         JScrollPane sp = new JScrollPane(ta);
         this.add(sp);
         this.setTitle("NetWork.Server");
@@ -99,40 +100,42 @@ public class Server extends JFrame implements Runnable {
             try {
                 // Create data input and output streams
                 //TODO command Panel update
-                //inputFromClient = new ObjectInputStream(
-                //       socket.getInputStream());
+                DataInputStream inputFromClient = new DataInputStream(
+                        socket.getInputStream());
 
                 ObjectOutputStream outputToClient = new ObjectOutputStream(
                         socket.getOutputStream());
 
                 // Continuously serve the client
-                if(clientNum==1){
+                if (clientNum == 1) {
                     while (true) {
                         Thread.sleep(50);
+                        int command = inputFromClient.readInt();
+                        int locX = inputFromClient.readInt();
+                        handleCommand(command,clientNum,locX);
+
                         // Send area back to the client
                         outputToClient.reset();
                         outputToClient.writeObject(data1);
-                        data1.update();
+                        data1.update(data2.getUnitDataAL());
+
+
+                        // only thread 1 is in charge of time update
                         timeCounter++;
-                        if(timeCounter==20){
+                        if (timeCounter == 20) {
                             Variable.time++;
-                            timeCounter=1;
+                            timeCounter = 1;
                         }
-
-                        //System.out.println(data1.getStatusData().getTime());
-                        //outputToClient.writeInt(12);
-
                     }
-                }else{
+                } else {
                     while (true) {
                         Thread.sleep(50);
-                        // Send area back to the client
+                        int command = inputFromClient.readInt();
+                        int locX = inputFromClient.readInt();
+                        handleCommand(command,clientNum,locX);
                         outputToClient.reset();
                         outputToClient.writeObject(data2);
-                        data2.update();
-                        //System.out.println(data1.getStatusData().getTime());
-                        //outputToClient.writeInt(12);
-
+                        data2.update(data1.getUnitDataAL());
                     }
                 }
 
@@ -141,6 +144,18 @@ public class Server extends JFrame implements Runnable {
                 ex.printStackTrace();
             }
         }
+    }
+    public void handleCommand(int command, int playerNum,int locX){
+        if(command!=0){
+            if(playerNum==1){
+                data1.createUnit(command,locX);
+                data2.createEnemyUnit(command,locX);
+            }else{
+                data2.createUnit(command,locX);
+                data1.createEnemyUnit(command,locX);
+            }
+        }
+
     }
 
 

@@ -44,24 +44,31 @@ public class CommandPanel extends JPanel {
     }
     
     public void addListeners(){
-        class cLoggerListener implements ActionListener {
+        class UnitListener implements ActionListener {
+            private int unitType;
+            public UnitListener(int unitType){
+                super();
+                this.unitType=unitType;
+            }
             @Override
             public void actionPerformed(ActionEvent e) {
                 //ToDo: Mouse Event
                 //System.out.println(playerNum);
                 if(playerNum==1){
-                    Variable1.unitType = 1;
+                    Variable1.unitType = unitType;
                     Variable1.confirmationLine=1;
                     //System.out.println(Variable1.confirmationLine);
                 }else{
-                    Variable2.unitType = 1;
+                    Variable2.unitType = unitType;
                     Variable2.confirmationLine=1;
                 }
 
                 //System.out.println(Variable.unitType);
             }
         }
-        cLogger.addActionListener(new cLoggerListener());
+        cLogger.addActionListener(new UnitListener(1));
+        cFisher.addActionListener(new UnitListener(2));
+        cMiner.addActionListener(new UnitListener(3));
     }
     
     public void paintComponent(Graphics g){
