@@ -71,13 +71,22 @@ public class MapPanel extends JPanel {
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find PixelData.txt");
         }
-
+        System.out.println(playerNum);
         // Fill each pixel based on its own type
-        for (int y = 0; y < Constants.Pixels_Height; y++) {
-            for (int x = 0; x < Constants.Pixels_Width; x++) {
-                mapData[x][y] = FillPixel(pixelData[x][y]);
+        if(playerNum==1){
+            for (int y = 0; y < Constants.Pixels_Height; y++) {
+                for (int x = 0; x < Constants.Pixels_Width; x++) {
+                    mapData[x][y] = FillPixel(pixelData[x][y]);
+                }
+            }
+        }else{
+            for (int y = 0; y < Constants.Pixels_Height; y++) {
+                for (int x = 0; x < Constants.Pixels_Width; x++) {
+                    mapData[x][y] = FillPixel(pixelData[x][59-y]);
+                }
             }
         }
+
     }
 
     public Pixel FillPixel(int data) {
@@ -140,10 +149,18 @@ public class MapPanel extends JPanel {
         }
 
         //Base drawing
-        g.setColor(new Color(0, 0, 200));
-        g.fillRect(0, 0, 800, 80);
-        g.setColor(new Color(200, 0, 0));
-        g.fillRect(0, 680, 800, 80);
+        if(playerNum==1){
+            g.setColor(new Color(0, 0, 200));
+            g.fillRect(0, 0, 800, 80);
+            g.setColor(new Color(200, 0, 0));
+            g.fillRect(0, 680, 800, 80);
+        }else{
+            g.setColor(new Color(200, 0, 0));
+            g.fillRect(0, 0, 800, 80);
+            g.setColor(new Color(0, 0, 200));
+            g.fillRect(0, 680, 800, 80);
+        }
+
 
         //Unit drawing
         Graphics2D g2d = (Graphics2D) g;
