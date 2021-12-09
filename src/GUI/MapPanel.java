@@ -13,6 +13,10 @@ import GUI.Unit.Unit_003Miner;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -31,6 +35,7 @@ public class MapPanel extends JPanel {
     public ArrayList<Unit> units;
     public ArrayList<UnitData> unitsData;
     private int playerNum;
+    private int MouseX;
 
     public MapPanel(int playerNum) {
         super();
@@ -39,7 +44,9 @@ public class MapPanel extends JPanel {
         units = new ArrayList<Unit>();
         unitsData = new ArrayList<UnitData>();
         setMapData();
+        this.addMouseMotionListener(new ConfirmationListener());
     }
+
 
     private void setMapData() {
         //------------CONSTRUCT mapData based on PixelData.txt--------------
@@ -135,12 +142,57 @@ public class MapPanel extends JPanel {
             units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
         }
         //ConfirmationLine drawing
+        g2d.setColor(Color.red);
         if(Variable1.confirmationLine==1&&playerNum==1){
-            g2d.fillRect(104,80,2,600);
+            g2d.fillRect(MouseX/10*10+4,80,2,600);
+            g2d.setColor(Color.green);
+            g2d.fillPolygon(new int[]{MouseX/10*10,MouseX/10*10+4,MouseX/10*10+5,MouseX/10*10+10},new int[]{66,80,80,66},4);
+            g2d.fillPolygon(new int[]{MouseX/10*10,MouseX/10*10+4,MouseX/10*10+5,MouseX/10*10+10},new int[]{696,680,680,696},4);
         }else if(Variable2.confirmationLine==1&&playerNum==2){
-            g2d.fillRect(104,80,2,600);
+            g2d.fillRect(MouseX/10*10+4,80,2,600);
+            g2d.setColor(Color.green);
+            g2d.fillPolygon(new int[]{MouseX/10*10,MouseX/10*10+4,MouseX/10*10+5,MouseX/10*10+10},new int[]{66,80,80,66},4);
+            g2d.fillPolygon(new int[]{MouseX/10*10,MouseX/10*10+4,MouseX/10*10+5,MouseX/10*10+10},new int[]{696,680,680,696},4);
+        }
+        //Test
+        //System.out.println("Player "+playerNum+"'s mouse X"+MouseX);
+
+
+    }
+    class ConfirmationListener implements MouseListener, MouseMotionListener {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
         }
 
+        @Override
+        public void mousePressed(MouseEvent e) {
 
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            MouseX=e.getX();
+        }
     }
 }
