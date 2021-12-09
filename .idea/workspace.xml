@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Data/ServerData/Variable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataType/TransmitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/TransmitData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetWork/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetWork/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,8 +113,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Run" />
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client_lec" />
       </list>
     </recent_temporary>

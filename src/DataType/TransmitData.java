@@ -5,10 +5,11 @@ import Data.ServerData.Data_init;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import Data.ServerData.Variable;
+
 public class TransmitData implements Serializable {
     private StatusData statusData;
     private ArrayList<UnitData> unitDataAL;
-    private int timeCounter;
 
     public TransmitData(int i) {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
@@ -25,17 +26,14 @@ public class TransmitData implements Serializable {
     }
 
     public void update() {
+        updateTime();
         updateStatus();
         updateUnits();
-
+    }
+    public void updateTime(){
+        statusData.setTime(Variable.time);
     }
     public void updateStatus(){
-        if (timeCounter < 20) {
-            timeCounter++;
-        } else {
-            statusData.setTime(statusData.getTime() + 1);
-            timeCounter = 0;
-        }
     }
     public void updateUnits(){
         for(UnitData unitData: unitDataAL) {

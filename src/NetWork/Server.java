@@ -8,6 +8,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
+import Data.ServerData.Variable;
 
 public class Server extends JFrame implements Runnable {
     // Text area for displaying contents
@@ -19,8 +20,8 @@ public class Server extends JFrame implements Runnable {
     //DataStorage for both clients
     private TransmitData data1;
     private TransmitData data2;
-    private ObjectOutputStream inputFromClient;
-    private ObjectOutputStream outputToClient;
+
+    private int timeCounter;
 
     public Server() {
         //player data initialization
@@ -28,6 +29,7 @@ public class Server extends JFrame implements Runnable {
         data2 = new TransmitData();
         //server log
         ta = new JTextArea(10, 10);
+        timeCounter=1;
         JScrollPane sp = new JScrollPane(ta);
         this.add(sp);
         this.setTitle("NetWork.Server");
@@ -61,7 +63,7 @@ public class Server extends JFrame implements Runnable {
                     ta.append("NetWork.Client " + clientNo + "'s IP Address is "
                             + inetAddress.getHostAddress() + "\n");
                     // Create and start a new thread for the connection
-                    new Thread(new HandleAClient(socket, clientNo)).start();
+                    new Thread(new Player(socket, clientNo)).start();
                 }
             }
         } catch (IOException ex) {
@@ -71,14 +73,14 @@ public class Server extends JFrame implements Runnable {
     }
 
     // Define the thread class for handling new connection
-    class HandleAClient implements Runnable {
+    class Player implements Runnable {
         private Socket socket; // A connected socket
         private int clientNum;
 
         /**
          * Construct a thread
          */
-        public HandleAClient(Socket socket, int clientNum) {
+        public Player(Socket socket, int clientNum) {
             this.socket = socket;
             this.clientNum = clientNum;
         }
@@ -98,26 +100,47 @@ public class Server extends JFrame implements Runnable {
                 //inputFromClient = new ObjectInputStream(
                 //       socket.getInputStream());
 
-                outputToClient = new ObjectOutputStream(
+                ObjectOutputStream outputToClient = new ObjectOutputStream(
                         socket.getOutputStream());
 
                 // Continuously serve the client
-                while (true) {
-                    Thread.sleep(50);
-                    // Send area back to the client
-                    outputToClient.reset();
-                    outputToClient.writeObject(data1);
-                    data1.update();
-                    //System.out.println(data1.getStatusData().getTime());
-                    //outputToClient.writeInt(12);
+                if(clientNum==1){
+                    while (true) {
+                        Thread.sleep(50);
+                        // Send area back to the client
+                        outputToClient.reset();
+                        outputToClient.writeObject(data1);
+                        data1.update();
+                        timeCounter++;
+                        if(timeCounter==20){
+                            Variable.time++;
+                            timeCounter=1;
+                        }
 
+                        //System.out.println(data1.getStatusData().getTime());
+                        //outputToClient.writeInt(12);
+
+                    }
+                }else{
+                    while (true) {
+                        Thread.sleep(50);
+                        // Send area back to the client
+                        outputToClient.reset();
+                        outputToClient.writeObject(data2);
+                        data2.update();
+                        //System.out.println(data1.getStatusData().getTime());
+                        //outputToClient.writeInt(12);
+
+                    }
                 }
+
             } catch (IOException | InterruptedException ex) {
                 ta.append("client:" + this.getClientNum() + " have been closed\n");
                 ex.printStackTrace();
             }
         }
     }
+
 
     /**
      * The main method is only needed for the IDE with limited
