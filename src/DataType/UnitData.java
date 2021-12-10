@@ -11,6 +11,8 @@ public class UnitData implements Serializable {
     //state: -1 is going upward 0 is standing still 1 going downward
     private int state;
     private int workLoc;
+    private int life;
+    private boolean isAlive;
 
     public UnitData(int unitType, int x, int y) {
         state = -1;
@@ -18,6 +20,8 @@ public class UnitData implements Serializable {
         this.y = y;
         this.unitType = unitType;
         workLoc=Constants.Pixels_Height-1;
+        life=400;
+        isAlive=true;
     }
 
     public int getX() {
@@ -48,14 +52,24 @@ public class UnitData implements Serializable {
         return unitType;
     }
 
+    public boolean isAlive() {
+        return isAlive;
+    }
+
     public void update(int playerNum) {
-        if(unitType==1){
-            updateLogger(playerNum);
-        }else if(unitType==2){
-            updateFisher();
-        }else if(unitType==3){
-            updateMiner();
+        if(life<=0){
+            isAlive=false;
+        }else{
+            if(unitType==1){
+                updateLogger(playerNum);
+            }else if(unitType==2){
+                updateFisher();
+            }else if(unitType==3){
+                updateMiner();
+            }
+            life--;
         }
+
 
     }
     public void updateLogger(int playerNum){

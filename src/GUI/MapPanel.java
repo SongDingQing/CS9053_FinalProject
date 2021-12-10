@@ -114,12 +114,17 @@ public class MapPanel extends JPanel {
         unitsData = td.getUnitDataAL();
         units = new ArrayList<Unit>();
         for (UnitData unitData : unitsData) {
-            units.add(readUnit(unitData.getUnitType()));
+
+                units.add(readUnit(unitData.getUnitType()));
+
+
         }
         enemyUnitsData = td.getEnemyUnitDataAL();
         enemyUnits = new ArrayList<Unit>();
         for (UnitData unitData : enemyUnitsData) {
-            enemyUnits.add(readUnit(unitData.getUnitType()));
+
+                enemyUnits.add(readUnit(unitData.getUnitType()));
+
         }
     }
 
@@ -167,10 +172,15 @@ public class MapPanel extends JPanel {
         //System.out.println(units.size());
         //System.out.println(unitsData.size());
         for (int i = 0; i < units.size(); i++) {
-            units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
+            if(unitsData.get(i).isAlive()){
+                units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
+            }
+
         }
         for (int i = 0; i < enemyUnits.size(); i++) {
-            enemyUnits.get(i).drawUnit(g2d, enemyUnitsData.get(i).getX(), 750-enemyUnitsData.get(i).getY());
+            if(enemyUnitsData.get(i).isAlive()){
+                enemyUnits.get(i).drawUnit(g2d, enemyUnitsData.get(i).getX(), 750-enemyUnitsData.get(i).getY());
+            }
         }
         //ConfirmationLine drawing
         paintConfirmationLine(g2d);
