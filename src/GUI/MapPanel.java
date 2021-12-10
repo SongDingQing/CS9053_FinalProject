@@ -23,7 +23,7 @@ import java.util.Scanner;
 
 /*** This Class is the the Map Drawing (the Map Panel)
  * @author Chengzuo Song
- * @version 0.0
+ * @version 0.2.2
  *
  * the data of the map will be store in client (width*height)
  */

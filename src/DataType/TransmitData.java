@@ -12,6 +12,7 @@ public class TransmitData implements Serializable {
     private ArrayList<UnitData> unitDataAL;
     private ArrayList<UnitData> enemyUnitDataAL;
     private int playerNum;
+    private int cookieCounter;
 
     public TransmitData() {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
@@ -25,6 +26,7 @@ public class TransmitData implements Serializable {
         unitDataAL = new ArrayList<UnitData>(0);
         enemyUnitDataAL = new ArrayList<UnitData>(0);
         this.playerNum=playerNum;
+        cookieCounter=0;
     }
     public void createUnit(int unitType,int locX){
         unitDataAL.add(new UnitData(unitType,locX/10*10,670));
@@ -38,6 +40,20 @@ public class TransmitData implements Serializable {
         updateStatus();
         updateUnits();
         updateEnemyUnit(enemyUnitDataAL);
+        if(cookieCounter>=400){
+            clearDiedUnit();
+        }
+        cookieCounter++;
+        System.out.println(unitDataAL.size());
+    }
+    public void clearDiedUnit(){
+        ArrayList<UnitData> temp= new ArrayList<UnitData>();
+        for(UnitData unitData: unitDataAL) {
+            if(unitData.isAlive()){
+                temp.add(unitData);
+            }
+        }
+        unitDataAL=temp;
     }
     public void updateTime(){
         statusData.setTime(Variable.time);
