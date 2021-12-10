@@ -11,18 +11,20 @@ public class TransmitData implements Serializable {
     private StatusData statusData;
     private ArrayList<UnitData> unitDataAL;
     private ArrayList<UnitData> enemyUnitDataAL;
+    private int playerNum;
 
-    public TransmitData(int i) {
+    public TransmitData() {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
                 , 999, 999, 999, 999, 999);
         unitDataAL = new ArrayList<UnitData>(0);
         enemyUnitDataAL = new ArrayList<UnitData>(0);
     }
-    public TransmitData() {
+    public TransmitData(int playerNum) {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, Data_init.Food
                 , Data_init.Wood, Data_init.Coal, Data_init.Iron, Data_init.Unit, 0);
         unitDataAL = new ArrayList<UnitData>(0);
         enemyUnitDataAL = new ArrayList<UnitData>(0);
+        this.playerNum=playerNum;
     }
     public void createUnit(int unitType,int locX){
         unitDataAL.add(new UnitData(unitType,locX/10*10,670));
@@ -44,12 +46,7 @@ public class TransmitData implements Serializable {
     }
     public void updateUnits(){
         for(UnitData unitData: unitDataAL) {
-            if(unitData.getY()<=80){
-                unitData.setState(1);
-            }else if(unitData.getY()>=670){
-                unitData.setState(-1);
-            }
-            unitData.setY(unitData.getY()+ unitData.getState());
+            unitData.update(playerNum);
         }
 
     }

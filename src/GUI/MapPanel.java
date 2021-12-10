@@ -71,7 +71,7 @@ public class MapPanel extends JPanel {
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find PixelData.txt");
         }
-        System.out.println(playerNum);
+        //System.out.println(playerNum);
         // Fill each pixel based on its own type
         if(playerNum==1){
             for (int y = 0; y < Constants.Pixels_Height; y++) {

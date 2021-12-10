@@ -1,5 +1,6 @@
 package NetWork;
 
+import Data.ClientData.Constants;
 import DataType.TransmitData;
 
 import javax.swing.*;
@@ -7,11 +8,10 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 import Data.ServerData.Variable;
-import DataType.UnitData;
 
 public class Server extends JFrame implements Runnable {
     // Text area for displaying contents
@@ -23,22 +23,47 @@ public class Server extends JFrame implements Runnable {
     //DataStorage for both clients
     private TransmitData data1;
     private TransmitData data2;
-
+    //time counter
     private int timeCounter;
 
     public Server() {
         //player data initialization
-        data1 = new TransmitData();
-        data2 = new TransmitData();
+        data1 = new TransmitData(1);
+        data2 = new TransmitData(2);
         //server log
         ta = new JTextArea(10, 10);
+        //time counter reset
         timeCounter = 1;
+        //pixelData initialization
+        configPixelData();
+        //System.out.println(Variable.pixelData[0][0]);
         JScrollPane sp = new JScrollPane(ta);
         this.add(sp);
         this.setTitle("NetWork.Server");
         this.setSize(400, 200);
         Thread t = new Thread(this);
         t.start();
+    }
+    public void configPixelData(){
+        Variable.pixelData1 = new int[80][60];
+        Variable.pixelData2 = new int[80][60];
+        //------------CONSTRUCT mapData based on PixelData.txt--------------
+        try {
+            java.io.File file = new java.io.File("src/Data/ServerData/PixelData.txt");
+            Scanner input = new Scanner(file);
+            while (input.hasNext()) {
+                for (int y = 0; y < Constants.Pixels_Height; y++) {
+                    for (int x = 0; x < Constants.Pixels_Width; x++) {
+                        int temp =input.nextInt();
+                        Variable.pixelData1[x][y] = temp;
+                        Variable.pixelData2[x][59-y] = temp;
+                    }
+                }
+            }
+            input.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot find PixelData.txt");
+        }
     }
 
     public void run() {
@@ -109,7 +134,7 @@ public class Server extends JFrame implements Runnable {
                 // Continuously serve the client
                 if (clientNum == 1) {
                     while (true) {
-                        Thread.sleep(50);
+                        Thread.sleep(40);
                         int command = inputFromClient.readInt();
                         int locX = inputFromClient.readInt();
                         handleCommand(command,clientNum,locX);
@@ -122,14 +147,14 @@ public class Server extends JFrame implements Runnable {
 
                         // only thread 1 is in charge of time update
                         timeCounter++;
-                        if (timeCounter == 20) {
+                        if (timeCounter == 25) {
                             Variable.time++;
                             timeCounter = 1;
                         }
                     }
                 } else {
                     while (true) {
-                        Thread.sleep(50);
+                        Thread.sleep(40);
                         int command = inputFromClient.readInt();
                         int locX = inputFromClient.readInt();
                         handleCommand(command,clientNum,locX);

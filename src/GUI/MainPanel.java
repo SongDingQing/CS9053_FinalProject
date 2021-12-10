@@ -71,7 +71,7 @@ public class MainPanel extends JFrame implements ActionListener {
 
         // Main Game Thread
         timer = new Timer(Constants.Delay, this);
-        localData = new TransmitData(1);
+        localData = new TransmitData();
         timer.start();
     }
 
