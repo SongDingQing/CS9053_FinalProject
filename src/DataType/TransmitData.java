@@ -40,11 +40,11 @@ public class TransmitData implements Serializable {
         updateStatus();
         updateUnits();
         updateEnemyUnit(enemyUnitDataAL);
-        if(cookieCounter>=400){
+        if(cookieCounter>=800){
             clearDiedUnit();
         }
         cookieCounter++;
-        System.out.println(unitDataAL.size());
+        //System.out.println(unitDataAL.size());
     }
     public void clearDiedUnit(){
         ArrayList<UnitData> temp= new ArrayList<UnitData>();

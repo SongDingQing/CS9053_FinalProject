@@ -20,7 +20,7 @@ public class UnitData implements Serializable {
         this.y = y;
         this.unitType = unitType;
         workLoc=Constants.Pixels_Height-1;
-        life=400;
+        life=4000;
         isAlive=true;
     }
 
