@@ -4,11 +4,10 @@
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/DataType/UnitData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/DataType/UnitData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MapPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/ServerData/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ServerData/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server$Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server$Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/NetWork/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataType/UnitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/UnitData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MapPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetWork/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetWork/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

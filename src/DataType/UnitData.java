@@ -153,7 +153,11 @@ public class UnitData implements Serializable {
                 }else{
                     Variable.data1.getStatusData().addHp(-1);
                 }
-            }else{ counter++; }
+                //System.out.print("2");
+            }else{
+                //System.out.print("1");
+                counter++;
+            }
 
         }
         y=y+Constants.Speed_Warrior*state;

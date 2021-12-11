@@ -17,7 +17,8 @@ import Data.ServerData.Variable;
 public class Server extends JFrame implements Runnable {
     // Text area for displaying contents
     private JTextArea ta;
-
+    //Game Ongoing
+    private boolean game;
     // Number a client
     private int clientNo = 0;
 
@@ -26,6 +27,7 @@ public class Server extends JFrame implements Runnable {
     private int timeCounter;
 
     public Server() {
+        game=true;
         //player data initialization
         Variable.data1 = new TransmitData(1);
         Variable.data2 = new TransmitData(2);
@@ -121,52 +123,55 @@ public class Server extends JFrame implements Runnable {
          * Run a thread
          */
         public void run() {
-            try {
-                // Create data input and output streams
-                //TODO command Panel update
-                DataInputStream inputFromClient = new DataInputStream(
-                        socket.getInputStream());
+            while (game) {
+                try {
+                    // Create data input and output streams
+                    //TODO command Panel update
+                    DataInputStream inputFromClient = new DataInputStream(
+                            socket.getInputStream());
 
-                ObjectOutputStream outputToClient = new ObjectOutputStream(
-                        socket.getOutputStream());
+                    ObjectOutputStream outputToClient = new ObjectOutputStream(
+                            socket.getOutputStream());
 
-                // Continuously serve the client
-                if (clientNum == 1) {
-                    while (true) {
-                        Thread.sleep(40);
-                        int command = inputFromClient.readInt();
-                        int locX = inputFromClient.readInt();
-                        handleCommand(command,clientNum,locX);
+                    // Continuously serve the client
+                    if (clientNum == 1) {
+                        while (true) {
+                            Thread.sleep(40);
+                            int command = inputFromClient.readInt();
+                            int locX = inputFromClient.readInt();
+                            handleCommand(command,clientNum,locX);
 
-                        // Send area back to the client
-                        outputToClient.reset();
-                        outputToClient.writeObject(Variable.data1);
-                        Variable.data1.update(Variable.data2.getUnitDataAL());
+                            // Send area back to the client
+                            outputToClient.reset();
+                            outputToClient.writeObject(Variable.data1);
+                            Variable.data1.update(Variable.data2.getUnitDataAL());
 
 
-                        // only thread 1 is in charge of time update
-                        timeCounter++;
-                        if (timeCounter == 25) {
-                            Variable.time++;
-                            timeCounter = 1;
+                            // only thread 1 is in charge of time update
+                            timeCounter++;
+                            if (timeCounter == 25) {
+                                Variable.time++;
+                                timeCounter = 1;
+                            }
+                        }
+                    } else {
+                        while (true) {
+                            Thread.sleep(40);
+                            int command = inputFromClient.readInt();
+                            int locX = inputFromClient.readInt();
+                            handleCommand(command,clientNum,locX);
+                            outputToClient.reset();
+                            outputToClient.writeObject(Variable.data2);
+                            Variable.data2.update(Variable.data1.getUnitDataAL());
                         }
                     }
-                } else {
-                    while (true) {
-                        Thread.sleep(40);
-                        int command = inputFromClient.readInt();
-                        int locX = inputFromClient.readInt();
-                        handleCommand(command,clientNum,locX);
-                        outputToClient.reset();
-                        outputToClient.writeObject(Variable.data2);
-                        Variable.data2.update(Variable.data1.getUnitDataAL());
-                    }
-                }
 
-            } catch (IOException | InterruptedException ex) {
-                ta.append("client:" + this.getClientNum() + " have been closed\n");
-                ex.printStackTrace();
+                } catch (IOException | InterruptedException ex) {
+                    ta.append("client:" + this.getClientNum() + " have been closed\n");
+                    ex.printStackTrace();
+                }
             }
+
         }
     }
     public void handleCommand(int command, int playerNum,int locX){
