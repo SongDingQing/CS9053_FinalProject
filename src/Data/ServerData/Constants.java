@@ -38,5 +38,7 @@ public class Constants {
     //--------Warrior---------------
     //move speed
     public static final int Speed_Warrior=1;
+    // attack rate in second is this/25
+    public static final int AttackRate_Warrior =50;
 
 }

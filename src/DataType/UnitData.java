@@ -14,10 +14,10 @@ public class UnitData implements Serializable {
     private int life;
     private boolean isAlive;
     private int capacity;//item carried
-    private int collectingCounter;
+    private int counter;
 
     public UnitData(int unitType, int x, int y) {
-        collectingCounter=0;
+        counter =0;
         capacity=0;
         state = -1;
         this.x = x;
@@ -110,17 +110,17 @@ public class UnitData implements Serializable {
             //branch: working
             if(capacity<Constants.MaxCapacity_Logger){
                 state=0;
-                if(collectingCounter<Constants.CollectingRate_Logger){
-                  collectingCounter++;
+                if(counter <Constants.CollectingRate_Logger){
+                  counter++;
                 }else{
-                    collectingCounter=0;
+                    counter =0;
                     capacity++;
                     //System.out.println(capacity);
                 }
             }else{
                 state=1;
             }
-        }else if(y>670){
+        }else if(y>680){
             state=-1;
             capacity=0;
             if(playerNum==1){
@@ -136,22 +136,26 @@ public class UnitData implements Serializable {
     }
 
     public void updateFisher(){
-        if(y<80){ state=1; }else if(y>670){ state=-1; }
+        if(y<80){ state=1; }else if(y>680){ state=-1; }
         y=y+state;
     }
     public void updateMiner(){
-        if(y<80){ state=1; }else if(y>670){ state=-1; }
+        if(y<80){ state=1; }else if(y>680){ state=-1; }
         y=y+state;
     }
     public void updateWarrior(int playerNum){
         if(y<80){
-            if(playerNum==1){
-                Variable.data2.getStatusData().addHp(-1);
-            }else{
-                Variable.data1.getStatusData().addHp(-1);
-            }
-            state=1;
-        }else if(y>670){ state=-1; }
+            state=0;
+            if(counter>=Constants.AttackRate_Warrior){
+                counter=0;
+                if(playerNum==1){
+                    Variable.data2.getStatusData().addHp(-1);
+                }else{
+                    Variable.data1.getStatusData().addHp(-1);
+                }
+            }else{ counter++; }
+
+        }
         y=y+Constants.Speed_Warrior*state;
     }
 }

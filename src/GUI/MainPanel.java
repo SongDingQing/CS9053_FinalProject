@@ -79,7 +79,7 @@ public class MainPanel extends JFrame implements ActionListener {
         mapPanel = new MapPanel(playerNum);
         Dimension d = new Dimension(Constants.Map_Width, Constants.Map_Height);
         mapPanel.setPreferredSize(d);
-        mapPanel.setBackground(new Color(250, 200, 200));
+        mapPanel.setBackground(new Color(150, 150, 150));
         add(mapPanel, BorderLayout.WEST);
     }
 

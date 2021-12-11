@@ -155,14 +155,14 @@ public class MapPanel extends JPanel {
         //Base drawing
         if(playerNum==1){
             g.setColor(new Color(0, 0, 200));
-            g.fillRect(0, 0, 800, 80);
+            g.fillRect(0, 0, 800, 70);
             g.setColor(new Color(200, 0, 0));
-            g.fillRect(0, 680, 800, 80);
+            g.fillRect(0, 690, 800, 70);
         }else{
             g.setColor(new Color(200, 0, 0));
-            g.fillRect(0, 0, 800, 80);
+            g.fillRect(0, 0, 800, 70);
             g.setColor(new Color(0, 0, 200));
-            g.fillRect(0, 680, 800, 80);
+            g.fillRect(0, 690, 800, 70);
         }
 
 
