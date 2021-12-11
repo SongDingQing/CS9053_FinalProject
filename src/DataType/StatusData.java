@@ -80,4 +80,7 @@ public class StatusData implements Serializable {
     public void addWood(int item){
         this.wood+=item;
     }
+    public void addFood(int item){
+        this.food+=item;
+    }
 }

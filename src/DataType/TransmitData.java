@@ -29,7 +29,16 @@ public class TransmitData implements Serializable {
         cookieCounter=0;
     }
     public void createUnit(int unitType,int locX){
+        takeResource(unitType);
         unitDataAL.add(new UnitData(unitType,locX/10*10,670));
+    }
+    // this method is used to take resource for the needed command:
+    // the command's availability was checked before sent to server
+    public void takeResource(int unitType){
+        switch (unitType){
+            case 1:
+                statusData.addFood(-50);
+        }
     }
     public void createEnemyUnit(int unitType,int locX){
         enemyUnitDataAL.add(new UnitData(unitType,locX/10*10,670));

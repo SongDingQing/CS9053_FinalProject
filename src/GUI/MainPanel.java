@@ -178,6 +178,15 @@ public class MainPanel extends JFrame implements ActionListener {
 
     }
 
+    private void checkCommand(){
+        if(Variable1.CommandType==1){
+            if(localData.getStatusData().getFood()<50){
+                Variable1.CommandType=0;
+                logTextField.append("Error: not enough food to generate a logger!\n");
+            }
+        }
+    }
+
 
     @Override
     //Timer ticking
@@ -185,12 +194,14 @@ public class MainPanel extends JFrame implements ActionListener {
         if (isConnected) {
             try {
                 if (playerNum == 1) {
+                    checkCommand();
                     toServer.writeInt(Variable1.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable1.tempX);
                     toServer.flush();
                     Variable1.CommandType = 0;
                 } else {
+                    checkCommand();
                     toServer.writeInt(Variable2.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable2.tempX);

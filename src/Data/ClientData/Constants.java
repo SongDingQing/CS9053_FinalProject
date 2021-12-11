@@ -5,7 +5,7 @@ package Data.ClientData;
  */
 public class Constants {
     //The text in log window
-    public static String VersionText="This our budge game version 0.2.0";
+    public static String VersionText="This our budge game version 0.2.0\n";
 
     //Configuration on the <<<<SIZE>>>>> of the game
     // 1. FRAME CONSTANT
