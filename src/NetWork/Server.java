@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import Data.ServerData.Variable;
 
+
 public class Server extends JFrame implements Runnable {
     // Text area for displaying contents
     private JTextArea ta;
@@ -21,15 +22,13 @@ public class Server extends JFrame implements Runnable {
     private int clientNo = 0;
 
     //DataStorage for both clients
-    private TransmitData data1;
-    private TransmitData data2;
     //time counter
     private int timeCounter;
 
     public Server() {
         //player data initialization
-        data1 = new TransmitData(1);
-        data2 = new TransmitData(2);
+        Variable.data1 = new TransmitData(1);
+        Variable.data2 = new TransmitData(2);
         //server log
         ta = new JTextArea(10, 10);
         //time counter reset
@@ -141,8 +140,8 @@ public class Server extends JFrame implements Runnable {
 
                         // Send area back to the client
                         outputToClient.reset();
-                        outputToClient.writeObject(data1);
-                        data1.update(data2.getUnitDataAL());
+                        outputToClient.writeObject(Variable.data1);
+                        Variable.data1.update(Variable.data2.getUnitDataAL());
 
 
                         // only thread 1 is in charge of time update
@@ -159,8 +158,8 @@ public class Server extends JFrame implements Runnable {
                         int locX = inputFromClient.readInt();
                         handleCommand(command,clientNum,locX);
                         outputToClient.reset();
-                        outputToClient.writeObject(data2);
-                        data2.update(data1.getUnitDataAL());
+                        outputToClient.writeObject(Variable.data2);
+                        Variable.data2.update(Variable.data1.getUnitDataAL());
                     }
                 }
 
@@ -173,11 +172,11 @@ public class Server extends JFrame implements Runnable {
     public void handleCommand(int command, int playerNum,int locX){
         if(command!=0){
             if(playerNum==1){
-                data1.createUnit(command,locX);
-                data2.createEnemyUnit(command,locX);
+                Variable.data1.createUnit(command,locX);
+                Variable.data2.createEnemyUnit(command,locX);
             }else{
-                data2.createUnit(command,locX);
-                data1.createEnemyUnit(command,locX);
+                Variable.data2.createUnit(command,locX);
+                Variable.data1.createEnemyUnit(command,locX);
             }
         }
 

@@ -6,10 +6,7 @@ import Data.ClientData.Variable2;
 import DataType.TransmitData;
 import DataType.UnitData;
 import GUI.Pixel.*;
-import GUI.Unit.Unit;
-import GUI.Unit.Unit_001Logger;
-import GUI.Unit.Unit_002Fisher;
-import GUI.Unit.Unit_003Miner;
+import GUI.Unit.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -137,6 +134,8 @@ public class MapPanel extends JPanel {
                 return new Unit_002Fisher();
             case 3:
                 return new Unit_003Miner();
+            case 4:
+                return new Unit_004Warrior();
             default:// default exception handler
                 return null;
         }

@@ -28,4 +28,15 @@ public class Constants {
     
     //Game Play Configuration
     public static final int Delay =40;
+    //------------Logger------------
+    //move speed
+    public static final int Speed_Logger=1;
+    //capacity
+    public static final int MaxCapacity_Logger =10;
+    // collecting rate in second is this/25
+    public static final int CollectingRate_Logger =50;
+    //--------Warrior---------------
+    //move speed
+    public static final int Speed_Warrior=1;
+
 }

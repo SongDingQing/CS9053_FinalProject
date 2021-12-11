@@ -13,8 +13,12 @@ public class UnitData implements Serializable {
     private int workLoc;
     private int life;
     private boolean isAlive;
+    private int capacity;//item carried
+    private int collectingCounter;
 
     public UnitData(int unitType, int x, int y) {
+        collectingCounter=0;
+        capacity=0;
         state = -1;
         this.x = x;
         this.y = y;
@@ -66,12 +70,15 @@ public class UnitData implements Serializable {
                 updateFisher();
             }else if(unitType==3){
                 updateMiner();
+            } else if(unitType==4){
+                updateWarrior(playerNum);
             }
             life--;
         }
 
 
     }
+
     public void updateLogger(int playerNum){
         if(playerNum==2){
             if(workLoc==Constants.Pixels_Height-1){
@@ -99,11 +106,35 @@ public class UnitData implements Serializable {
             }
 
         }
-        if(y<workLoc*10+80){ state=1; }else if(y>670){ state=-1; }
-        y=y+state;
+        if(y<workLoc*10+80){
+            //branch: working
+            if(capacity<Constants.MaxCapacity_Logger){
+                state=0;
+                if(collectingCounter<Constants.CollectingRate_Logger){
+                  collectingCounter++;
+                }else{
+                    collectingCounter=0;
+                    capacity++;
+                    //System.out.println(capacity);
+                }
+            }else{
+                state=1;
+            }
+        }else if(y>670){
+            state=-1;
+            capacity=0;
+            if(playerNum==1){
+                Variable.data1.getStatusData().addWood(Constants.MaxCapacity_Logger);
+            }else{
+                Variable.data2.getStatusData().addWood(Constants.MaxCapacity_Logger);
+            }
+            //System.out.println(capacity);
+        }
+        y=y+Constants.Speed_Logger*state;
 
 
     }
+
     public void updateFisher(){
         if(y<80){ state=1; }else if(y>670){ state=-1; }
         y=y+state;
@@ -111,5 +142,16 @@ public class UnitData implements Serializable {
     public void updateMiner(){
         if(y<80){ state=1; }else if(y>670){ state=-1; }
         y=y+state;
+    }
+    public void updateWarrior(int playerNum){
+        if(y<80){
+            if(playerNum==1){
+                Variable.data2.getStatusData().addHp(-1);
+            }else{
+                Variable.data1.getStatusData().addHp(-1);
+            }
+            state=1;
+        }else if(y>670){ state=-1; }
+        y=y+Constants.Speed_Warrior*state;
     }
 }

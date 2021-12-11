@@ -69,6 +69,7 @@ public class CommandPanel extends JPanel {
         cLogger.addActionListener(new UnitListener(1));
         cFisher.addActionListener(new UnitListener(2));
         cMiner.addActionListener(new UnitListener(3));
+        cWarrior.addActionListener(new UnitListener(4));
     }
     
     public void paintComponent(Graphics g){
