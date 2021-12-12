@@ -89,4 +89,7 @@ public class StatusData implements Serializable {
     public void addIron(int item){
         this.iron+=item;
     }
+    public void addUnit(int num){
+        this.unit+=num;
+    }
 }

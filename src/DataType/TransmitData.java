@@ -33,6 +33,7 @@ public class TransmitData implements Serializable {
     public void createUnit(int unitType,int locX){
         takeResource(unitType);
         unitDataAL.add(new UnitData(unitType,locX/10*10,670));
+        statusData.addUnit(1);
         //System.out.println(unitDataAL.get(0).getId());
     }
     // this method is used to take resource for the needed command:
@@ -68,7 +69,7 @@ public class TransmitData implements Serializable {
         updateTime();
         updateUnits();
         setEnemyUnit(enemyUnitDataAL);
-        if(cookieCounter>=800){
+        if(cookieCounter>=100){
             clearDiedUnit();
         }
         //System.out.println(unitDataAL.size()+"   ");
@@ -83,6 +84,7 @@ public class TransmitData implements Serializable {
             }
         }
         unitDataAL=temp;
+        statusData.setUnit(temp.size());
     }
     public void updateTime(){
         statusData.setTime(Variable.time);
