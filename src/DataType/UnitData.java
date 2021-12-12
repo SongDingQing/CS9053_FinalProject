@@ -63,6 +63,10 @@ public class UnitData implements Serializable {
         return y;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
     public int getState() {
         return state;
     }
@@ -332,14 +336,14 @@ public class UnitData implements Serializable {
                             ud.addHp(-1);
                             state=0;
                             hp--;
+                            if(ud.getHp()<=0){
+                                state=-1;
+                            }
                             if(hp<=0){
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
-                            //System.out.println(hp+"     "+ud.hp);
                             break;
-                        }else{
-                            state=-1;
                         }
 
                     }
@@ -380,7 +384,7 @@ public class UnitData implements Serializable {
                         counter = 0;
                         Variable.data1.getStatusData().addHp(-1);
                         hp-=48;
-                        System.out.println(hp);
+                        //System.out.println(hp);
                     } else {
                         counter++;
                     }
