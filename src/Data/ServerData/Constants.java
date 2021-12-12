@@ -42,7 +42,7 @@ public class Constants {
     public static final int MaxCapacity_Fisher =30;
     // collecting rate in second is this/25
     public static final int CollectingRate_Fisher =10;
-    //------------Fisher------------
+    //------------Miner------------
     //move speed
     public static final int Speed_Miner=1;
     //capacity
@@ -54,5 +54,10 @@ public class Constants {
     public static final int Speed_Warrior=1;
     // attack rate in second is this/25
     public static final int AttackRate_Warrior =50;
+    //--------Archer---------------
+    //move speed
+    public static final int Speed_Archer=1;
+    // attack rate in second is this/25
+    public static final int AttackRate_Archer =50;
 
 }

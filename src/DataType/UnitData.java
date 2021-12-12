@@ -335,7 +335,7 @@ public class UnitData implements Serializable {
         }else{
             if (playerNum == 1) {
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
-                    if(ud.getX()==x &&(y+ud.getY())<760){// reaching statement
+                    if(((ud.getX()-x)<=10||(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
                         if(ud.isAlive){
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
@@ -366,19 +366,20 @@ public class UnitData implements Serializable {
                 }
             } else if(playerNum==2){
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
-                    if(ud.getX()==x &&(y+ud.getY())<760){// reaching statement
+                    if(((ud.getX()-x)<=10||(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
                         if(ud.isAlive){
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
                             hp--;
+                            if(ud.getHp()<=0){
+                                state=-1;
+                            }
                             if(hp<=0){
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
                             break;
-                        }else{
-                            state=-1;
                         }
 
                     }
@@ -407,11 +408,15 @@ public class UnitData implements Serializable {
         }else{
             if (playerNum == 1) {
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
-                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<820){// reaching statement
+                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
                         if(ud.isAlive){
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
+                            if(ud.getUnitType()==4){
+                                hp--;
+                                ud.setIsAttacked(false);
+                            }
                             if(ud.getHp()<=0){
                                 state=-1;
                             }
@@ -426,10 +431,10 @@ public class UnitData implements Serializable {
                 }
                 if (y < 80) {// reaching enemy base
                     state = 0;
-                    if (counter >= Constants.AttackRate_Warrior) {
+                    if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
                         Variable.data2.getStatusData().addHp(-1);
-                        hp-=48;
+                        hp-=20;
                     } else {
                         counter++;
                     }
@@ -437,29 +442,33 @@ public class UnitData implements Serializable {
                 }
             } else if(playerNum==2){
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
-                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<820){// reaching statement
+                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
                         if(ud.isAlive){
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
-                            hp--;
+                            if(ud.getUnitType()==4){
+                                hp--;
+                                ud.setIsAttacked(false);
+                            }
+                            if(ud.getHp()<=0){
+                                state=-1;
+                            }
                             if(hp<=0){
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
                             break;
-                        }else{
-                            state=-1;
                         }
 
                     }
                 }
                 if (y < 80) {//reaching enemy state
                     state = 0;
-                    if (counter >= Constants.AttackRate_Warrior) {
+                    if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
                         Variable.data1.getStatusData().addHp(-1);
-                        hp-=48;
+                        hp-=20;
                         //System.out.println(hp);
                     } else {
                         counter++;
@@ -467,7 +476,7 @@ public class UnitData implements Serializable {
 
                 }
             }
-            y = y + Constants.Speed_Warrior * state;
+            y = y + Constants.Speed_Archer * state;
         }
 
     }
