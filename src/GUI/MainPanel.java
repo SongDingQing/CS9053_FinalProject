@@ -201,6 +201,12 @@ public class MainPanel extends JFrame implements ActionListener {
                     Variable1.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a warrior!\n");
                 }
+            }else if(Variable1.CommandType==5){
+                if(localData.getStatusData().getFood()<100||localData.getStatusData().getWood()<50
+                        ||localData.getStatusData().getIron()<20){
+                    Variable1.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a archer!\n");
+                }
             }
         }else if(playerNum==2){
             if(Variable2.CommandType==1){
@@ -224,6 +230,12 @@ public class MainPanel extends JFrame implements ActionListener {
                     Variable2.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a warrior!\n");
                 }
+            }else if(Variable2.CommandType==5){
+                if(localData.getStatusData().getFood()<100||localData.getStatusData().getWood()<50
+                        ||localData.getStatusData().getIron()<20){
+                    Variable2.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a archer!\n");
+                }
             }
         }
 
@@ -236,7 +248,7 @@ public class MainPanel extends JFrame implements ActionListener {
         if (isConnected) {
             try {
                 if (playerNum == 1) {
-                    checkCommand();
+                    //checkCommand();
                     //System.out.println(Variable1.CommandType);
                     toServer.writeInt(Variable1.CommandType);
                     toServer.flush();
@@ -244,7 +256,7 @@ public class MainPanel extends JFrame implements ActionListener {
                     toServer.flush();
                     Variable1.CommandType = 0;
                 } else {
-                    checkCommand();
+                    //checkCommand();
                     toServer.writeInt(Variable2.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable2.tempX);

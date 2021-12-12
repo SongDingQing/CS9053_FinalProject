@@ -52,6 +52,9 @@ public class UnitData implements Serializable {
             case 4:
                 hp = 240;
                 break;
+            case 5:
+                hp = 20;
+                break;
         }
     }
 
@@ -114,6 +117,8 @@ public class UnitData implements Serializable {
                 updateMiner(playerNum);
             } else if (unitType == 4) {
                 updateWarrior(playerNum);
+            } else if (unitType == 5) {
+                updateArcher(playerNum);
             }
             life--;
             //System.out.println(life+"from playNUm  "+playerNum);
@@ -362,6 +367,77 @@ public class UnitData implements Serializable {
             } else if(playerNum==2){
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
                     if(ud.getX()==x &&(y+ud.getY())<760){// reaching statement
+                        if(ud.isAlive){
+                            ud.setIsAttacked(true);
+                            ud.addHp(-1);
+                            state=0;
+                            hp--;
+                            if(hp<=0){
+                                ud.setIsAttacked(false);
+                                ud.setState(-1);
+                            }
+                            break;
+                        }else{
+                            state=-1;
+                        }
+
+                    }
+                }
+                if (y < 80) {//reaching enemy state
+                    state = 0;
+                    if (counter >= Constants.AttackRate_Warrior) {
+                        counter = 0;
+                        Variable.data1.getStatusData().addHp(-1);
+                        hp-=48;
+                        //System.out.println(hp);
+                    } else {
+                        counter++;
+                    }
+
+                }
+            }
+            y = y + Constants.Speed_Warrior * state;
+        }
+
+    }
+
+    public void updateArcher(int playerNum) {
+        if(hp<=0){
+            isAlive=false;
+        }else{
+            if (playerNum == 1) {
+                for(UnitData ud:Variable.data2.getUnitDataAL()){
+                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<820){// reaching statement
+                        if(ud.isAlive){
+                            ud.setIsAttacked(true);
+                            ud.addHp(-1);
+                            state=0;
+                            if(ud.getHp()<=0){
+                                state=-1;
+                            }
+                            if(hp<=0){
+                                ud.setIsAttacked(false);
+                                ud.setState(-1);
+                            }
+                            break;
+                        }
+
+                    }
+                }
+                if (y < 80) {// reaching enemy base
+                    state = 0;
+                    if (counter >= Constants.AttackRate_Warrior) {
+                        counter = 0;
+                        Variable.data2.getStatusData().addHp(-1);
+                        hp-=48;
+                    } else {
+                        counter++;
+                    }
+
+                }
+            } else if(playerNum==2){
+                for(UnitData ud:Variable.data1.getUnitDataAL()){
+                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<820){// reaching statement
                         if(ud.isAlive){
                             ud.setIsAttacked(true);
                             ud.addHp(-1);

@@ -136,6 +136,8 @@ public class MapPanel extends JPanel {
                 return new Unit_003Miner();
             case 4:
                 return new Unit_004Warrior();
+            case 5:
+                return new Unit_005Archer();
             default:// default exception handler
                 return null;
         }

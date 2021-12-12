@@ -70,6 +70,7 @@ public class CommandPanel extends JPanel {
         cFisher.addActionListener(new UnitListener(2));
         cMiner.addActionListener(new UnitListener(3));
         cWarrior.addActionListener(new UnitListener(4));
+        cArcher.addActionListener(new UnitListener(5));
     }
     
     public void paintComponent(Graphics g){
