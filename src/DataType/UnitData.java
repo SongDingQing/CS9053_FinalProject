@@ -53,7 +53,7 @@ public class UnitData implements Serializable {
                 hp = 240;
                 break;
             case 5:
-                hp = 20;
+                hp = 80;
                 break;
         }
     }
@@ -416,6 +416,8 @@ public class UnitData implements Serializable {
                             if(ud.getUnitType()==4){
                                 hp--;
                                 ud.setIsAttacked(false);
+                            }else if(ud.getUnitType()==5){
+                                hp--;
                             }
                             if(ud.getHp()<=0){
                                 state=-1;
@@ -434,7 +436,7 @@ public class UnitData implements Serializable {
                     if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
                         Variable.data2.getStatusData().addHp(-1);
-                        hp-=20;
+                        hp-=60;
                     } else {
                         counter++;
                     }
@@ -450,6 +452,8 @@ public class UnitData implements Serializable {
                             if(ud.getUnitType()==4){
                                 hp--;
                                 ud.setIsAttacked(false);
+                            }else if(ud.getUnitType()==5){
+                                hp--;
                             }
                             if(ud.getHp()<=0){
                                 state=-1;
@@ -460,7 +464,6 @@ public class UnitData implements Serializable {
                             }
                             break;
                         }
-
                     }
                 }
                 if (y < 80) {//reaching enemy state
@@ -468,7 +471,7 @@ public class UnitData implements Serializable {
                     if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
                         Variable.data1.getStatusData().addHp(-1);
-                        hp-=20;
+                        hp-=60;
                         //System.out.println(hp);
                     } else {
                         counter++;
