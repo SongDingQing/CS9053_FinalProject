@@ -333,10 +333,12 @@ public class UnitData implements Serializable {
         if(hp<=0){
             isAlive=false;
         }else{
+            boolean enemyExist=false;
             if (playerNum == 1) {
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
                     if(((ud.getX()-x)<=10||(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
                         if(ud.isAlive){
+                            enemyExist=true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
@@ -352,6 +354,9 @@ public class UnitData implements Serializable {
                         }
 
                     }
+                }
+                if(!enemyExist){
+                    state=-1;
                 }
                 if (y < 80) {// reaching enemy base
                     state = 0;
@@ -368,6 +373,7 @@ public class UnitData implements Serializable {
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
                     if(((ud.getX()-x)<=10||(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
                         if(ud.isAlive){
+                            enemyExist=true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
@@ -383,6 +389,9 @@ public class UnitData implements Serializable {
                         }
 
                     }
+                }
+                if(!enemyExist){
+                    state=-1;
                 }
                 if (y < 80) {//reaching enemy state
                     state = 0;
@@ -407,9 +416,11 @@ public class UnitData implements Serializable {
             isAlive=false;
         }else{
             if (playerNum == 1) {
+                boolean enemyExist=false;
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
                     if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
                         if(ud.isAlive){
+                            enemyExist=true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
@@ -430,6 +441,9 @@ public class UnitData implements Serializable {
                         }
 
                     }
+                }
+                if(!enemyExist){//check if enemy is found
+                    state=-1;
                 }
                 if (y < 80) {// reaching enemy base
                     state = 0;
@@ -443,9 +457,11 @@ public class UnitData implements Serializable {
 
                 }
             } else if(playerNum==2){
+                boolean enemyExist=false;
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
                     if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
                         if(ud.isAlive){
+                            enemyExist=true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
                             state=0;
@@ -465,6 +481,9 @@ public class UnitData implements Serializable {
                             break;
                         }
                     }
+                }
+                if(!enemyExist){//check if enemy is found
+                    state=-1;
                 }
                 if (y < 80) {//reaching enemy state
                     state = 0;
