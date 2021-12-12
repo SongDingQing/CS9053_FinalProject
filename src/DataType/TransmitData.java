@@ -15,7 +15,6 @@ public class TransmitData implements Serializable {
     private ArrayList<UnitData> enemyUnitDataAL;
     private int playerNum;
     private int cookieCounter;
-    private static Lock lock = new ReentrantLock();
 
     public TransmitData() {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
@@ -54,18 +53,16 @@ public class TransmitData implements Serializable {
         //System.out.println(enemyUnitDataAL.get(0).getId());
     }
 
-    public synchronized void update(ArrayList<UnitData> enemyUnitDataAL) {
-        lock.lock();
+    public void update(ArrayList<UnitData> enemyUnitDataAL) {
         updateTime();
         updateUnits();
         setEnemyUnit(enemyUnitDataAL);
         if(cookieCounter>=8){
             clearDiedUnit();
         }
-        System.out.println(unitDataAL.size()+"   ");
+        //System.out.println(unitDataAL.size()+"   ");
         //System.out.println(enemyUnitDataAL.size());
         cookieCounter++;
-        lock.unlock();
     }
     public void clearDiedUnit(){
         ArrayList<UnitData> temp= new ArrayList<UnitData>();

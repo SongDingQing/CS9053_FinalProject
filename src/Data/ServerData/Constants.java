@@ -35,6 +35,13 @@ public class Constants {
     public static final int MaxCapacity_Logger =10;
     // collecting rate in second is this/25
     public static final int CollectingRate_Logger =50;
+    //------------Logger------------
+    //move speed
+    public static final int Speed_Fisher=1;
+    //capacity
+    public static final int MaxCapacity_Fisher =10;
+    // collecting rate in second is this/25
+    public static final int CollectingRate_Fisher =50;
     //--------Warrior---------------
     //move speed
     public static final int Speed_Warrior=1;
