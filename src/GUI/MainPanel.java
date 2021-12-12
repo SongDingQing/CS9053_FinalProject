@@ -195,6 +195,7 @@ public class MainPanel extends JFrame implements ActionListener {
             try {
                 if (playerNum == 1) {
                     checkCommand();
+                    //System.out.println(Variable1.CommandType);
                     toServer.writeInt(Variable1.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable1.tempX);

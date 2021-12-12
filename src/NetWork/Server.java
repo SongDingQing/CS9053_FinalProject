@@ -27,7 +27,7 @@ public class Server extends JFrame implements Runnable {
     private int timeCounter;
 
     public Server() {
-        game=true;
+        game = true;
         //player data initialization
         Variable.data1 = new TransmitData(1);
         Variable.data2 = new TransmitData(2);
@@ -45,7 +45,8 @@ public class Server extends JFrame implements Runnable {
         Thread t = new Thread(this);
         t.start();
     }
-    public void configPixelData(){
+
+    public void configPixelData() {
         Variable.pixelData1 = new int[80][60];
         Variable.pixelData2 = new int[80][60];
         //------------CONSTRUCT mapData based on PixelData.txt--------------
@@ -55,9 +56,9 @@ public class Server extends JFrame implements Runnable {
             while (input.hasNext()) {
                 for (int y = 0; y < Constants.Pixels_Height; y++) {
                     for (int x = 0; x < Constants.Pixels_Width; x++) {
-                        int temp =input.nextInt();
+                        int temp = input.nextInt();
                         Variable.pixelData1[x][y] = temp;
-                        Variable.pixelData2[x][59-y] = temp;
+                        Variable.pixelData2[x][59 - y] = temp;
                     }
                 }
             }
@@ -112,6 +113,7 @@ public class Server extends JFrame implements Runnable {
         public Player(Socket socket, int clientNum) {
             this.socket = socket;
             this.clientNum = clientNum;
+            //System.out.println(clientNum);
         }
 
         private int getClientNum() {
@@ -122,7 +124,7 @@ public class Server extends JFrame implements Runnable {
         /**
          * Run a thread
          */
-        public void run() {
+        public synchronized void run() {
             while (game) {
                 try {
                     // Create data input and output streams
@@ -134,12 +136,13 @@ public class Server extends JFrame implements Runnable {
                             socket.getOutputStream());
 
                     // Continuously serve the client
-                    if (clientNum == 1) {
-                        while (true) {
+                    while (true) {
+                        if (clientNum == 1) {
+
                             Thread.sleep(40);
                             int command = inputFromClient.readInt();
                             int locX = inputFromClient.readInt();
-                            handleCommand(command,clientNum,locX);
+                            handleCommand(command, clientNum, locX);
 
                             // Send area back to the client
                             outputToClient.reset();
@@ -153,18 +156,19 @@ public class Server extends JFrame implements Runnable {
                                 Variable.time++;
                                 timeCounter = 1;
                             }
-                        }
-                    } else {
-                        while (true) {
+                        } else if (clientNum == 2) {
+
                             Thread.sleep(40);
                             int command = inputFromClient.readInt();
                             int locX = inputFromClient.readInt();
-                            handleCommand(command,clientNum,locX);
+                            handleCommand(command, clientNum, locX);
                             outputToClient.reset();
                             outputToClient.writeObject(Variable.data2);
                             Variable.data2.update(Variable.data1.getUnitDataAL());
+
                         }
                     }
+
 
                 } catch (IOException | InterruptedException ex) {
                     ta.append("client:" + this.getClientNum() + " have been closed\n");
@@ -174,14 +178,15 @@ public class Server extends JFrame implements Runnable {
 
         }
     }
-    public void handleCommand(int command, int playerNum,int locX){
-        if(command!=0){
-            if(playerNum==1){
-                Variable.data1.createUnit(command,locX);
-                Variable.data2.createEnemyUnit(command,locX);
-            }else{
-                Variable.data2.createUnit(command,locX);
-                Variable.data1.createEnemyUnit(command,locX);
+
+    public void handleCommand(int command, int playerNum, int locX) {
+        if (command != 0) {
+            if (playerNum == 1) {
+                Variable.data1.createUnit(command, locX);
+                Variable.data2.updateEnemyUnit();
+            } else if (playerNum == 2) {
+                Variable.data2.createUnit(command, locX);
+                Variable.data1.updateEnemyUnit();
             }
         }
 

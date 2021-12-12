@@ -15,6 +15,8 @@ public class UnitData implements Serializable {
     private boolean isAlive;
     private int capacity;//item carried
     private int counter;
+    private static int numOfInstance = 0;
+    private int id;
 
     public UnitData(int unitType, int x, int y) {
         counter =0;
@@ -26,6 +28,8 @@ public class UnitData implements Serializable {
         workLoc=Constants.Pixels_Height-1;
         life=4000;
         isAlive=true;
+        numOfInstance++;
+        id = numOfInstance;
     }
 
     public int getX() {
@@ -60,7 +64,11 @@ public class UnitData implements Serializable {
         return isAlive;
     }
 
-    public void update(int playerNum) {
+    public int getId() {
+        return id;
+    }
+
+    public synchronized void update(int playerNum) {
         if(life<=0){
             isAlive=false;
         }else{
@@ -74,12 +82,14 @@ public class UnitData implements Serializable {
                 updateWarrior(playerNum);
             }
             life--;
+            //System.out.println(life+"from playNUm  "+playerNum);
         }
 
 
     }
 
     public void updateLogger(int playerNum){
+        //find working location
         if(playerNum==2){
             if(workLoc==Constants.Pixels_Height-1){
                 //find wood
@@ -106,6 +116,7 @@ public class UnitData implements Serializable {
             }
 
         }
+
         if(y<workLoc*10+80){
             //branch: working
             if(capacity<Constants.MaxCapacity_Logger){
@@ -120,18 +131,21 @@ public class UnitData implements Serializable {
             }else{
                 state=1;
             }
-        }else if(y>680){
+        }else if(y==680){
             state=-1;
             capacity=0;
             if(playerNum==1){
                 Variable.data1.getStatusData().addWood(Constants.MaxCapacity_Logger);
+                //System.out.println(y);
             }else{
                 Variable.data2.getStatusData().addWood(Constants.MaxCapacity_Logger);
             }
             //System.out.println(capacity);
+        }synchronized (this){
+            y=y+Constants.Speed_Logger*state;
+            //System.out.println(y +" from player " + id);
+            //System.out.println(numOfInstance);
         }
-        y=y+Constants.Speed_Logger*state;
-
 
     }
 

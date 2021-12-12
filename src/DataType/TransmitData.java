@@ -4,6 +4,8 @@ import Data.ServerData.Data_init;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import Data.ServerData.Variable;
 
@@ -13,6 +15,7 @@ public class TransmitData implements Serializable {
     private ArrayList<UnitData> enemyUnitDataAL;
     private int playerNum;
     private int cookieCounter;
+    private static Lock lock = new ReentrantLock();
 
     public TransmitData() {
         statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
@@ -31,6 +34,7 @@ public class TransmitData implements Serializable {
     public void createUnit(int unitType,int locX){
         takeResource(unitType);
         unitDataAL.add(new UnitData(unitType,locX/10*10,670));
+        //System.out.println(unitDataAL.get(0).getId());
     }
     // this method is used to take resource for the needed command:
     // the command's availability was checked before sent to server
@@ -40,20 +44,28 @@ public class TransmitData implements Serializable {
                 statusData.addFood(-50);
         }
     }
-    public void createEnemyUnit(int unitType,int locX){
-        enemyUnitDataAL.add(new UnitData(unitType,locX/10*10,670));
+    public void updateEnemyUnit(){
+        if(playerNum==1){
+            enemyUnitDataAL= Variable.data2.getUnitDataAL();
+        }else{
+            enemyUnitDataAL= Variable.data1.getUnitDataAL();
+        }
+
+        //System.out.println(enemyUnitDataAL.get(0).getId());
     }
 
-    public void update(ArrayList<UnitData> enemyUnitDataAL) {
+    public synchronized void update(ArrayList<UnitData> enemyUnitDataAL) {
+        lock.lock();
         updateTime();
-        updateStatus();
         updateUnits();
-        updateEnemyUnit(enemyUnitDataAL);
-        if(cookieCounter>=800){
+        setEnemyUnit(enemyUnitDataAL);
+        if(cookieCounter>=8){
             clearDiedUnit();
         }
+        System.out.println(unitDataAL.size()+"   ");
+        //System.out.println(enemyUnitDataAL.size());
         cookieCounter++;
-        //System.out.println(unitDataAL.size());
+        lock.unlock();
     }
     public void clearDiedUnit(){
         ArrayList<UnitData> temp= new ArrayList<UnitData>();
@@ -67,15 +79,13 @@ public class TransmitData implements Serializable {
     public void updateTime(){
         statusData.setTime(Variable.time);
     }
-    public void updateStatus(){
-    }
-    public void updateUnits(){
+    public synchronized void updateUnits(){
         for(UnitData unitData: unitDataAL) {
             unitData.update(playerNum);
         }
 
     }
-    public void updateEnemyUnit(ArrayList<UnitData> enemyUnitDataAL){
+    public void setEnemyUnit(ArrayList<UnitData> enemyUnitDataAL){
         this.enemyUnitDataAL=enemyUnitDataAL;
     }
 
@@ -87,14 +97,14 @@ public class TransmitData implements Serializable {
         this.unitDataAL = unitDataAL;
     }
 
-    public ArrayList<UnitData> getUnitDataAL() {
+    public synchronized ArrayList<UnitData> getUnitDataAL() {
         return unitDataAL;
     }
-    public ArrayList<UnitData> getEnemyUnitDataAL() {
+    public synchronized ArrayList<UnitData> getEnemyUnitDataAL() {
         return enemyUnitDataAL;
     }
 
-    public StatusData getStatusData() {
+    public synchronized StatusData getStatusData() {
         return statusData;
     }
 }
