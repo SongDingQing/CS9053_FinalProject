@@ -38,15 +38,21 @@ public class TransmitData implements Serializable {
     // this method is used to take resource for the needed command:
     // the command's availability was checked before sent to server
     public void takeResource(int unitType){
-        switch (unitType){
-            case 1:
-                statusData.addFood(-50);
-                break;
-            case 2:
-                statusData.addFood(-30);
-                statusData.addWood(-20);
-                break;
+        if(unitType==1){
+            statusData.addFood(-50);
+        }else if(unitType==2){
+            statusData.addFood(-30);
+            statusData.addWood(-20);
+        }else if(unitType==3){
+            statusData.addFood(-50);
+            statusData.addWood(-50);
+        }else if(unitType==4){
+            statusData.addFood(-50);
+            statusData.addWood(-50);
+            statusData.addFood(-50);
+            statusData.addWood(-50);
         }
+
     }
     public void updateEnemyUnit(){
         if(playerNum==1){

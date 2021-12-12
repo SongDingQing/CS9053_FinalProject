@@ -74,13 +74,19 @@ public class StatusData implements Serializable {
     public void setFood(int food) {
         this.food = food;
     }
-    public synchronized void addHp(int amount){
+    public void addHp(int amount){
         this.hp+=amount;
     }
-    public synchronized void addWood(int item){
+    public void addWood(int item){
         this.wood+=item;
     }
-    public synchronized void addFood(int item){
+    public void addFood(int item){
         this.food+=item;
+    }
+    public void addCoal(int item){
+        this.coal+=item;
+    }
+    public void addIron(int item){
+        this.iron+=item;
     }
 }

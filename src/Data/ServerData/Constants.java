@@ -42,6 +42,13 @@ public class Constants {
     public static final int MaxCapacity_Fisher =30;
     // collecting rate in second is this/25
     public static final int CollectingRate_Fisher =10;
+    //------------Fisher------------
+    //move speed
+    public static final int Speed_Miner=1;
+    //capacity
+    public static final int MaxCapacity_Miner =30;
+    // collecting rate in second is this/25
+    public static final int CollectingRate_Miner =10;
     //--------Warrior---------------
     //move speed
     public static final int Speed_Warrior=1;

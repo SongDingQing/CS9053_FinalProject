@@ -20,8 +20,10 @@ public class UnitData implements Serializable {
     private int hp;
     private boolean haveWorkLoc;
     private boolean isAttacked;
+    private int workType;//this is used for miner only
 
     public UnitData(int unitType, int x, int y) {
+        workType=0;
         isAttacked=false;
         haveWorkLoc=false;
         counter = 0;
@@ -105,7 +107,7 @@ public class UnitData implements Serializable {
             } else if (unitType == 2) {
                 updateFisher(playerNum);
             } else if (unitType == 3) {
-                updateMiner();
+                updateMiner(playerNum);
             } else if (unitType == 4) {
                 updateWarrior(playerNum);
             }
@@ -224,9 +226,9 @@ public class UnitData implements Serializable {
                 } else if (y > 680) {
                     state = -1;
                     if (playerNum == 1) {
-                        Variable.data1.getStatusData().addWood(capacity);
+                        Variable.data1.getStatusData().addFood(capacity);
                     } else {
-                        Variable.data2.getStatusData().addWood(capacity);
+                        Variable.data2.getStatusData().addFood(capacity);
                     }
                     capacity = 0;
                 }
@@ -237,13 +239,85 @@ public class UnitData implements Serializable {
         }
     }
 
-    public void updateMiner() {
-        if (y < 80) {
-            state = 1;
-        } else if (y > 680) {
-            state = -1;
+    public void updateMiner(int playerNum) {
+        if(hp>0){
+            //find working location
+            if(playerNum==1){
+                if (workLoc == Constants.Pixels_Height - 1) {
+                    //find wood
+                    int tempX = x / 10;
+                    for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                        if (Variable.pixelData1[tempX][i] == 4) {
+                            workType=1;
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }else if (Variable.pixelData1[tempX][i] == 5) {
+                            workType=2;
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }
+                    }
+                }
+
+            } else if (playerNum == 2) {
+                if (workLoc == Constants.Pixels_Height - 1) {
+                    //find wood
+                    int tempX = x / 10;
+                    for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                        if (Variable.pixelData2[tempX][i] == 4) {
+                            workType=1;
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }else if (Variable.pixelData2[tempX][i] == 5) {
+                            workType=2;
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(workType!=0&&!isAttacked){
+                if (y <= workLoc * 10 + 80) {
+                    //branch: working
+                    if (capacity < Constants.MaxCapacity_Miner) {
+                        state = 0;
+                        if (counter < Constants.CollectingRate_Miner) {
+                            counter++;
+                        } else {
+                            counter = 0;
+                            capacity++;
+                            //System.out.println(capacity);
+                        }
+                    } else {
+                        state = 1;
+                    }
+                } else if (y > 680) {
+                    state = -1;
+                    if (playerNum == 1) {
+                        if(workType==1){
+                            Variable.data1.getStatusData().addCoal(capacity);
+                        }else{
+                            Variable.data1.getStatusData().addIron(capacity);
+                        }
+
+                    } else {
+                        if(workType==1){
+                            Variable.data2.getStatusData().addCoal(capacity);
+                        }else{
+                            Variable.data2.getStatusData().addIron(capacity);
+                        }
+                    }
+                    capacity = 0;
+                }
+                y = y + Constants.Speed_Miner * state;
+            }
+        }else{
+            isAlive=false;
         }
-        y = y + state;
     }
 
     public void updateWarrior(int playerNum) {

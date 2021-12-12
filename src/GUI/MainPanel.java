@@ -179,17 +179,54 @@ public class MainPanel extends JFrame implements ActionListener {
     }
 
     private void checkCommand(){
-        if(Variable1.CommandType==1){
-            if(localData.getStatusData().getFood()<50){
-                Variable1.CommandType=0;
-                logTextField.append("Error: not enough food to generate a logger!\n");
+        if(playerNum==1){
+            if(Variable1.CommandType==1){
+                if(localData.getStatusData().getFood()<50){
+                    Variable1.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a logger!\n");
+                }
+            }else if(Variable1.CommandType==2){
+                if(localData.getStatusData().getFood()<30||localData.getStatusData().getWood()<20){
+                    Variable1.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a fisher!\n");
+                }
+            }else if(Variable1.CommandType==3){
+                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50){
+                    Variable1.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a miner!\n");
+                }
+            }else if(Variable1.CommandType==4){
+                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50
+                        ||localData.getStatusData().getCoal()<50||localData.getStatusData().getIron()<50){
+                    Variable1.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a warrior!\n");
+                }
             }
-        }else if(Variable1.CommandType==2){
-            if(localData.getStatusData().getFood()<30||localData.getStatusData().getWood()<20){
-                Variable1.CommandType=0;
-                logTextField.append("Error: not enough food to generate a fisher!\n");
+        }else if(playerNum==2){
+            if(Variable2.CommandType==1){
+                if(localData.getStatusData().getFood()<50){
+                    Variable2.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a logger!\n");
+                }
+            }else if(Variable2.CommandType==2){
+                if(localData.getStatusData().getFood()<30||localData.getStatusData().getWood()<20){
+                    Variable2.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a fisher!\n");
+                }
+            }else if(Variable2.CommandType==3){
+                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50){
+                    Variable2.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a miner!\n");
+                }
+            }else if(Variable2.CommandType==4){
+                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50
+                        ||localData.getStatusData().getCoal()<50||localData.getStatusData().getIron()<50){
+                    Variable2.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate a warrior!\n");
+                }
             }
         }
+
     }
 
 
