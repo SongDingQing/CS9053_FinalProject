@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Data/ClientData/PixelData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ClientData/PixelData.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/ServerData/PixelData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ServerData/PixelData.txt" afterDir="false" />
-    </list>
+    <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +43,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\songc\Documents\PlatformIO\Projects\CS9053_FinalProject\src\Data\ClientData" />
       <recent name="C:\Users\songc\Documents\GitHub\CS9053_FinalProject\src\Data\ServerData" />
       <recent name="C:\Users\songc\Documents\GitHub\CS9053_FinalProject\src\Data" />
       <recent name="C:\Users\songc\Documents\GitHub\CS9053_FinalProject\Project\src\Images" />
