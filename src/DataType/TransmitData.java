@@ -62,7 +62,7 @@ public class TransmitData implements Serializable {
         updateTime();
         updateUnits();
         setEnemyUnit(enemyUnitDataAL);
-        if(cookieCounter>=8){
+        if(cookieCounter>=800){
             clearDiedUnit();
         }
         //System.out.println(unitDataAL.size()+"   ");
@@ -99,14 +99,14 @@ public class TransmitData implements Serializable {
         this.unitDataAL = unitDataAL;
     }
 
-    public synchronized ArrayList<UnitData> getUnitDataAL() {
+    public ArrayList<UnitData> getUnitDataAL() {
         return unitDataAL;
     }
-    public synchronized ArrayList<UnitData> getEnemyUnitDataAL() {
+    public ArrayList<UnitData> getEnemyUnitDataAL() {
         return enemyUnitDataAL;
     }
 
-    public synchronized StatusData getStatusData() {
+    public StatusData getStatusData() {
         return statusData;
     }
 }

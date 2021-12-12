@@ -19,8 +19,10 @@ public class UnitData implements Serializable {
     private int id;
     private int hp;
     private boolean haveWorkLoc;
+    private boolean isAttacked;
 
     public UnitData(int unitType, int x, int y) {
+        isAttacked=false;
         haveWorkLoc=false;
         counter = 0;
         capacity = 0;
@@ -39,13 +41,15 @@ public class UnitData implements Serializable {
     public void hpConfig() {
         switch (unitType) {
             case 1:
-                hp = 2;
             case 2:
-                hp = 2;
+                hp = 40;
+                break;
             case 3:
-                hp = 3;
+                hp = 60;
+                break;
             case 4:
-                hp = 12;
+                hp = 240;
+                break;
         }
     }
 
@@ -85,7 +89,14 @@ public class UnitData implements Serializable {
         return id;
     }
 
-    public synchronized void update(int playerNum) {
+    public void setIsAttacked(boolean a) {
+        isAttacked=a;
+    }
+    public void addHp(int amount){
+        hp+=amount;
+    }
+
+    public void update(int playerNum) {
         if (life <= 0) {
             isAlive = false;
         } else {
@@ -106,59 +117,64 @@ public class UnitData implements Serializable {
     }
 
     public void updateLogger(int playerNum) {
-        //find working location
-        if(playerNum==1){
-            if (workLoc == Constants.Pixels_Height - 1) {
-                //find wood
-                int tempX = x / 10;
-                for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
-                    if (Variable.pixelData1[tempX][i] == 1) {
-                        workLoc = i;
-                        haveWorkLoc=true;
-                        break;
+        if(hp>0){
+            //find working location
+            if(playerNum==1){
+                if (workLoc == Constants.Pixels_Height - 1) {
+                    //find wood
+                    int tempX = x / 10;
+                    for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                        if (Variable.pixelData1[tempX][i] == 1) {
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }
                     }
                 }
-            }
 
-        } else if (playerNum == 2) {
-            if (workLoc == Constants.Pixels_Height - 1) {
-                //find wood
-                int tempX = x / 10;
-                for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
-                    if (Variable.pixelData2[tempX][i] == 1) {
-                        workLoc = i;
-                        haveWorkLoc=true;
-                        break;
+            } else if (playerNum == 2) {
+                if (workLoc == Constants.Pixels_Height - 1) {
+                    //find wood
+                    int tempX = x / 10;
+                    for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                        if (Variable.pixelData2[tempX][i] == 1) {
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }
                     }
                 }
             }
-        }
-        if(haveWorkLoc){
-            if (y <= workLoc * 10 + 80) {
-                //branch: working
-                if (capacity < Constants.MaxCapacity_Logger) {
-                    state = 0;
-                    if (counter < Constants.CollectingRate_Logger) {
-                        counter++;
+            if(haveWorkLoc&&!isAttacked){
+                if (y <= workLoc * 10 + 80) {
+                    //branch: working
+                    if (capacity < Constants.MaxCapacity_Logger) {
+                        state = 0;
+                        if (counter < Constants.CollectingRate_Logger) {
+                            counter++;
+                        } else {
+                            counter = 0;
+                            capacity++;
+                            //System.out.println(capacity);
+                        }
                     } else {
-                        counter = 0;
-                        capacity++;
-                        //System.out.println(capacity);
+                        state = 1;
                     }
-                } else {
-                    state = 1;
+                } else if (y > 680) {
+                    state = -1;
+                    if (playerNum == 1) {
+                        Variable.data1.getStatusData().addWood(capacity);
+                    } else {
+                        Variable.data2.getStatusData().addWood(capacity);
+                    }
+                    capacity = 0;
                 }
-            } else if (y > 680) {
-                state = -1;
-                if (playerNum == 1) {
-                    Variable.data1.getStatusData().addWood(capacity);
-                } else {
-                    Variable.data2.getStatusData().addWood(capacity);
-                }
-                capacity = 0;
+                y = y + Constants.Speed_Logger * state;
             }
-            y = y + Constants.Speed_Logger * state;
+        }else{
+            isAlive=false;
         }
+
     }
 
     public void updateFisher(int playerNum) {
@@ -231,24 +247,62 @@ public class UnitData implements Serializable {
             isAlive=false;
         }else{
             if (playerNum == 1) {
+                for(UnitData ud:Variable.data2.getUnitDataAL()){
+                    if(ud.getX()==x &&(y+ud.getY())<760){// reaching statement
+                        if(ud.isAlive){
+                            ud.setIsAttacked(true);
+                            ud.addHp(-1);
+                            state=0;
+                            hp--;
+                            if(hp<=0){
+                                ud.setIsAttacked(false);
+                                ud.setState(-1);
+                            }
+                            //System.out.println(hp+"     "+ud.hp);
+                            break;
+                        }else{
+                            state=-1;
+                        }
+
+                    }
+                }
                 if (y < 80) {// reaching enemy base
                     state = 0;
                     if (counter >= Constants.AttackRate_Warrior) {
                         counter = 0;
                         Variable.data2.getStatusData().addHp(-1);
-                        hp--;
+                        hp-=48;
                     } else {
                         counter++;
                     }
 
                 }
             } else if(playerNum==2){
+                for(UnitData ud:Variable.data1.getUnitDataAL()){
+                    if(ud.getX()==x &&(y+ud.getY())<760){// reaching statement
+                        if(ud.isAlive){
+                            ud.setIsAttacked(true);
+                            ud.addHp(-1);
+                            state=0;
+                            hp--;
+                            if(hp<=0){
+                                ud.setIsAttacked(false);
+                                ud.setState(-1);
+                            }
+                            break;
+                        }else{
+                            state=-1;
+                        }
+
+                    }
+                }
                 if (y < 80) {//reaching enemy state
                     state = 0;
                     if (counter >= Constants.AttackRate_Warrior) {
                         counter = 0;
                         Variable.data1.getStatusData().addHp(-1);
-                        hp--;
+                        hp-=48;
+                        System.out.println(hp);
                     } else {
                         counter++;
                     }
