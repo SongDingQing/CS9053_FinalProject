@@ -76,7 +76,7 @@ public class TransmitData implements Serializable {
     public void updateTime(){
         statusData.setTime(Variable.time);
     }
-    public synchronized void updateUnits(){
+    public void updateUnits(){
         for(UnitData unitData: unitDataAL) {
             unitData.update(playerNum);
         }

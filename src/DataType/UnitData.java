@@ -18,6 +18,7 @@ public class UnitData implements Serializable {
     private static int numOfInstance = 0;
     private int id;
     private int hp;
+    private boolean haveWorkLoc;
 
     public UnitData(int unitType, int x, int y) {
         counter = 0;
@@ -140,22 +141,22 @@ public class UnitData implements Serializable {
                 } else {
                     counter = 0;
                     capacity++;
+                    System.out.println(capacity);
                 }
             } else {
                 state = 1;
             }
-        } else if (y == 680) {
+        } else if (y > 680) {
             state = -1;
-            capacity = 0;
             if (playerNum == 1) {
-                Variable.data1.getStatusData().addWood(Constants.MaxCapacity_Logger);
+                Variable.data1.getStatusData().addWood(capacity);
             } else {
-                Variable.data2.getStatusData().addWood(Constants.MaxCapacity_Logger);
+                Variable.data2.getStatusData().addWood(capacity);
             }
+            capacity = 0;
         }
-        synchronized (this) {
-            y = y + Constants.Speed_Logger * state;
-        }
+        y = y + Constants.Speed_Logger * state;
+
 
     }
 
@@ -230,31 +231,36 @@ public class UnitData implements Serializable {
     }
 
     public void updateWarrior(int playerNum) {
-        if (playerNum == 1) {
-            if (y < 80) {
-                state = 0;
-                if (counter >= Constants.AttackRate_Warrior) {
-                    counter = 0;
-                    Variable.data2.getStatusData().addHp(-1);
-                    //System.out.print("2");
-                } else {
-                    //System.out.print("1");
-                    counter++;
-                }
+        if(hp<=0){
+            isAlive=false;
+        }else{
+            if (playerNum == 1) {
+                if (y < 80) {// reaching enemy base
+                    state = 0;
+                    if (counter >= Constants.AttackRate_Warrior) {
+                        counter = 0;
+                        Variable.data2.getStatusData().addHp(-1);
+                        hp--;
+                    } else {
+                        counter++;
+                    }
 
-            }
-        } else {
-            if (y < 80) {
-                state = 0;
-                if (counter >= Constants.AttackRate_Warrior) {
-                    counter = 0;
-                    Variable.data1.getStatusData().addHp(-1);
-                } else {
-                    counter++;
                 }
+            } else if(playerNum==2){
+                if (y < 80) {//reaching enemy state
+                    state = 0;
+                    if (counter >= Constants.AttackRate_Warrior) {
+                        counter = 0;
+                        Variable.data1.getStatusData().addHp(-1);
+                        hp--;
+                    } else {
+                        counter++;
+                    }
 
+                }
             }
+            y = y + Constants.Speed_Warrior * state;
         }
-        y = y + Constants.Speed_Warrior * state;
+
     }
 }
