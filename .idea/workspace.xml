@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataType/StatusData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/StatusData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataType/TransmitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/TransmitData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/ClientData/PixelData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ClientData/PixelData.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/ServerData/PixelData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ServerData/PixelData.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Data/ServerData" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Data/ClientData" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
