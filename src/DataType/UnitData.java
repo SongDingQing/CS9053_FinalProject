@@ -178,58 +178,62 @@ public class UnitData implements Serializable {
     }
 
     public void updateFisher(int playerNum) {
-        //find working location
-        if(playerNum==1){
-            if (workLoc == Constants.Pixels_Height - 1) {
-                //find wood
-                int tempX = x / 10;
-                for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
-                    if (Variable.pixelData1[tempX][i] == 6) {
-                        workLoc = i;
-                        haveWorkLoc=true;
-                        break;
+        if(hp>0){
+            //find working location
+            if(playerNum==1){
+                if (workLoc == Constants.Pixels_Height - 1) {
+                    //find wood
+                    int tempX = x / 10;
+                    for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                        if (Variable.pixelData1[tempX][i] == 6) {
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }
                     }
                 }
-            }
 
-        } else if (playerNum == 2) {
-            if (workLoc == Constants.Pixels_Height - 1) {
-                //find wood
-                int tempX = x / 10;
-                for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
-                    if (Variable.pixelData2[tempX][i] == 6) {
-                        workLoc = i;
-                        haveWorkLoc=true;
-                        break;
+            } else if (playerNum == 2) {
+                if (workLoc == Constants.Pixels_Height - 1) {
+                    //find wood
+                    int tempX = x / 10;
+                    for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                        if (Variable.pixelData2[tempX][i] == 6) {
+                            workLoc = i;
+                            haveWorkLoc=true;
+                            break;
+                        }
                     }
                 }
             }
-        }
-        if(haveWorkLoc){
-            if (y <= workLoc * 10 + 80) {
-                //branch: working
-                if (capacity < Constants.MaxCapacity_Fisher) {
-                    state = 0;
-                    if (counter < Constants.CollectingRate_Fisher) {
-                        counter++;
+            if(haveWorkLoc&&!isAttacked){
+                if (y <= workLoc * 10 + 80) {
+                    //branch: working
+                    if (capacity < Constants.MaxCapacity_Fisher) {
+                        state = 0;
+                        if (counter < Constants.CollectingRate_Fisher) {
+                            counter++;
+                        } else {
+                            counter = 0;
+                            capacity++;
+                            //System.out.println(capacity);
+                        }
                     } else {
-                        counter = 0;
-                        capacity++;
-                        //System.out.println(capacity);
+                        state = 1;
                     }
-                } else {
-                    state = 1;
+                } else if (y > 680) {
+                    state = -1;
+                    if (playerNum == 1) {
+                        Variable.data1.getStatusData().addWood(capacity);
+                    } else {
+                        Variable.data2.getStatusData().addWood(capacity);
+                    }
+                    capacity = 0;
                 }
-            } else if (y > 680) {
-                state = -1;
-                if (playerNum == 1) {
-                    Variable.data1.getStatusData().addFood(capacity);
-                } else {
-                    Variable.data2.getStatusData().addFood(capacity);
-                }
-                capacity = 0;
+                y = y + Constants.Speed_Fisher * state;
             }
-            y = y + Constants.Speed_Fisher * state;
+        }else{
+            isAlive=false;
         }
     }
 
