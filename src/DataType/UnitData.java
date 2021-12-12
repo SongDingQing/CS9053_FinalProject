@@ -134,7 +134,7 @@ public class UnitData implements Serializable {
             }
         }
         if(haveWorkLoc){
-            if (y < workLoc * 10 + 80) {
+            if (y <= workLoc * 10 + 80) {
                 //branch: working
                 if (capacity < Constants.MaxCapacity_Logger) {
                     state = 0;
@@ -159,69 +159,61 @@ public class UnitData implements Serializable {
             }
             y = y + Constants.Speed_Logger * state;
         }
-
-
-
     }
 
     public void updateFisher(int playerNum) {
         //find working location
-        if (playerNum == 2) {
-            if (workLoc == Constants.Pixels_Height - 1) {
-                //find wood
-                int tempX = x / 10;
-                for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
-                    if (Variable.pixelData2[tempX][i] == 6) {
-                        workLoc = i;
-                        //System.out.println(i);
-                        break;
-                    }
-                }
-            }
-        } else {
+        if(playerNum==1){
             if (workLoc == Constants.Pixels_Height - 1) {
                 //find wood
                 int tempX = x / 10;
                 for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                     if (Variable.pixelData1[tempX][i] == 6) {
                         workLoc = i;
-                        //System.out.println(i);
+                        haveWorkLoc=true;
                         break;
                     }
                 }
             }
 
-        }
-
-        if (y < workLoc * 10 + 80) {
-            //branch: working
-            if (capacity < Constants.MaxCapacity_Fisher) {
-                state = 0;
-                if (counter < Constants.CollectingRate_Fisher) {
-                    counter++;
-                } else {
-                    counter = 0;
-                    capacity++;
-                    //System.out.println(capacity);
+        } else if (playerNum == 2) {
+            if (workLoc == Constants.Pixels_Height - 1) {
+                //find wood
+                int tempX = x / 10;
+                for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
+                    if (Variable.pixelData2[tempX][i] == 6) {
+                        workLoc = i;
+                        haveWorkLoc=true;
+                        break;
+                    }
                 }
-            } else {
-                state = 1;
             }
-        } else if (y == 680) {
-            state = -1;
-            capacity = 0;
-            if (playerNum == 1) {
-                Variable.data1.getStatusData().addFood(Constants.MaxCapacity_Fisher);
-                //System.out.println(y);
-            } else {
-                Variable.data2.getStatusData().addFood(Constants.MaxCapacity_Fisher);
-            }
-            //System.out.println(capacity);
         }
-        synchronized (this) {
+        if(haveWorkLoc){
+            if (y <= workLoc * 10 + 80) {
+                //branch: working
+                if (capacity < Constants.MaxCapacity_Fisher) {
+                    state = 0;
+                    if (counter < Constants.CollectingRate_Fisher) {
+                        counter++;
+                    } else {
+                        counter = 0;
+                        capacity++;
+                        //System.out.println(capacity);
+                    }
+                } else {
+                    state = 1;
+                }
+            } else if (y > 680) {
+                state = -1;
+                if (playerNum == 1) {
+                    Variable.data1.getStatusData().addFood(capacity);
+                } else {
+                    Variable.data2.getStatusData().addFood(capacity);
+                }
+                capacity = 0;
+            }
             y = y + Constants.Speed_Fisher * state;
-            //System.out.println(y +" from player " + id);
-            //System.out.println(numOfInstance);
         }
     }
 

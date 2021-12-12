@@ -184,6 +184,11 @@ public class MainPanel extends JFrame implements ActionListener {
                 Variable1.CommandType=0;
                 logTextField.append("Error: not enough food to generate a logger!\n");
             }
+        }else if(Variable1.CommandType==2){
+            if(localData.getStatusData().getFood()<30||localData.getStatusData().getWood()<20){
+                Variable1.CommandType=0;
+                logTextField.append("Error: not enough food to generate a fisher!\n");
+            }
         }
     }
 

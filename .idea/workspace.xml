@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Data/PublicData/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/ServerData/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/Data/ServerData/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/DataType/UnitData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/DataType/UnitData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MainPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/MainPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/ServerData/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ServerData/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataType/TransmitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/TransmitData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataType/UnitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/UnitData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>

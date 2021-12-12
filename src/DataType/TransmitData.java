@@ -41,6 +41,11 @@ public class TransmitData implements Serializable {
         switch (unitType){
             case 1:
                 statusData.addFood(-50);
+                break;
+            case 2:
+                statusData.addFood(-30);
+                statusData.addWood(-20);
+                break;
         }
     }
     public void updateEnemyUnit(){
