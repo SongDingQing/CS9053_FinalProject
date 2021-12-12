@@ -236,7 +236,7 @@ public class MainPanel extends JFrame implements ActionListener {
         if (isConnected) {
             try {
                 if (playerNum == 1) {
-                    //checkCommand();
+                    checkCommand();
                     //System.out.println(Variable1.CommandType);
                     toServer.writeInt(Variable1.CommandType);
                     toServer.flush();
@@ -244,7 +244,7 @@ public class MainPanel extends JFrame implements ActionListener {
                     toServer.flush();
                     Variable1.CommandType = 0;
                 } else {
-                    //checkCommand();
+                    checkCommand();
                     toServer.writeInt(Variable2.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable2.tempX);
