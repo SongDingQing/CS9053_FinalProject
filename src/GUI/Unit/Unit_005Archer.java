@@ -1,11 +1,15 @@
 package GUI.Unit;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Unit_005Archer extends Unit{
+    Image pic=new ImageIcon("src/Images/archer.png").getImage();
     @Override
     public void drawUnit(Graphics2D g, int x, int y) {
-        g.setColor(new Color(255, 0, 0));
-        g.fillRect(x+1, y+1, 8, 8);
+        g.drawImage(pic,x+1,y+1,null);
     }
 }
