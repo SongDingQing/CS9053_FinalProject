@@ -337,7 +337,6 @@ public class UnitData implements Serializable {
             if (playerNum == 1) {
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
                     if(((ud.getX()-x)<=10&&(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
-                        System.out.println(ud.getX()-x);
                         if(ud.isAlive){
                             enemyExist=true;
                             ud.setIsAttacked(true);
