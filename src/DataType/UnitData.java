@@ -336,7 +336,8 @@ public class UnitData implements Serializable {
             boolean enemyExist=false;
             if (playerNum == 1) {
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
-                    if(((ud.getX()-x)<=10||(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
+                    if(((ud.getX()-x)<=10&&(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
+                        System.out.println(ud.getX()-x);
                         if(ud.isAlive){
                             enemyExist=true;
                             ud.setIsAttacked(true);
@@ -371,7 +372,7 @@ public class UnitData implements Serializable {
                 }
             } else if(playerNum==2){
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
-                    if(((ud.getX()-x)<=10||(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
+                    if(((ud.getX()-x)<=10&&(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
                         if(ud.isAlive){
                             enemyExist=true;
                             ud.setIsAttacked(true);
@@ -418,7 +419,7 @@ public class UnitData implements Serializable {
             if (playerNum == 1) {
                 boolean enemyExist=false;
                 for(UnitData ud:Variable.data2.getUnitDataAL()){
-                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
+                    if(((ud.getX()-x)<=20&&(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
                         if(ud.isAlive){
                             enemyExist=true;
                             ud.setIsAttacked(true);
@@ -459,7 +460,7 @@ public class UnitData implements Serializable {
             } else if(playerNum==2){
                 boolean enemyExist=false;
                 for(UnitData ud:Variable.data1.getUnitDataAL()){
-                    if(((ud.getX()-x)<=20||(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
+                    if(((ud.getX()-x)<=20&&(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
                         if(ud.isAlive){
                             enemyExist=true;
                             ud.setIsAttacked(true);
