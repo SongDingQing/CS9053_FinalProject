@@ -1,12 +1,12 @@
 package GUI.Unit;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Unit_002Fisher extends Unit{
-
+    Image pic=new ImageIcon("src/Images/fisher.png").getImage();
     @Override
     public void drawUnit(Graphics2D g, int x, int y) {
-        g.setColor(new Color(50, 0, 255));
-        g.fillOval(x+1, y+1, 8, 8);
+        g.drawImage(pic,x+1, y+1, null);
     }
 }

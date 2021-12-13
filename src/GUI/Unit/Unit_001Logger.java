@@ -1,12 +1,12 @@
 package GUI.Unit;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Unit_001Logger extends Unit{
-	
+    Image pic=new ImageIcon("src/Images/logger.png").getImage();
     @Override
     public void drawUnit(Graphics2D g, int x, int y) {
-        g.setColor(new Color(255, 255, 0));
-        g.fillOval(x+1, y+1, 8, 8);
+        g.drawImage(pic,x+1, y+1, null);
     }
 }
