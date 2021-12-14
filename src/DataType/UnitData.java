@@ -129,7 +129,7 @@ public class UnitData implements Serializable {
             } else if (unitType == 5) {
                 updateArcher(playerNum);
             } else if (unitType == 6) {
-                updateFence(playerNum);
+                updateFence();
             }
             life--;
             //System.out.println(life+"from playNUm  "+playerNum);
@@ -182,7 +182,7 @@ public class UnitData implements Serializable {
                     } else {
                         state = 1;
                     }
-                } else if (y > 680) {
+                } else if (y >=680){
                     state = -1;
                     if (playerNum == 1) {
                         Variable.data1.getStatusData().addWood(capacity);
@@ -190,7 +190,7 @@ public class UnitData implements Serializable {
                         Variable.data2.getStatusData().addWood(capacity);
                     }
                     capacity = 0;
-                } else {
+                }else{
                     if (playerNum == 1) {
                         if (Variable.pixelData1[x / 10][(y - 80) / 10] == 2) {
                             hp = 0;
@@ -325,7 +325,7 @@ public class UnitData implements Serializable {
                     } else {
                         state = 1;
                     }
-                } else if (y > 680) {
+                } else if (y >= 680) {
                     state = -1;
                     if (playerNum == 1) {
                         if (workType == 1) {
@@ -547,9 +547,9 @@ public class UnitData implements Serializable {
 
     }
 
-    public void updateFence(int playerNum){
-        if(hp<=0){
-            isAlive=false;
+    public void updateFence() {
+        if (hp <= 0) {
+            isAlive = false;
         }
     }
 }

@@ -19,6 +19,15 @@ public class CommandPanel extends JPanel {
     private JButton cFence;
     //player Number
     private int playerNum;
+    ImageIcon picLogger=new ImageIcon("src/Images/button_Logger.png");
+    ImageIcon picFisher=new ImageIcon("src/Images/button_Fisher.png");
+    ImageIcon picMiner=new ImageIcon("src/Images/button_Miner.png");
+    /*Acknowledgement
+    picture axe
+    https://pixabay.com/vectors/axe-cutting-wood-lumberjack-ax-4804073/
+    fish pic
+    https://pixabay.com/photos/the-fish-food-rope-blue-gourmet-3646498/
+    */
     
     public CommandPanel(int playerNum){
         super();
@@ -28,13 +37,13 @@ public class CommandPanel extends JPanel {
     }
     
     public void createButtons(){
-        cLogger =new JButton("Logger");
-        cFisher=new JButton("Fisher");
-        cMiner =new JButton("Miner");
+        cLogger =new JButton("Logger",picLogger);
+        cFisher=new JButton("Fisher",picFisher);
+        cMiner =new JButton("Miner",picMiner);
         cWarrior =new JButton("Warrior");
         cArcher =new JButton("Archer");
         cFence =new JButton("Fence");
-        setLayout(new GridLayout(3,2));
+        setLayout(new GridLayout(2,3));
         add(cLogger);
         add(cFisher);
         add(cMiner);
