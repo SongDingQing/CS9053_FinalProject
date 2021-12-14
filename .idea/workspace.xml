@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40363586-043d-4232-b353-a83db0c4a711" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GUI/Unit/Unit_006Fence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/CommandPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS9053_FinalProject/GUI/CommandPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/ServerData/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/ServerData/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataType/TransmitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/TransmitData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataType/UnitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/UnitData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CommandPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MapPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Unit/Unit_006Fence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Unit/Unit_006Fence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images/fence.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/fence.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
