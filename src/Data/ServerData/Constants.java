@@ -69,5 +69,9 @@ public class Constants {
     public static final int Speed_Archer=1;
     // attack rate in second is this/25
     public static final int AttackRate_Archer =50;
+    //--------Fence---------------
+    //hitPoint
+    public static final int hitPoint_Fence=500;
+
 
 }

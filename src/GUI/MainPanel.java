@@ -214,6 +214,11 @@ public class MainPanel extends JFrame implements ActionListener {
                     Variable1.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a archer!\n");
                 }
+            }else if(Variable1.CommandType==6){
+                if(localData.getStatusData().getWood()<200){
+                    Variable1.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate fence!\n");
+                }
             }
         }else if(playerNum==2){
             if(Variable2.CommandType==1){
@@ -242,6 +247,11 @@ public class MainPanel extends JFrame implements ActionListener {
                         ||localData.getStatusData().getIron()<20){
                     Variable2.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a archer!\n");
+                }
+            }else if(Variable2.CommandType==6){
+                if(localData.getStatusData().getWood()<200){
+                    Variable2.CommandType=0;
+                    logTextField.append("Error: not enough resource to generate fence!\n");
                 }
             }
         }

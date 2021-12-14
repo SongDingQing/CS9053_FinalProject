@@ -59,6 +59,8 @@ public class TransmitData implements Serializable {
             statusData.addFood(-90);
             statusData.addWood(-90);
             statusData.addIron(-20);
+        }else if(unitType==6){
+            statusData.addWood(-200);
         }
 
     }

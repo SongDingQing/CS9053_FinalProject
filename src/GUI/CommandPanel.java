@@ -16,7 +16,7 @@ public class CommandPanel extends JPanel {
     private JButton cMiner;
     private JButton cWarrior;
     private JButton cArcher;
-    private JButton cOther;
+    private JButton cFence;
     //player Number
     private int playerNum;
     
@@ -33,14 +33,14 @@ public class CommandPanel extends JPanel {
         cMiner =new JButton("Miner");
         cWarrior =new JButton("Warrior");
         cArcher =new JButton("Archer");
-        cOther =new JButton("Other");
+        cFence =new JButton("Fence");
         setLayout(new GridLayout(3,2));
         add(cLogger);
         add(cFisher);
         add(cMiner);
         add(cWarrior);
         add(cArcher);
-        add(cOther);
+        add(cFence);
     }
     
     public void addListeners(){
@@ -71,6 +71,7 @@ public class CommandPanel extends JPanel {
         cMiner.addActionListener(new UnitListener(3));
         cWarrior.addActionListener(new UnitListener(4));
         cArcher.addActionListener(new UnitListener(5));
+        cFence.addActionListener(new UnitListener(6));
     }
     
     public void paintComponent(Graphics g){

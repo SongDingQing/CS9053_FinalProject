@@ -33,7 +33,11 @@ public class UnitData implements Serializable {
         this.y = y;
         this.unitType = unitType;
         workLoc = Constants.Pixels_Height - 1;
-        life = 4000;
+        if (unitType == 6) {
+            life = 200000;
+        } else {
+            life = 4000;
+        }
         isAlive = true;
         numOfInstance++;
         id = numOfInstance;
@@ -54,7 +58,10 @@ public class UnitData implements Serializable {
                 hp = Constants.hitPoint_Warrior;
                 break;
             case 5:
-                hp = Constants.AttackRate_Archer;
+                hp = Constants.hitPoint_Archer;
+                break;
+            case 6:
+                hp = Constants.hitPoint_Fence;
                 break;
         }
     }
@@ -121,6 +128,8 @@ public class UnitData implements Serializable {
                 updateWarrior(playerNum);
             } else if (unitType == 5) {
                 updateArcher(playerNum);
+            } else if (unitType == 6) {
+                updateFence(playerNum);
             }
             life--;
             //System.out.println(life+"from playNUm  "+playerNum);
@@ -183,11 +192,11 @@ public class UnitData implements Serializable {
                     capacity = 0;
                 } else {
                     if (playerNum == 1) {
-                        if (Variable.pixelData1[x / 10 ][(y - 80) / 10] == 2) {
+                        if (Variable.pixelData1[x / 10][(y - 80) / 10] == 2) {
                             hp = 0;
                         }
                     } else if (playerNum == 2) {
-                        if (Variable.pixelData2[x / 10 ][(y - 80) / 10] == 2) {
+                        if (Variable.pixelData2[x / 10][(y - 80) / 10] == 2) {
                             hp = 0;
                         }
                     }
@@ -335,11 +344,11 @@ public class UnitData implements Serializable {
                     capacity = 0;
                 } else {
                     if (playerNum == 1) {
-                        if (Variable.pixelData1[x / 10 ][(y - 80) / 10] == 2) {
+                        if (Variable.pixelData1[x / 10][(y - 80) / 10] == 2) {
                             hp = 0;
                         }
                     } else if (playerNum == 2) {
-                        if (Variable.pixelData2[x / 10 ][(y - 80) / 10] == 2) {
+                        if (Variable.pixelData2[x / 10][(y - 80) / 10] == 2) {
                             hp = 0;
                         }
                     }
@@ -460,6 +469,8 @@ public class UnitData implements Serializable {
                                 ud.setIsAttacked(false);
                             } else if (ud.getUnitType() == 5) {
                                 hp--;
+                            } else if (ud.getUnitType() == 6) {
+                                ud.addHp(-1);
                             }
                             if (ud.getHp() <= 0) {
                                 state = -1;
@@ -476,7 +487,7 @@ public class UnitData implements Serializable {
                 if (!enemyExist) {//check if enemy is found
                     state = -1;
                 }
-                if (y < 80) {// reaching enemy base
+                if (y < 120) {// reaching enemy base
                     state = 0;
                     if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
@@ -501,6 +512,8 @@ public class UnitData implements Serializable {
                                 ud.setIsAttacked(false);
                             } else if (ud.getUnitType() == 5) {
                                 hp--;
+                            } else if (ud.getUnitType() == 6) {
+                                ud.addHp(-1);
                             }
                             if (ud.getHp() <= 0) {
                                 state = -1;
@@ -516,7 +529,7 @@ public class UnitData implements Serializable {
                 if (!enemyExist) {//check if enemy is found
                     state = -1;
                 }
-                if (y < 80) {//reaching enemy state
+                if (y < 120) {//reaching enemy state
                     state = 0;
                     if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
@@ -532,5 +545,11 @@ public class UnitData implements Serializable {
             y = y + Constants.Speed_Archer * state;
         }
 
+    }
+
+    public void updateFence(int playerNum){
+        if(hp<=0){
+            isAlive=false;
+        }
     }
 }
