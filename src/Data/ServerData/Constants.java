@@ -29,32 +29,42 @@ public class Constants {
     //Game Play Configuration
     public static final int Delay =40;
     //------------Logger------------
+    //hitPoint
+    public static final int hitPoint_Logger=40;
     //move speed
     public static final int Speed_Logger=1;
     //capacity
-    public static final int MaxCapacity_Logger =10;
+    public static final int MaxCapacity_Logger =20;
     // collecting rate in second is this/25
-    public static final int CollectingRate_Logger =25;
+    public static final int CollectingRate_Logger =20;
     //------------Fisher------------
+    //hitPoint
+    public static final int hitPoint_Fisher=40;
     //move speed
     public static final int Speed_Fisher=1;
     //capacity
     public static final int MaxCapacity_Fisher =30;
     // collecting rate in second is this/25
-    public static final int CollectingRate_Fisher =10;
+    public static final int CollectingRate_Fisher =5;
     //------------Miner------------
+    //hitPoint
+    public static final int hitPoint_Miner=60;
     //move speed
     public static final int Speed_Miner=1;
     //capacity
-    public static final int MaxCapacity_Miner =30;
+    public static final int MaxCapacity_Miner =40;
     // collecting rate in second is this/25
-    public static final int CollectingRate_Miner =10;
+    public static final int CollectingRate_Miner =5;
     //--------Warrior---------------
+    //hitPoint
+    public static final int hitPoint_Warrior=400;
     //move speed
     public static final int Speed_Warrior=1;
     // attack rate in second is this/25
     public static final int AttackRate_Warrior =50;
     //--------Archer---------------
+    //hitPoint
+    public static final int hitPoint_Archer=80;
     //move speed
     public static final int Speed_Archer=1;
     // attack rate in second is this/25

@@ -43,17 +43,18 @@ public class UnitData implements Serializable {
     public void hpConfig() {
         switch (unitType) {
             case 1:
+                hp = Constants.hitPoint_Logger;
             case 2:
-                hp = 40;
+                hp = Constants.hitPoint_Fisher;
                 break;
             case 3:
-                hp = 60;
+                hp = Constants.hitPoint_Miner;
                 break;
             case 4:
-                hp = 240;
+                hp = Constants.hitPoint_Warrior;
                 break;
             case 5:
-                hp = 80;
+                hp = Constants.AttackRate_Archer;
                 break;
         }
     }
