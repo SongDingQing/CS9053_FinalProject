@@ -23,9 +23,9 @@ public class UnitData implements Serializable {
     private int workType;//this is used for miner only
 
     public UnitData(int unitType, int x, int y) {
-        workType=0;
-        isAttacked=false;
-        haveWorkLoc=false;
+        workType = 0;
+        isAttacked = false;
+        haveWorkLoc = false;
         counter = 0;
         capacity = 0;
         state = -1;
@@ -100,10 +100,11 @@ public class UnitData implements Serializable {
     }
 
     public void setIsAttacked(boolean a) {
-        isAttacked=a;
+        isAttacked = a;
     }
-    public void addHp(int amount){
-        hp+=amount;
+
+    public void addHp(int amount) {
+        hp += amount;
     }
 
     public void update(int playerNum) {
@@ -129,16 +130,16 @@ public class UnitData implements Serializable {
     }
 
     public void updateLogger(int playerNum) {
-        if(hp>0){
+        if (hp > 0 && isAlive) {
             //find working location
-            if(playerNum==1){
+            if (playerNum == 1) {
                 if (workLoc == Constants.Pixels_Height - 1) {
                     //find wood
                     int tempX = x / 10;
                     for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                         if (Variable.pixelData1[tempX][i] == 1) {
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
                         }
                     }
@@ -151,13 +152,13 @@ public class UnitData implements Serializable {
                     for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                         if (Variable.pixelData2[tempX][i] == 1) {
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
                         }
                     }
                 }
             }
-            if(haveWorkLoc&&!isAttacked){
+            if (haveWorkLoc && !isAttacked) {
                 if (y <= workLoc * 10 + 80) {
                     //branch: working
                     if (capacity < Constants.MaxCapacity_Logger) {
@@ -180,26 +181,36 @@ public class UnitData implements Serializable {
                         Variable.data2.getStatusData().addWood(capacity);
                     }
                     capacity = 0;
+                } else {
+                    if (playerNum == 1) {
+                        if (Variable.pixelData1[x / 10 ][(y - 80) / 10] == 2) {
+                            hp = 0;
+                        }
+                    } else if (playerNum == 2) {
+                        if (Variable.pixelData2[x / 10 ][(y - 80) / 10] == 2) {
+                            hp = 0;
+                        }
+                    }
                 }
                 y = y + Constants.Speed_Logger * state;
             }
-        }else{
-            isAlive=false;
+        } else {
+            isAlive = false;
         }
 
     }
 
     public void updateFisher(int playerNum) {
-        if(hp>0){
+        if (hp > 0) {
             //find working location
-            if(playerNum==1){
+            if (playerNum == 1) {
                 if (workLoc == Constants.Pixels_Height - 1) {
                     //find wood
                     int tempX = x / 10;
                     for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                         if (Variable.pixelData1[tempX][i] == 6) {
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
                         }
                     }
@@ -212,13 +223,13 @@ public class UnitData implements Serializable {
                     for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                         if (Variable.pixelData2[tempX][i] == 6) {
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
                         }
                     }
                 }
             }
-            if(haveWorkLoc&&!isAttacked){
+            if (haveWorkLoc && !isAttacked) {
                 if (y <= workLoc * 10 + 80) {
                     //branch: working
                     if (capacity < Constants.MaxCapacity_Fisher) {
@@ -244,28 +255,28 @@ public class UnitData implements Serializable {
                 }
                 y = y + Constants.Speed_Fisher * state;
             }
-        }else{
-            isAlive=false;
+        } else {
+            isAlive = false;
         }
     }
 
     public void updateMiner(int playerNum) {
-        if(hp>0){
+        if (hp > 0) {
             //find working location
-            if(playerNum==1){
+            if (playerNum == 1) {
                 if (workLoc == Constants.Pixels_Height - 1) {
                     //find wood
                     int tempX = x / 10;
                     for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                         if (Variable.pixelData1[tempX][i] == 4) {
-                            workType=1;
+                            workType = 1;
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
-                        }else if (Variable.pixelData1[tempX][i] == 5) {
-                            workType=2;
+                        } else if (Variable.pixelData1[tempX][i] == 5) {
+                            workType = 2;
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
                         }
                     }
@@ -277,20 +288,20 @@ public class UnitData implements Serializable {
                     int tempX = x / 10;
                     for (int i = Constants.Pixels_Height - 1; i >= 0; i--) {
                         if (Variable.pixelData2[tempX][i] == 4) {
-                            workType=1;
+                            workType = 1;
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
-                        }else if (Variable.pixelData2[tempX][i] == 5) {
-                            workType=2;
+                        } else if (Variable.pixelData2[tempX][i] == 5) {
+                            workType = 2;
                             workLoc = i;
-                            haveWorkLoc=true;
+                            haveWorkLoc = true;
                             break;
                         }
                     }
                 }
             }
-            if(workType!=0&&!isAttacked){
+            if (workType != 0 && !isAttacked) {
                 if (y <= workLoc * 10 + 80) {
                     //branch: working
                     if (capacity < Constants.MaxCapacity_Miner) {
@@ -308,46 +319,56 @@ public class UnitData implements Serializable {
                 } else if (y > 680) {
                     state = -1;
                     if (playerNum == 1) {
-                        if(workType==1){
+                        if (workType == 1) {
                             Variable.data1.getStatusData().addCoal(capacity);
-                        }else{
+                        } else {
                             Variable.data1.getStatusData().addIron(capacity);
                         }
 
                     } else {
-                        if(workType==1){
+                        if (workType == 1) {
                             Variable.data2.getStatusData().addCoal(capacity);
-                        }else{
+                        } else {
                             Variable.data2.getStatusData().addIron(capacity);
                         }
                     }
                     capacity = 0;
+                } else {
+                    if (playerNum == 1) {
+                        if (Variable.pixelData1[x / 10 ][(y - 80) / 10] == 2) {
+                            hp = 0;
+                        }
+                    } else if (playerNum == 2) {
+                        if (Variable.pixelData2[x / 10 ][(y - 80) / 10] == 2) {
+                            hp = 0;
+                        }
+                    }
                 }
                 y = y + Constants.Speed_Miner * state;
             }
-        }else{
-            isAlive=false;
+        } else {
+            isAlive = false;
         }
     }
 
     public void updateWarrior(int playerNum) {
-        if(hp<=0){
-            isAlive=false;
-        }else{
-            boolean enemyExist=false;
+        if (hp <= 0) {
+            isAlive = false;
+        } else {
+            boolean enemyExist = false;
             if (playerNum == 1) {
-                for(UnitData ud:Variable.data2.getUnitDataAL()){
-                    if(((ud.getX()-x)<=10&&(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
-                        if(ud.isAlive){
-                            enemyExist=true;
+                for (UnitData ud : Variable.data2.getUnitDataAL()) {
+                    if (((ud.getX() - x) <= 10 && (ud.getX() - x) >= -10) && (y + ud.getY()) < 760) {// reaching statement
+                        if (ud.isAlive) {
+                            enemyExist = true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
-                            state=0;
+                            state = 0;
                             hp--;
-                            if(ud.getHp()<=0){
-                                state=-1;
+                            if (ud.getHp() <= 0) {
+                                state = -1;
                             }
-                            if(hp<=0){
+                            if (hp <= 0) {
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
@@ -356,33 +377,33 @@ public class UnitData implements Serializable {
 
                     }
                 }
-                if(!enemyExist){
-                    state=-1;
+                if (!enemyExist) {
+                    state = -1;
                 }
                 if (y < 80) {// reaching enemy base
                     state = 0;
                     if (counter >= Constants.AttackRate_Warrior) {
                         counter = 0;
                         Variable.data2.getStatusData().addHp(-1);
-                        hp-=48;
+                        hp -= 48;
                     } else {
                         counter++;
                     }
 
                 }
-            } else if(playerNum==2){
-                for(UnitData ud:Variable.data1.getUnitDataAL()){
-                    if(((ud.getX()-x)<=10&&(ud.getX()-x)>=-10) &&(y+ud.getY())<760){// reaching statement
-                        if(ud.isAlive){
-                            enemyExist=true;
+            } else if (playerNum == 2) {
+                for (UnitData ud : Variable.data1.getUnitDataAL()) {
+                    if (((ud.getX() - x) <= 10 && (ud.getX() - x) >= -10) && (y + ud.getY()) < 760) {// reaching statement
+                        if (ud.isAlive) {
+                            enemyExist = true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
-                            state=0;
+                            state = 0;
                             hp--;
-                            if(ud.getHp()<=0){
-                                state=-1;
+                            if (ud.getHp() <= 0) {
+                                state = -1;
                             }
-                            if(hp<=0){
+                            if (hp <= 0) {
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
@@ -391,20 +412,29 @@ public class UnitData implements Serializable {
 
                     }
                 }
-                if(!enemyExist){
-                    state=-1;
+                if (!enemyExist) {
+                    state = -1;
                 }
                 if (y < 80) {//reaching enemy state
                     state = 0;
                     if (counter >= Constants.AttackRate_Warrior) {
                         counter = 0;
                         Variable.data1.getStatusData().addHp(-1);
-                        hp-=48;
+                        hp -= 48;
                         //System.out.println(hp);
                     } else {
                         counter++;
                     }
 
+                }
+            }
+            if (playerNum == 1) {
+                if (Variable.pixelData1[x / 10][(y - 80) / 10] == 2) {
+                    hp = 0;
+                }
+            } else if (playerNum == 2) {
+                if (Variable.pixelData2[x / 10][(y - 80) / 10] == 2) {
+                    hp = 0;
                 }
             }
             y = y + Constants.Speed_Warrior * state;
@@ -413,28 +443,28 @@ public class UnitData implements Serializable {
     }
 
     public void updateArcher(int playerNum) {
-        if(hp<=0){
-            isAlive=false;
-        }else{
+        if (hp <= 0) {
+            isAlive = false;
+        } else {
             if (playerNum == 1) {
-                boolean enemyExist=false;
-                for(UnitData ud:Variable.data2.getUnitDataAL()){
-                    if(((ud.getX()-x)<=20&&(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
-                        if(ud.isAlive){
-                            enemyExist=true;
+                boolean enemyExist = false;
+                for (UnitData ud : Variable.data2.getUnitDataAL()) {
+                    if (((ud.getX() - x) <= 20 && (ud.getX() - x) >= -20) && (y + ud.getY()) < 800) {// reaching statement
+                        if (ud.isAlive) {
+                            enemyExist = true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
-                            state=0;
-                            if(ud.getUnitType()==4){
+                            state = 0;
+                            if (ud.getUnitType() == 4) {
                                 hp--;
                                 ud.setIsAttacked(false);
-                            }else if(ud.getUnitType()==5){
+                            } else if (ud.getUnitType() == 5) {
                                 hp--;
                             }
-                            if(ud.getHp()<=0){
-                                state=-1;
+                            if (ud.getHp() <= 0) {
+                                state = -1;
                             }
-                            if(hp<=0){
+                            if (hp <= 0) {
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
@@ -443,39 +473,39 @@ public class UnitData implements Serializable {
 
                     }
                 }
-                if(!enemyExist){//check if enemy is found
-                    state=-1;
+                if (!enemyExist) {//check if enemy is found
+                    state = -1;
                 }
                 if (y < 80) {// reaching enemy base
                     state = 0;
                     if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
                         Variable.data2.getStatusData().addHp(-1);
-                        hp-=60;
+                        hp -= 60;
                     } else {
                         counter++;
                     }
 
                 }
-            } else if(playerNum==2){
-                boolean enemyExist=false;
-                for(UnitData ud:Variable.data1.getUnitDataAL()){
-                    if(((ud.getX()-x)<=20&&(ud.getX()-x)>=-20) &&(y+ud.getY())<800){// reaching statement
-                        if(ud.isAlive){
-                            enemyExist=true;
+            } else if (playerNum == 2) {
+                boolean enemyExist = false;
+                for (UnitData ud : Variable.data1.getUnitDataAL()) {
+                    if (((ud.getX() - x) <= 20 && (ud.getX() - x) >= -20) && (y + ud.getY()) < 800) {// reaching statement
+                        if (ud.isAlive) {
+                            enemyExist = true;
                             ud.setIsAttacked(true);
                             ud.addHp(-1);
-                            state=0;
-                            if(ud.getUnitType()==4){
+                            state = 0;
+                            if (ud.getUnitType() == 4) {
                                 hp--;
                                 ud.setIsAttacked(false);
-                            }else if(ud.getUnitType()==5){
+                            } else if (ud.getUnitType() == 5) {
                                 hp--;
                             }
-                            if(ud.getHp()<=0){
-                                state=-1;
+                            if (ud.getHp() <= 0) {
+                                state = -1;
                             }
-                            if(hp<=0){
+                            if (hp <= 0) {
                                 ud.setIsAttacked(false);
                                 ud.setState(-1);
                             }
@@ -483,15 +513,15 @@ public class UnitData implements Serializable {
                         }
                     }
                 }
-                if(!enemyExist){//check if enemy is found
-                    state=-1;
+                if (!enemyExist) {//check if enemy is found
+                    state = -1;
                 }
                 if (y < 80) {//reaching enemy state
                     state = 0;
                     if (counter >= Constants.AttackRate_Archer) {
                         counter = 0;
                         Variable.data1.getStatusData().addHp(-1);
-                        hp-=60;
+                        hp -= 60;
                         //System.out.println(hp);
                     } else {
                         counter++;
