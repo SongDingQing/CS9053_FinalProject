@@ -1,11 +1,11 @@
 package Data.ServerData;
 /*** This Class is Configuration of game
  * @author Chengzuo Song
- * @version 0.0
+ * @version 1.2.4
  */
 public class Constants {
     //The text in log window
-    public static String VersionText="This our budge game version 0.2.0";
+    public static String VersionText="This our budge game version 1.2.4\n";
 
     //Configuration on the <<<<SIZE>>>>> of the game
     // 1. FRAME CONSTANT
