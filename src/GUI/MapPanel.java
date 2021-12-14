@@ -157,17 +157,10 @@ public class MapPanel extends JPanel {
         }
 
         //Base drawing
-        if (playerNum == 1) {
-            g.setColor(new Color(0, 0, 200));
-            g.fillRect(0, 0, 800, 70);
-            g.setColor(new Color(200, 0, 0));
-            g.fillRect(0, 690, 800, 70);
-        } else {
             g.setColor(new Color(200, 0, 0));
             g.fillRect(0, 0, 800, 70);
             g.setColor(new Color(0, 0, 200));
             g.fillRect(0, 690, 800, 70);
-        }
 
 
         //Unit drawing
@@ -176,13 +169,13 @@ public class MapPanel extends JPanel {
         //System.out.println(unitsData.size());
         for (int i = 0; i < units.size(); i++) {
             if (unitsData.get(i).isAlive()) {
-                units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
+                units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY(),false);
             }
 
         }
         for (int i = 0; i < enemyUnits.size(); i++) {
             if (enemyUnitsData.get(i).isAlive()) {
-                enemyUnits.get(i).drawUnit(g2d, enemyUnitsData.get(i).getX(), 750 - enemyUnitsData.get(i).getY());
+                enemyUnits.get(i).drawUnit(g2d, enemyUnitsData.get(i).getX(), 750 - enemyUnitsData.get(i).getY(),true);
             }
         }
         //ConfirmationLine drawing
