@@ -23,6 +23,8 @@ public class CommandPanel extends JPanel {
     ImageIcon picFisher=new ImageIcon("src/Images/button_Fisher.png");
     ImageIcon picMiner=new ImageIcon("src/Images/button_Miner.png");
     ImageIcon picWarrior=new ImageIcon("src/Images/button_Warrior.png");
+    ImageIcon picArcher=new ImageIcon("src/Images/button_Archer.png");
+    ImageIcon picFence=new ImageIcon("src/Images/button_Fence.png");
     /*Acknowledgement
     picture axe
     https://pixabay.com/vectors/axe-cutting-wood-lumberjack-ax-4804073/
@@ -42,8 +44,8 @@ public class CommandPanel extends JPanel {
         cFisher=new JButton("Fisher",picFisher);
         cMiner =new JButton("Miner",picMiner);
         cWarrior =new JButton("Warrior",picWarrior);
-        cArcher =new JButton("Archer");
-        cFence =new JButton("Fence");
+        cArcher =new JButton("Archer",picArcher);
+        cFence =new JButton("Fence",picFence);
         setLayout(new GridLayout(2,3));
         add(cLogger);
         add(cFisher);

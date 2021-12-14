@@ -34,7 +34,7 @@ public class UnitData implements Serializable {
         this.unitType = unitType;
         workLoc = Constants.Pixels_Height - 1;
         if (unitType == 6) {
-            life = 200000;
+            life = 180000;
         } else {
             life = 4000;
         }
