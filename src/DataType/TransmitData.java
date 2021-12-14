@@ -19,8 +19,8 @@ public class TransmitData implements Serializable {
 
     public TransmitData() {
         gameEnd=0;
-        statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, 999
-                , 999, 999, 999, 999, 999);
+        statusData = new StatusData(Data_init.Max_HitPoint, Data_init.HitPoint, -999
+                , -999, -999, -999, -999, 999);
         unitDataAL = new ArrayList<UnitData>(0);
         enemyUnitDataAL = new ArrayList<UnitData>(0);
     }
