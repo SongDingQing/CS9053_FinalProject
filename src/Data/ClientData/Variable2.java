@@ -8,4 +8,6 @@ public class Variable2 {
     //this is use to determine the status of the line for unit construction
     //1 means the line is on and is red(waiting for further confirmation)
     public static int confirmationLine;
+
+    public static int gameEnd;
 }

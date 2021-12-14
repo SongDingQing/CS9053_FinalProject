@@ -39,7 +39,7 @@ public class MapPanel extends JPanel {
 
     public MapPanel(int playerNum) {
         super();
-        this.playerNum=playerNum;
+        this.playerNum = playerNum;
         mapData = new Pixel[Constants.Pixels_Width][Constants.Pixels_Height];
         units = new ArrayList<Unit>();
         unitsData = new ArrayList<UnitData>();
@@ -70,16 +70,16 @@ public class MapPanel extends JPanel {
         }
         //System.out.println(playerNum);
         // Fill each pixel based on its own type
-        if(playerNum==1){
+        if (playerNum == 1) {
             for (int y = 0; y < Constants.Pixels_Height; y++) {
                 for (int x = 0; x < Constants.Pixels_Width; x++) {
                     mapData[x][y] = FillPixel(pixelData[x][y]);
                 }
             }
-        }else{
+        } else {
             for (int y = 0; y < Constants.Pixels_Height; y++) {
                 for (int x = 0; x < Constants.Pixels_Width; x++) {
-                    mapData[x][y] = FillPixel(pixelData[x][59-y]);
+                    mapData[x][y] = FillPixel(pixelData[x][59 - y]);
                 }
             }
         }
@@ -112,7 +112,7 @@ public class MapPanel extends JPanel {
         units = new ArrayList<Unit>();
         for (UnitData unitData : unitsData) {
 
-                units.add(readUnit(unitData.getUnitType()));
+            units.add(readUnit(unitData.getUnitType()));
 
 
         }
@@ -120,7 +120,7 @@ public class MapPanel extends JPanel {
         enemyUnits = new ArrayList<Unit>();
         for (UnitData unitData : enemyUnitsData) {
 
-                enemyUnits.add(readUnit(unitData.getUnitType()));
+            enemyUnits.add(readUnit(unitData.getUnitType()));
 
         }
     }
@@ -155,12 +155,12 @@ public class MapPanel extends JPanel {
         }
 
         //Base drawing
-        if(playerNum==1){
+        if (playerNum == 1) {
             g.setColor(new Color(0, 0, 200));
             g.fillRect(0, 0, 800, 70);
             g.setColor(new Color(200, 0, 0));
             g.fillRect(0, 690, 800, 70);
-        }else{
+        } else {
             g.setColor(new Color(200, 0, 0));
             g.fillRect(0, 0, 800, 70);
             g.setColor(new Color(0, 0, 200));
@@ -173,73 +173,100 @@ public class MapPanel extends JPanel {
         //System.out.println(units.size());
         //System.out.println(unitsData.size());
         for (int i = 0; i < units.size(); i++) {
-            if(unitsData.get(i).isAlive()){
+            if (unitsData.get(i).isAlive()) {
                 units.get(i).drawUnit(g2d, unitsData.get(i).getX(), unitsData.get(i).getY());
             }
 
         }
         for (int i = 0; i < enemyUnits.size(); i++) {
-            if(enemyUnitsData.get(i).isAlive()){
-                enemyUnits.get(i).drawUnit(g2d, enemyUnitsData.get(i).getX(), 750-enemyUnitsData.get(i).getY());
+            if (enemyUnitsData.get(i).isAlive()) {
+                enemyUnits.get(i).drawUnit(g2d, enemyUnitsData.get(i).getX(), 750 - enemyUnitsData.get(i).getY());
             }
         }
         //ConfirmationLine drawing
         paintConfirmationLine(g2d);
+
+        //GameEnd notice
+        if (playerNum == 1) {
+            if(Variable1.gameEnd==-1){
+                g.setColor(Color.RED);
+                g.setFont(new Font("time new roman", Font.BOLD, 50));
+                ((Graphics2D) g).drawString("Defeat !!!", 300, 400);
+            }else if(Variable1.gameEnd==1){
+                g.setColor(Color.RED);
+                g.setFont(new Font("time new roman", Font.BOLD, 50));
+                ((Graphics2D) g).drawString("Victory !!!", 300, 400);
+            }
+
+        } else if (playerNum == 2 ) {
+            if(Variable2.gameEnd==-1){
+                g.setColor(Color.RED);
+                g.setFont(new Font("time new roman", Font.BOLD, 50));
+                ((Graphics2D) g).drawString("Defeat !!!", 300, 400);
+            }else if(Variable2.gameEnd==1){
+                g.setColor(Color.RED);
+                g.setFont(new Font("time new roman", Font.BOLD, 50));
+                ((Graphics2D) g).drawString("Victory !!!", 300, 400);
+            }
+        }
+
         //Test
         //System.out.println("Player "+playerNum+"'s mouse X"+MouseX);
     }
-    public void paintConfirmationLine(Graphics2D g2d){
 
-        if(Variable1.confirmationLine>=1&&playerNum==1){
-            if(Variable1.confirmationLine==2){
+    public void paintConfirmationLine(Graphics2D g2d) {
+
+        if (Variable1.confirmationLine >= 1 && playerNum == 1) {
+            if (Variable1.confirmationLine == 2) {
                 g2d.setColor(Color.red);
-                g2d.fillRect(TempMouseX/10*10+4,80,2,600);
+                g2d.fillRect(TempMouseX / 10 * 10 + 4, 80, 2, 600);
                 g2d.setColor(Color.green);
-                g2d.fillPolygon(new int[]{TempMouseX/10*10,TempMouseX/10*10+4,TempMouseX/10*10+5,TempMouseX/10*10+10}
-                        ,new int[]{66,80,80,66},4);
-                g2d.fillPolygon(new int[]{TempMouseX/10*10,TempMouseX/10*10+4,TempMouseX/10*10+5,TempMouseX/10*10+10}
-                        ,new int[]{696,680,680,696},4);
-            }else{
+                g2d.fillPolygon(new int[]{TempMouseX / 10 * 10, TempMouseX / 10 * 10 + 4, TempMouseX / 10 * 10 + 5, TempMouseX / 10 * 10 + 10}
+                        , new int[]{66, 80, 80, 66}, 4);
+                g2d.fillPolygon(new int[]{TempMouseX / 10 * 10, TempMouseX / 10 * 10 + 4, TempMouseX / 10 * 10 + 5, TempMouseX / 10 * 10 + 10}
+                        , new int[]{696, 680, 680, 696}, 4);
+            } else {
                 g2d.setColor(Color.red);
-                g2d.fillRect(MouseX/10*10+4,80,2,600);
+                g2d.fillRect(MouseX / 10 * 10 + 4, 80, 2, 600);
             }
 
-        }else if(Variable2.confirmationLine>=1&&playerNum==2){
-            if(Variable2.confirmationLine==2){
+        } else if (Variable2.confirmationLine >= 1 && playerNum == 2) {
+            if (Variable2.confirmationLine == 2) {
                 g2d.setColor(Color.red);
-                g2d.fillRect(TempMouseX/10*10+4,80,2,600);
+                g2d.fillRect(TempMouseX / 10 * 10 + 4, 80, 2, 600);
                 g2d.setColor(Color.green);
-                g2d.fillPolygon(new int[]{TempMouseX/10*10,TempMouseX/10*10+4,TempMouseX/10*10+5,TempMouseX/10*10+10}
-                        ,new int[]{66,80,80,66},4);
-                g2d.fillPolygon(new int[]{TempMouseX/10*10,TempMouseX/10*10+4,TempMouseX/10*10+5,TempMouseX/10*10+10}
-                        ,new int[]{696,680,680,696},4);
-            }else{
+                g2d.fillPolygon(new int[]{TempMouseX / 10 * 10, TempMouseX / 10 * 10 + 4, TempMouseX / 10 * 10 + 5, TempMouseX / 10 * 10 + 10}
+                        , new int[]{66, 80, 80, 66}, 4);
+                g2d.fillPolygon(new int[]{TempMouseX / 10 * 10, TempMouseX / 10 * 10 + 4, TempMouseX / 10 * 10 + 5, TempMouseX / 10 * 10 + 10}
+                        , new int[]{696, 680, 680, 696}, 4);
+            } else {
                 g2d.setColor(Color.red);
-                g2d.fillRect(MouseX/10*10+4,80,2,600);
+                g2d.fillRect(MouseX / 10 * 10 + 4, 80, 2, 600);
             }
         }
     }
+
     class ConfirmationListener implements MouseListener, MouseMotionListener {
         @Override
         public void mouseClicked(MouseEvent e) {
-            if(playerNum==1){
-                if (Variable1.confirmationLine==1){
-                   TempMouseX=MouseX;
-                    Variable1.confirmationLine=2;
-                }else if (Variable1.confirmationLine==2){
-                    Variable1.CommandType=Variable1.unitType;
-                    Variable1.tempX=TempMouseX;
-                    Variable1.confirmationLine=0;
+            if (playerNum == 1) {
+                if (Variable1.confirmationLine == 1) {
+                    TempMouseX = MouseX;
+                    Variable1.confirmationLine = 2;
+                } else if (Variable1.confirmationLine == 2) {
+                    Variable1.CommandType = Variable1.unitType;
+                    Variable1.tempX = TempMouseX;
+                    Variable1.confirmationLine = 0;
                 }
                 //System.out.println(Variable1.confirmationLine);
-            }else{
-                if (Variable2.confirmationLine==1){
-                    TempMouseX=MouseX;
-                    Variable2.confirmationLine=2;
-                }else if (Variable2.confirmationLine==2){
-                    Variable2.CommandType=Variable2.unitType;
-                    Variable2.tempX=TempMouseX;
-                    Variable2.confirmationLine=0;
+            } else {
+                if (Variable2.confirmationLine == 1) {
+                    TempMouseX = MouseX;
+                    Variable2.confirmationLine = 2;
+                } else if (Variable2.confirmationLine == 2) {
+                    Variable2.CommandType = Variable2.unitType;
+                    Variable2.tempX = TempMouseX;
+                    Variable2.confirmationLine = 0;
                 }
 
             }
@@ -272,7 +299,7 @@ public class MapPanel extends JPanel {
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            MouseX=e.getX();
+            MouseX = e.getX();
         }
     }
 }

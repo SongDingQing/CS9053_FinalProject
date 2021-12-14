@@ -124,11 +124,10 @@ public class Server extends JFrame implements Runnable {
         /**
          * Run a thread
          */
-        public synchronized void run() {
+        public void run() {
             while (game) {
                 try {
                     // Create data input and output streams
-                    //TODO command Panel update
                     DataInputStream inputFromClient = new DataInputStream(
                             socket.getInputStream());
 
@@ -177,20 +176,29 @@ public class Server extends JFrame implements Runnable {
             }
 
         }
-    }
-
-    public void handleCommand(int command, int playerNum, int locX) {
-        if (command != 0) {
-            if (playerNum == 1) {
-                Variable.data1.createUnit(command, locX);
-                Variable.data2.updateEnemyUnit();
-            } else if (playerNum == 2) {
-                Variable.data2.createUnit(command, locX);
-                Variable.data1.updateEnemyUnit();
+        public void handleCommand(int command, int playerNum, int locX) {
+            if (command > 0) {
+                if (playerNum == 1) {
+                    Variable.data1.createUnit(command, locX);
+                    Variable.data2.updateEnemyUnit();
+                } else if (playerNum == 2) {
+                    Variable.data2.createUnit(command, locX);
+                    Variable.data1.updateEnemyUnit();
+                }
+            }else if(command==-1){
+                if(playerNum==1){
+                    Variable.data1.lost();
+                    Variable.data2.win();
+                }else if(playerNum==2){
+                    Variable.data1.lost();
+                    Variable.data2.win();
+                }
             }
-        }
 
+        }
     }
+
+
 
 
     /**

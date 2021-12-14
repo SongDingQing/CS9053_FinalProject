@@ -38,6 +38,7 @@ public class MainPanel extends JFrame implements ActionListener {
     private JScrollPane jScrollPane;
     private JPanel connectPanel;
     private JTextArea logTextField;
+    //game status determination
 
     //playerNum
     private int playerNum;
@@ -55,6 +56,12 @@ public class MainPanel extends JFrame implements ActionListener {
 
         isConnected = false;//isConnected config
         logPanel = new JPanel();
+        if(playerNum==1){
+            Variable1.gameEnd=0;
+        }else if(playerNum==2){
+            Variable2.gameEnd=0;
+        }
+
 
         setMapPanel();  // Map Panel
         setControlPanel();  // Control Panel
@@ -210,7 +217,7 @@ public class MainPanel extends JFrame implements ActionListener {
             }
         }else if(playerNum==2){
             if(Variable2.CommandType==1){
-                if(localData.getStatusData().getFood()<50){
+                if(localData.getStatusData().getFood()<40){
                     Variable2.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a logger!\n");
                 }
@@ -220,18 +227,18 @@ public class MainPanel extends JFrame implements ActionListener {
                     logTextField.append("Error: not enough resource to generate a fisher!\n");
                 }
             }else if(Variable2.CommandType==3){
-                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50){
+                if(localData.getStatusData().getFood()<40||localData.getStatusData().getWood()<40){
                     Variable2.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a miner!\n");
                 }
             }else if(Variable2.CommandType==4){
-                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50
-                        ||localData.getStatusData().getCoal()<50||localData.getStatusData().getIron()<50){
+                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<20
+                        ||localData.getStatusData().getCoal()<40||localData.getStatusData().getIron()<30){
                     Variable2.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a warrior!\n");
                 }
             }else if(Variable2.CommandType==5){
-                if(localData.getStatusData().getFood()<100||localData.getStatusData().getWood()<50
+                if(localData.getStatusData().getFood()<90||localData.getStatusData().getWood()<90
                         ||localData.getStatusData().getIron()<20){
                     Variable2.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a archer!\n");
@@ -240,6 +247,16 @@ public class MainPanel extends JFrame implements ActionListener {
         }
 
     }
+    private void checkEndGame(){
+        if(localData.getStatusData().getHp()<=0){
+            if(playerNum==1){
+                Variable1.CommandType =-1;
+            }else if(playerNum==2){
+                Variable2.CommandType =-1;
+            }
+        }
+    }
+
 
 
     @Override
@@ -248,7 +265,8 @@ public class MainPanel extends JFrame implements ActionListener {
         if (isConnected) {
             try {
                 if (playerNum == 1) {
-                    checkCommand();
+                    //checkCommand();
+                    checkEndGame();
                     //System.out.println(Variable1.CommandType);
                     toServer.writeInt(Variable1.CommandType);
                     toServer.flush();
@@ -256,7 +274,8 @@ public class MainPanel extends JFrame implements ActionListener {
                     toServer.flush();
                     Variable1.CommandType = 0;
                 } else {
-                    checkCommand();
+                    //checkCommand();
+                    checkEndGame();
                     toServer.writeInt(Variable2.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable2.tempX);
@@ -264,8 +283,11 @@ public class MainPanel extends JFrame implements ActionListener {
                     Variable2.CommandType = 0;
                 }
                 localData = (TransmitData) fromServer.readObject();
-                //System.out.println(localData.getStatusData().getTime());
-                //System.out.println(i);
+                if(playerNum==1){
+                    Variable1.gameEnd =localData.getGameEnd();
+                }else if(playerNum==2){
+                    Variable2.gameEnd =localData.getGameEnd();
+                }
             } catch (Exception err) {
                 err.printStackTrace();
             }
