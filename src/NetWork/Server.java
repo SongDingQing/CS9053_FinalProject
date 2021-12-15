@@ -105,19 +105,21 @@ public class Server extends JFrame implements Runnable {
     // Define the thread class for handling new connection
     class Player implements Runnable {
         private Socket socket; // A connected socket
-        private int clientNum;
+        private int playerNum;
+        private boolean playerNumRight;
 
         /**
          * Construct a thread
          */
         public Player(Socket socket, int clientNum) {
             this.socket = socket;
-            this.clientNum = clientNum;
+            this.playerNum = clientNum;
+            playerNumRight=false;
             //System.out.println(clientNum);
         }
 
-        private int getClientNum() {
-            return clientNum;
+        private int getPlayerNum() {
+            return playerNum;
         }
 
 
@@ -136,12 +138,16 @@ public class Server extends JFrame implements Runnable {
 
                     // Continuously serve the client
                     while (true) {
-                        if (clientNum == 1) {
+                        if(!playerNumRight){
+                            playerNum= inputFromClient.readInt();
+                            playerNumRight=true;
+                        }
+                        if (playerNum == 1) {
 
                             Thread.sleep(40);
                             int command = inputFromClient.readInt();
                             int locX = inputFromClient.readInt();
-                            handleCommand(command, clientNum, locX);
+                            handleCommand(command, playerNum, locX);
 
                             // Send area back to the client
                             outputToClient.reset();
@@ -155,12 +161,12 @@ public class Server extends JFrame implements Runnable {
                                 Variable.time++;
                                 timeCounter = 1;
                             }
-                        } else if (clientNum == 2) {
+                        } else if (playerNum == 2) {
 
                             Thread.sleep(40);
                             int command = inputFromClient.readInt();
                             int locX = inputFromClient.readInt();
-                            handleCommand(command, clientNum, locX);
+                            handleCommand(command, playerNum, locX);
                             outputToClient.reset();
                             outputToClient.writeObject(Variable.data2);
                             Variable.data2.update(Variable.data1.getUnitDataAL());
@@ -170,7 +176,7 @@ public class Server extends JFrame implements Runnable {
 
 
                 } catch (IOException | InterruptedException ex) {
-                    ta.append("client:" + this.getClientNum() + " have been closed\n");
+                    ta.append("client:" + this.getPlayerNum() + " have been closed\n");
                     ex.printStackTrace();
                 }
             }

@@ -42,6 +42,7 @@ public class MainPanel extends JFrame implements ActionListener {
 
     //playerNum
     private int playerNum;
+    private boolean isPlayerNumSent;
 
     //Connect Button in LogPanel
     JButton connectButton;
@@ -53,6 +54,7 @@ public class MainPanel extends JFrame implements ActionListener {
         super("budge Player" + playerNum);
         //PlayerNum config
         this.playerNum = playerNum;
+        isPlayerNumSent=false;
 
         isConnected = false;//isConnected config
         logPanel = new JPanel();
@@ -274,10 +276,16 @@ public class MainPanel extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (isConnected) {
             try {
+                if(!isPlayerNumSent){
+                    toServer.writeInt(playerNum);
+                    toServer.flush();
+                    isPlayerNumSent=true;
+                }
                 if (playerNum == 1) {
                     checkCommand();//to test comment out this line<<<<<<<<<<<<<<<<<<<
                     checkEndGame();
                     //System.out.println(Variable1.CommandType);
+
                     toServer.writeInt(Variable1.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable1.tempX);
@@ -286,6 +294,7 @@ public class MainPanel extends JFrame implements ActionListener {
                 } else {
                     checkCommand();//to test comment out this line<<<<<<<<<<<<<<<<<<<<
                     checkEndGame();
+
                     toServer.writeInt(Variable2.CommandType);
                     toServer.flush();
                     toServer.writeInt(Variable2.tempX);
