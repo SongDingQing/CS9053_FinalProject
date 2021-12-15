@@ -190,7 +190,7 @@ public class MainPanel extends JFrame implements ActionListener {
     private void checkCommand(){
         if(playerNum==1){
             if(Variable1.CommandType==1){
-                if(localData.getStatusData().getFood()<50){
+                if(localData.getStatusData().getFood()<40){
                     Variable1.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a logger!\n");
                 }
@@ -200,18 +200,18 @@ public class MainPanel extends JFrame implements ActionListener {
                     logTextField.append("Error: not enough resource to generate a fisher!\n");
                 }
             }else if(Variable1.CommandType==3){
-                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50){
+                if(localData.getStatusData().getFood()<40||localData.getStatusData().getWood()<40){
                     Variable1.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a miner!\n");
                 }
             }else if(Variable1.CommandType==4){
-                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<50
-                        ||localData.getStatusData().getCoal()<50||localData.getStatusData().getIron()<50){
+                if(localData.getStatusData().getFood()<50||localData.getStatusData().getWood()<20
+                        ||localData.getStatusData().getCoal()<40||localData.getStatusData().getIron()<30){
                     Variable1.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a warrior!\n");
                 }
             }else if(Variable1.CommandType==5){
-                if(localData.getStatusData().getFood()<100||localData.getStatusData().getWood()<50
+                if(localData.getStatusData().getFood()<90||localData.getStatusData().getWood()<90
                         ||localData.getStatusData().getIron()<20){
                     Variable1.CommandType=0;
                     logTextField.append("Error: not enough resource to generate a archer!\n");
