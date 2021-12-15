@@ -84,7 +84,6 @@ public class Server extends JFrame implements Runnable {
 
                 if (clientNo < 3) {
                     //System.out.println(playNum);
-                    ta.append("PlayerNum given: " + clientNo + '\n');
                     ta.append("Starting thread for client Num#" + clientNo +
                             " at " + new Date() + '\n');
 
